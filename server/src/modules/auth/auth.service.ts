@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { AccessTokenContent } from '@types';
 import bcrypt from 'bcryptjs';
-import { AccessTokenContent } from 'src/types/access-token-content.type';
 import { UsersService } from '../users';
 
 @Injectable()
