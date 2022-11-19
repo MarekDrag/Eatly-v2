@@ -12,12 +12,12 @@ module.exports = {
     node: true,
     jest: true,
   },
-  ignorePatterns: ['.eslintrc.js', 'commitlint.config.js'],
+  ignorePatterns: ['.eslintrc.js'],
   rules: {
     'prettier/prettier': [
       'error',
       {
-        endOfLine: 'auto',
+        endOfLine: 'auto'
       },
     ],
     '@typescript-eslint/interface-name-prefix': 'off',

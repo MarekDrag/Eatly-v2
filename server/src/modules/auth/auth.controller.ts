@@ -1,6 +1,6 @@
 import { Body, Controller, HttpCode, HttpStatus, Post, Req, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { AccessTokenContent } from 'src/types/access-token-content.type';
+import { AccessTokenContent } from '@types';
 import { UsersService, CreateUserDto, UserDto } from '../users';
 import { AuthService } from './auth.service';
 import { AccessToken } from './dtos';
