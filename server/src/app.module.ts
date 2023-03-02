@@ -1,8 +1,10 @@
+import { ClassSerializerInterceptor, Module, ValidationPipe } from '@nestjs/common';
+
+import { KnexModule } from 'nestjs-knex';
+
 import postgresConfig from './db/postgresConfig';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
-import { ClassSerializerInterceptor, Module, ValidationPipe } from '@nestjs/common';
-import { KnexModule } from 'nestjs-knex';
 
 @Module({
   imports: [AuthModule, KnexModule.forRoot({ config: postgresConfig }), UsersModule],

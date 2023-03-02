@@ -1,9 +1,10 @@
+import { Body, Controller, Delete, Get, Param, ParseUUIDPipe, Patch, Request, UseGuards } from '@nestjs/common';
+
 import { JwtAuthGuard } from '../auth';
 import { GetUserDto, UpdateUserDto } from './dtos';
 import { UserJwtPayload } from './interfaces';
 import { User } from './types';
 import { UsersService } from './users.service';
-import { Body, Controller, Delete, Get, Param, ParseUUIDPipe, Patch, Request, UseGuards } from '@nestjs/common';
 
 @Controller('users')
 export class UsersControllers {

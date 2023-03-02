@@ -1,9 +1,10 @@
+import { ConflictException } from '@nestjs/common';
+import { Test, TestingModule } from '@nestjs/testing';
+
 import { UserDto } from '../dtos';
 import { UsersRepository } from '../users.repository';
 import { UsersService } from '../users.service';
 import { defaultCreateUserDto, defaultUser } from './users.fixture';
-import { ConflictException } from '@nestjs/common';
-import { Test, TestingModule } from '@nestjs/testing';
 
 describe('UsersService', () => {
   let service: UsersService;
@@ -29,7 +30,7 @@ describe('UsersService', () => {
 
   it('should throw error if client would try to create a user with already occupied username', async () => {
     //arrange
-    usersRepo.getUserByUsername.mockImplementation(async username => {
+    usersRepo.getUserByUsername.mockImplementation(async (username) => {
       return { ...defaultUser, username };
     });
 
@@ -42,7 +43,7 @@ describe('UsersService', () => {
 
   it('should throw error if client would try to create a user with already occcupied email', async () => {
     //arrange
-    usersRepo.getUserByEmail.mockImplementation(async email => {
+    usersRepo.getUserByEmail.mockImplementation(async (email) => {
       return { ...defaultUser, email };
     });
 
@@ -55,7 +56,7 @@ describe('UsersService', () => {
 
   it('should return an instance of UserDto with hashed pwd', async () => {
     //arrange
-    usersRepo.createUser.mockImplementation(async createUserDto => {
+    usersRepo.createUser.mockImplementation(async (createUserDto) => {
       return { ...defaultUser, ...createUserDto };
     });
     //act
