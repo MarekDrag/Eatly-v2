@@ -1,8 +1,8 @@
-import { InjectKnex, Knex as KnexModule } from 'nestjs-knex';
-import { Knex } from 'knex';
-import { Injectable, NotFoundException, BadRequestException, ConflictException } from '@nestjs/common';
 import { CreateUserDto, UpdateUserDto } from './dtos';
 import { User } from './types';
+import { BadRequestException, ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import { Knex } from 'knex';
+import { InjectKnex, Knex as KnexModule } from 'nestjs-knex';
 
 @Injectable()
 export class UsersRepository {

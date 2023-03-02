@@ -13,8 +13,7 @@
     "client": "cd client & npm run dev",
     "lint": "yarn run lint --parallel",
     "typecheck": "yarn run typecheck --parallel",
-    "prettier:check": "yarn run prettier:check --parallel",
-    "prettier:write": "yarn run prettier:write --parallel",
+    "prettier:write": "concurrently \"cd server & yarn run prettier:write\" \"cd client & yarn run prettier:write\"",
     "test": "yarn run test:ci",
     "diff": "yarn diff"
   },
@@ -27,7 +26,8 @@
   "bugs": {
     "url": "https://github.com/MarekDrag/Eatly-v2/issues"
   },
-  "dependencies": {
-    "concurrently": "^7.5.0"
+  "devDependencies": {
+    "concurrently": "^7.5.0",
+    "@trivago/prettier-plugin-sort-imports": "^4.1.1"
   }
 }

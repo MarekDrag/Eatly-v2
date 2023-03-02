@@ -1,8 +1,8 @@
+import { AccessTokenContent } from '../../types';
+import { UsersService } from '../users';
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { AccessTokenContent } from '../../types';
 import bcrypt from 'bcryptjs';
-import { UsersService } from '../users';
 
 @Injectable()
 export class AuthService {

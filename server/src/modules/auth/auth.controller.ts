@@ -1,9 +1,9 @@
-import { Body, Controller, HttpCode, HttpStatus, Post, Req, UseGuards } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
 import { AccessTokenContent } from '../../types';
-import { UsersService, CreateUserDto, UserDto } from '../users';
+import { CreateUserDto, UserDto, UsersService } from '../users';
 import { AuthService } from './auth.service';
 import { AccessToken } from './dtos';
+import { Body, Controller, HttpCode, HttpStatus, Post, Req, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('users')
 export class AuthController {

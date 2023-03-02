@@ -6,7 +6,12 @@
   "useTabs": false,
   "semi": true,
   "bracketSpacing": true,
+  "bracketSameLine": false,
   "parser": "typescript",
-  "arrowParens": "always",
-  "endOfLine": "lf"
+  "arrowParens": "avoid",
+  "endOfLine": "lf",
+  "importOrder": ["^@nestjs/(.*)$', '<THIRD_PARTY_MODULES>', '^[./]"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrderParserPlugins": ["typescript", "decorators-legacy"]
 }

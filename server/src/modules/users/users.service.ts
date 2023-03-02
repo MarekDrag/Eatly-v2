@@ -1,8 +1,9 @@
-import { ConflictException, Injectable } from '@nestjs/common';
-import { plainToClass } from 'class-transformer';
-import { CreateUserDto, UserDto, UpdateUserDto } from './dtos';
+import { CreateUserDto, UpdateUserDto, UserDto } from './dtos';
 import { UsersRepository } from './users.repository';
+import { ConflictException, Injectable } from '@nestjs/common';
 import bcrypt from 'bcryptjs';
+import { plainToClass } from 'class-transformer';
+
 @Injectable()
 export class UsersService {
   constructor(private usersRepo: UsersRepository) {}
@@ -52,7 +53,7 @@ export class UsersService {
 
     const foundUserById = await this.usersRepo.getUserById(id);
 
-    Object.keys(updateUserDto).forEach((key) => {
+    Object.keys(updateUserDto).forEach(key => {
       if (foundUserById[key] === updateUserDto[key]) {
         throw new ConflictException(`you cannot change users field "${key}" to its current value`);
       }
