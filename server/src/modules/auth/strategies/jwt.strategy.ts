@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 
-import getenv from 'getenv';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 
 import { AccessTokenContent } from '../../../types/access-token-content.type';
