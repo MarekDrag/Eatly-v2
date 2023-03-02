@@ -1,22 +1,10 @@
-import { ClassSerializerInterceptor, Module, ValidationPipe } from '@nestjs/common';
-import { KnexModule } from 'nestjs-knex';
-import postgresConfig from './db/postgresConfig';
+import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AuthModule } from './modules/auth/auth.module';
-import { UsersModule } from './modules/users/users.module';
+import { AppService } from './app.service';
 
 @Module({
-  imports: [AuthModule, KnexModule.forRoot({ config: postgresConfig }), UsersModule],
-  providers: [
-    {
-      provide: 'APP_INTERCEPTOR',
-      useClass: ClassSerializerInterceptor,
-    },
-    {
-      provide: 'APP_PIPE',
-      useValue: new ValidationPipe({ transform: true, whitelist: true }),
-    },
-  ],
+  imports: [],
   controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
