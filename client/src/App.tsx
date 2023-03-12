@@ -1,11 +1,11 @@
+import { Nav } from './components/nav';
 
-function App() {
-
+const App = () => {
   return (
     <div className="App">
-      <p>aas</p>
+      <Nav></Nav>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
