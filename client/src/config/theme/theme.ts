@@ -2,50 +2,73 @@ export type PalleteMode = 'light' | 'dark';
 
 const lightMode = {
   text: {
-    title: 'rgba(0, 0, 0, 0.85)',
-    primary: 'rgba(0, 0, 0, 0.65)',
-    secondary: 'rgba(0, 0, 0, 0.45)',
+    primary: 'rgba(0, 0, 0, 0.85)',
+    secondary: 'rgba(0, 0, 0, 0.55)',
     disabled: 'rgba(0, 0, 0, 0.25)',
-    placeholder: 'rgba(0, 0, 0, 0.25)',
-    opposite: '#FFF',
-    icon: '#8798AD',
   },
   background: {
-    default: '#fff',
-    paper: '#F5F6F8',
+    default: '#F5F6F8',
+    paper: '#fff',
   },
 };
 
 const darkMode = {
   text: {
-    title: 'rgba(255, 255, 255, 0.85)',
-    primary: 'rgba(255, 255, 255,  0.65)',
-    secondary: 'rgba(255, 255, 255, 0.45)',
+    primary: 'rgba(255, 255, 255, 0.85)',
+    secondary: 'rgba(255, 255, 255,  0.55)',
     disabled: 'rgba(255, 255, 255, 0.25)',
-    placeholder: 'rgba(255, 255, 255, 0.25)',
-    opposite: '#000',
-    icon: '#8798AD',
   },
   background: {
-    default: '#0A1929',
-    paper: '#001E3C',
+    default: '#202020',
+    paper: '#2C2C2C',
   },
 };
 
+const typography = {
+  fontFamily: [
+    '-apple-system',
+    'BlinkMacSystemFont',
+    '"Segoe UI"',
+    'Roboto',
+    '"Helvetica Neue"',
+    'Arial',
+    'sans-serif',
+    '"Apple Color Emoji"',
+    '"Segoe UI Emoji"',
+    '"Segoe UI Symbol"',
+  ].join(','),
+};
+
+const action = {
+  active: 'rgba(0,0,0,0.3)',
+  hover: 'rgba(0,0,0,0.15)',
+  hoverOpacity: 0.9,
+  selected: 'rgba(0,0,0,0.3)',
+  selectedOpacity: 0.8,
+  disabled: 'rgba(0,0,0,0.26)',
+  disabledBackground: 'rgba(0,0,0,0.12)',
+  disabledOpacity: 0.38,
+  focus: 'rgba(0,0,0,0.3)',
+  focusOpacity: 0.12,
+  activatedOpacity: 0.12,
+};
+
 export const getTheme = (mode: PalleteMode) => ({
-  primary: {
-    light: '#55bda4',
-    dark: '#108164',
-    main: '#189f80',
-    contrastText: '',
-  },
-  secondary: {
-    light: '#ef6520',
-    main: '#fa7f46',
-    dark: '#fcb293',
-    contrastText: '',
-  },
+  typography,
   palette: {
+    primary: {
+      light: '#46b299',
+      main: '#189f80',
+      dark: '#106f59',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#fb986b',
+      main: '#fa7f46',
+      dark: '#af5831',
+      contrastText: '#fff',
+    },
+    action,
     mode,
     ...(mode === 'light' ? lightMode : darkMode),
   },

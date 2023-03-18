@@ -1,16 +1,22 @@
-import { Button as MuiButton, styled } from '@mui/material';
+import { Button as MuiButton, ButtonProps, styled } from '@mui/material';
 
-export const Button = styled(MuiButton)({
-  width: 220,
-  height: 50,
-  color: '#fff',
-  justifyContent: 'flex-start',
-  paddingLeft: 30,
-  disableRipple: true,
+const StyledButton = styled(MuiButton)(({ theme }) => ({
+  color: theme.palette.primary.contrastText,
   '&:hover': {
-    background: '#189F7F',
+    background: theme.palette.action.hover,
   },
   '&:active': {
-    paddingLeft: 50,
+    background: theme.palette.action.active,
   },
-});
+  '&:target': {
+    background: theme.palette.action.selected,
+  },
+}));
+
+export const Button = (props: ButtonProps) => {
+  return (
+    <StyledButton disableRipple {...props}>
+      {props.children}
+    </StyledButton>
+  );
+};

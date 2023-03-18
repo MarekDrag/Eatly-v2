@@ -7,6 +7,8 @@ import {
   Settings,
   HeadsetMic,
   HelpOutline,
+  Person,
+  PowerSettingsNew,
 } from '@mui/icons-material';
 
 export const icons = {
@@ -18,4 +20,6 @@ export const icons = {
   settings: <Settings />,
   support: <HeadsetMic />,
   help: <HelpOutline />,
+  person: <Person />,
+  logout: <PowerSettingsNew />,
 };

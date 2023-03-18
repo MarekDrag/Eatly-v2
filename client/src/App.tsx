@@ -1,9 +1,14 @@
-import { Nav } from './components/nav';
+import { Nav } from '@components/Nav';
+import { SideNav } from '@components/SideNav';
+import { Background } from '@ui/AppBackground/AppBackground';
 
 const App = () => {
   return (
     <div className="App">
-      <Nav></Nav>
+      <Background>
+        <SideNav />
+        <Nav />
+      </Background>
     </div>
   );
 };

@@ -1,20 +1,28 @@
-import { createContext, FC, ReactNode, useMemo, useState } from 'react';
+import { createContext, ReactNode, useMemo, useState } from 'react';
 
-import { ThemeContext as StyledThemeContext } from 'styled-components';
-
-import { createTheme, ThemeProvider as MuiThemeProvider } from '@mui/material';
+import { createTheme, ThemeProvider as MuiThemeProvider, ThemeOptions } from '@mui/material';
 
 import { getTheme, PalleteMode } from './theme';
 
-interface ThemeProviderProps {
+type Props = {
   children: ReactNode;
-}
+};
+
+type ThemeContextProps = {
+  mode: 'light' | 'dark';
+  toggleTheme: () => void;
+  theme: ThemeOptions;
+};
 
 const DEFAULT_MODE = 'light';
 
-export const ThemeContext = createContext({});
+export const ThemeContext = createContext<ThemeContextProps>({
+  mode: DEFAULT_MODE,
+  toggleTheme: () => {},
+  theme: {},
+});
 
-export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
+export const ThemeProvider = ({ children }: Props) => {
   const [mode, setMode] = useState<PalleteMode>(DEFAULT_MODE);
 
   const toggleTheme = () => {
@@ -24,10 +32,8 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
   const theme = useMemo(() => createTheme(getTheme(mode)), [mode]);
 
   return (
-    <ThemeContext.Provider value={{ mode, toggleTheme }}>
-      <StyledThemeContext.Provider value={theme}>
-        <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
-      </StyledThemeContext.Provider>
+    <ThemeContext.Provider value={{ mode, toggleTheme, theme }}>
+      <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
     </ThemeContext.Provider>
   );
 };
