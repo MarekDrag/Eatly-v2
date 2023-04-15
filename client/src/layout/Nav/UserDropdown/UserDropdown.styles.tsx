@@ -1,4 +1,4 @@
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { KeyboardArrowDown } from '@mui/icons-material';
 import { styled, Typography } from '@mui/material';
 import { Box, Button } from '@ui/index';
 
@@ -13,13 +13,10 @@ export const UserProfile = styled(Button)(({ theme }) => ({
   minWidth: 140,
   borderRadius: 10,
   color: theme.palette.text.primary,
-  background: theme.palette.background.paper,
-  boxShadow: '0px 0px 10px -5px rgba(0, 0, 0, 0.5)',
+  background: theme.palette.mode === 'light' ? theme.palette.background.paper : '#414141',
+  boxShadow: '0px 0px 10px -5px rgba(0, 0, 0, 0.1)',
   '&:hover': {
-    background: theme.palette.background.paper,
-  },
-  '&:active': {
-    background: theme.palette.action.hover,
+    background: theme.palette.action.active,
   },
 }));
 
@@ -28,10 +25,10 @@ export const UserName = styled(Typography)({
   textTransform: 'none',
 });
 
-export const ArrowIcon = styled(KeyboardArrowDownIcon)(({ theme }) => ({
+export const ArrowIcon = styled(KeyboardArrowDown)({
   padding: 5,
-  color: theme.palette.text.primary,
-}));
+  transition: 'transform 0.2s ease',
+});
 
 export const Dropdown = styled(Box)(({ theme }) => ({
   position: 'absolute',
@@ -41,8 +38,8 @@ export const Dropdown = styled(Box)(({ theme }) => ({
   padding: 5,
   marginTop: 150,
   borderRadius: 10,
-  background: theme.palette.background.paper,
-  boxShadow: '0px 0px 14px -6px rgba(0, 0, 0, 0.5)',
+  background: theme.palette.mode === 'light' ? theme.palette.background.paper : '#414141',
+  boxShadow: '0px 0px 14px -6px rgba(0, 0, 0, 0.1)',
 }));
 
 export const DropdownButton = styled(Button)(({ theme }) => ({

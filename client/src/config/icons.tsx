@@ -9,6 +9,11 @@ import {
   HelpOutline,
   Person,
   PowerSettingsNew,
+  AccessTime,
+  FavoriteBorder,
+  Favorite,
+  Search,
+  FilterAlt,
 } from '@mui/icons-material';
 
 export const icons = {
@@ -22,4 +27,9 @@ export const icons = {
   help: <HelpOutline />,
   person: <Person />,
   logout: <PowerSettingsNew />,
+  clock: <AccessTime />,
+  heart: <FavoriteBorder />,
+  heartFilled: <Favorite />,
+  search: <Search />,
+  filter: <FilterAlt />,
 };

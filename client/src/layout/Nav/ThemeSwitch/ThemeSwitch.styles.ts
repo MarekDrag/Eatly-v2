@@ -1,8 +1,7 @@
-import { useTheme } from '@hooks/useTheme';
 import { WbSunny, ModeNight } from '@mui/icons-material';
 import { styled, Switch } from '@mui/material';
 
-const StyledSwitch = styled(Switch)(({ theme }) => ({
+export const StyledSwitch = styled(Switch)(({ theme }) => ({
   width: 60,
   height: 32,
   marginRight: 30,
@@ -15,7 +14,7 @@ const StyledSwitch = styled(Switch)(({ theme }) => ({
       transform: 'translateX(30px)',
       color: '#fff',
       '& + .MuiSwitch-track': {
-        backgroundColor: '#343434',
+        backgroundColor: '#414141',
         opacity: 1,
         border: 0,
       },
@@ -31,7 +30,7 @@ const StyledSwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-const StyledLightModeIcon = styled(WbSunny)({
+export const StyledLightModeIcon = styled(WbSunny)({
   width: 20,
   height: 20,
   padding: 3,
@@ -40,7 +39,7 @@ const StyledLightModeIcon = styled(WbSunny)({
   backgroundColor: '#F5F6F8',
 });
 
-const StyledDarkModeIcon = styled(ModeNight)({
+export const StyledDarkModeIcon = styled(ModeNight)({
   width: 20,
   height: 20,
   padding: 3,
@@ -48,16 +47,3 @@ const StyledDarkModeIcon = styled(ModeNight)({
   backgroundColor: '#202020',
   color: '#fff',
 });
-
-export const ThemeSwitch = () => {
-  const { toggleTheme } = useTheme();
-
-  return (
-    <StyledSwitch
-      onClick={toggleTheme}
-      icon={<StyledLightModeIcon />}
-      checkedIcon={<StyledDarkModeIcon />}
-      disableRipple
-    />
-  );
-};

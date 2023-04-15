@@ -8,7 +8,7 @@ type Props = {
   children: ReactNode;
 };
 
-type ThemeContextProps = {
+export type ThemeContextProps = {
   mode: 'light' | 'dark';
   toggleTheme: () => void;
   theme: ThemeOptions;

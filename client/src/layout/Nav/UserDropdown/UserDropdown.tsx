@@ -4,7 +4,7 @@ import { icons } from '@config/icons';
 import { useTranslation } from '@hooks/index';
 
 import { UserAvatar } from './UserAvatar';
-import { ArrowIcon, Dropdown, DropdownButton, UserProfile, Wrapper, UserName } from './UserDropdown.styled';
+import { ArrowIcon, Dropdown, DropdownButton, UserProfile, Wrapper, UserName } from './UserDropdown.styles';
 
 export const UserDropdown = () => {
   const { t } = useTranslation();
@@ -15,7 +15,7 @@ export const UserDropdown = () => {
       <UserProfile onClick={() => setIsDropdownVisible((prev) => !prev)} onBlur={() => setIsDropdownVisible(false)}>
         <UserAvatar />
         <UserName variant="subtitle2">Marek</UserName>
-        <ArrowIcon />
+        <ArrowIcon transform={`rotate(${isDropdownVisible ? 180 : 0})`} />
       </UserProfile>
       {isDropdownVisible && (
         <Dropdown>

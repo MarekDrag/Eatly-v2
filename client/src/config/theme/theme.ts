@@ -7,8 +7,21 @@ const lightMode = {
     disabled: 'rgba(0, 0, 0, 0.25)',
   },
   background: {
-    default: '#F5F6F8',
+    default: '#F0F2F5',
     paper: '#fff',
+  },
+  action: {
+    active: 'rgba(0,0,0,0.3)',
+    hover: 'rgba(0,0,0,0.15)',
+    hoverOpacity: 0.9,
+    selected: 'rgba(0,0,0,0.3)',
+    selectedOpacity: 0.8,
+    disabled: 'rgba(0,0,0,0.26)',
+    disabledBackground: 'rgba(0,0,0,0.12)',
+    disabledOpacity: 0.38,
+    focus: 'rgba(0,0,0,0.3)',
+    focusOpacity: 0.12,
+    activatedOpacity: 0.12,
   },
 };
 
@@ -21,6 +34,19 @@ const darkMode = {
   background: {
     default: '#202020',
     paper: '#2C2C2C',
+  },
+  action: {
+    active: 'rgba(255,255,255,0.3)',
+    hover: 'rgba(255,255,255,0.15)',
+    hoverOpacity: 0.9,
+    selected: 'rgba(255,255,255,0.3)',
+    selectedOpacity: 0.8,
+    disabled: 'rgba(255,255,255,0.2)',
+    disabledBackground: 'rgba(255,255,255,0.12)',
+    disabledOpacity: 0.38,
+    focus: 'rgba(255,255,255,0.4)',
+    focusOpacity: 0.12,
+    activatedOpacity: 0.12,
   },
 };
 
@@ -39,22 +65,19 @@ const typography = {
   ].join(','),
 };
 
-const action = {
-  active: 'rgba(0,0,0,0.3)',
-  hover: 'rgba(0,0,0,0.15)',
-  hoverOpacity: 0.9,
-  selected: 'rgba(0,0,0,0.3)',
-  selectedOpacity: 0.8,
-  disabled: 'rgba(0,0,0,0.26)',
-  disabledBackground: 'rgba(0,0,0,0.12)',
-  disabledOpacity: 0.38,
-  focus: 'rgba(0,0,0,0.3)',
-  focusOpacity: 0.12,
-  activatedOpacity: 0.12,
+const breakpoints = {
+  values: {
+    xs: 0,
+    sm: 500,
+    md: 850,
+    lg: 1200,
+    xl: 1530,
+  },
 };
 
 export const getTheme = (mode: PalleteMode) => ({
   typography,
+  breakpoints,
   palette: {
     primary: {
       light: '#46b299',
@@ -68,7 +91,6 @@ export const getTheme = (mode: PalleteMode) => ({
       dark: '#af5831',
       contrastText: '#fff',
     },
-    action,
     mode,
     ...(mode === 'light' ? lightMode : darkMode),
   },

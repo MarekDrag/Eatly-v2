@@ -8,5 +8,12 @@
     "Support": "Wsparcie",
     "FAQ": "FAQ",
     "My account": "Moje konto",
-    "Log out": "Wyloguj"
+    "Log out": "Wyloguj",
+    "Breakfast":"Śniadanie",
+    "Lunch": "Obiad",
+    "Dinner": "Kolacja",
+    "Dessert": "Deser",
+    "Snack":"Przekąska",
+    "Meat": "Mięso",
+    "Vege": "Wege"
 }

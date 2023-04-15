@@ -10,6 +10,9 @@ const LogoWrapper = styled(Box)({
 
 const StyledLogo = styled(Typography)(({ theme }) => ({
   color: theme.palette.mode === 'light' ? theme.palette.primary.contrastText : theme.palette.primary.main,
+  [theme.breakpoints.down('md')]: {
+    fontSize: 30,
+  },
 }));
 
 export const Logo = () => {

@@ -1,14 +1,10 @@
-import { Nav } from '@components/Nav';
-import { SideNav } from '@components/SideNav';
-import { Background } from '@ui/AppBackground/AppBackground';
+import { Layout } from '@layout/Layout';
+import { Recipes } from '@pages/Recipes';
 
 const App = () => {
   return (
     <div className="App">
-      <Background>
-        <SideNav />
-        <Nav />
-      </Background>
+      <Layout board={<Recipes />} />
     </div>
   );
 };

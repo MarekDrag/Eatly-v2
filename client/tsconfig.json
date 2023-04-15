@@ -37,7 +37,8 @@
       "@routes/*": ["routes/*"],
       "@shared/*": ["shared/*"],
       "@ui/*": ["ui/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@pages/*": ["pages/*"]
     }
   },
   "include": ["src"],
