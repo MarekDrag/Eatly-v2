@@ -5,7 +5,7 @@ import { Search } from './Search';
 import { MealSelect, TypeSelect } from './Selects';
 import { IngredientSelect } from './Selects/IngredientSelect';
 
-const DataFiltersWrapper = styled(Box)(({ theme }) => ({
+const DataFiltersWrapper = styled(Box)({
   display: 'flex',
   flexWrap: 'wrap',
   justifyContent: 'flex-start',
@@ -13,7 +13,7 @@ const DataFiltersWrapper = styled(Box)(({ theme }) => ({
   alignItems: 'flex-start',
   gap: 10,
   marginBottom: 10,
-}));
+});
 
 export const DataFilters = () => {
   return (

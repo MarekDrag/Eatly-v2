@@ -19,8 +19,8 @@ export const UserDropdown = () => {
       </UserProfile>
       {isDropdownVisible && (
         <Dropdown>
-          <DropdownButton startIcon={icons.person}>{t('My account')}</DropdownButton>
-          <DropdownButton startIcon={icons.logout}>{t('Log out')}</DropdownButton>
+          <DropdownButton startIcon={icons.person} label={t('My account')} />
+          <DropdownButton startIcon={icons.logout} label={t('Log out')} />
         </Dropdown>
       )}
     </Wrapper>

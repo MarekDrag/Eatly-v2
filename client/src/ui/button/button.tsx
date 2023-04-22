@@ -1,22 +1,32 @@
 import { Button as MuiButton, ButtonProps, styled } from '@mui/material';
 
 const StyledButton = styled(MuiButton)(({ theme }) => ({
-  color: theme.palette.primary.contrastText,
+  justifyContent: 'flex-start',
+  borderRadius: 5,
+  color: theme.palette.mode === 'light' ? theme.palette.primary.contrastText : theme.palette.primary.main,
+  background: theme.palette.mode === 'light' ? theme.palette.primary.main : theme.palette.background.paper,
   '&:hover': {
-    background: theme.palette.action.hover,
+    background: theme.palette.mode === 'light' ? theme.palette.primary.main : theme.palette.background.paper,
+    opacity: theme.palette.action.hoverOpacity,
   },
   '&:active': {
-    background: theme.palette.action.active,
+    background: theme.palette.mode === 'light' ? theme.palette.primary.main : theme.palette.background.paper,
+    opacity: theme.palette.action.activatedOpacity,
   },
   '&:target': {
-    background: theme.palette.action.selected,
+    background: theme.palette.mode === 'light' ? theme.palette.primary.main : theme.palette.background.paper,
+    opacity: theme.palette.action.focusOpacity,
   },
 }));
 
-export const Button = (props: ButtonProps) => {
+type Props = ButtonProps & {
+  label?: string;
+};
+
+export const Button = (props: Props) => {
   return (
-    <StyledButton disableRipple {...props}>
-      {props.children}
+    <StyledButton href="" {...props} disableRipple>
+      {props.label ?? props.children}
     </StyledButton>
   );
 };

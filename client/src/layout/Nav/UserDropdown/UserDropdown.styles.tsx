@@ -14,7 +14,7 @@ export const UserProfile = styled(Button)(({ theme }) => ({
   borderRadius: 10,
   color: theme.palette.text.primary,
   background: theme.palette.mode === 'light' ? theme.palette.background.paper : '#414141',
-  boxShadow: '0px 0px 10px -5px rgba(0, 0, 0, 0.1)',
+  boxShadow: theme.shadows[1],
   '&:hover': {
     background: theme.palette.action.active,
   },
@@ -39,7 +39,7 @@ export const Dropdown = styled(Box)(({ theme }) => ({
   marginTop: 150,
   borderRadius: 10,
   background: theme.palette.mode === 'light' ? theme.palette.background.paper : '#414141',
-  boxShadow: '0px 0px 14px -6px rgba(0, 0, 0, 0.1)',
+  boxShadow: theme.shadows[1],
 }));
 
 export const DropdownButton = styled(Button)(({ theme }) => ({
@@ -51,4 +51,7 @@ export const DropdownButton = styled(Button)(({ theme }) => ({
   color: theme.palette.text.primary,
   background: theme.palette.background.default,
   textTransform: 'none',
+  '&:hover': {
+    background: theme.palette.action.hover,
+  },
 }));

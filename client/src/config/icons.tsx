@@ -14,6 +14,7 @@ import {
   Favorite,
   Search,
   FilterAlt,
+  ArrowBack,
 } from '@mui/icons-material';
 
 export const icons = {
@@ -32,4 +33,5 @@ export const icons = {
   heartFilled: <Favorite />,
   search: <Search />,
   filter: <FilterAlt />,
+  arrowBack: <ArrowBack />,
 };

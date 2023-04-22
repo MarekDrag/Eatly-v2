@@ -18,10 +18,10 @@ const lightMode = {
     selectedOpacity: 0.8,
     disabled: 'rgba(0,0,0,0.26)',
     disabledBackground: 'rgba(0,0,0,0.12)',
-    disabledOpacity: 0.38,
+    disabledOpacity: 0.6,
     focus: 'rgba(0,0,0,0.3)',
-    focusOpacity: 0.12,
-    activatedOpacity: 0.12,
+    focusOpacity: 0.8,
+    activatedOpacity: 0.8,
   },
 };
 
@@ -43,10 +43,10 @@ const darkMode = {
     selectedOpacity: 0.8,
     disabled: 'rgba(255,255,255,0.2)',
     disabledBackground: 'rgba(255,255,255,0.12)',
-    disabledOpacity: 0.38,
+    disabledOpacity: 0.6,
     focus: 'rgba(255,255,255,0.4)',
-    focusOpacity: 0.12,
-    activatedOpacity: 0.12,
+    focusOpacity: 0.8,
+    activatedOpacity: 0.8,
   },
 };
 

@@ -1,7 +1,5 @@
 import { CardContent, CardMedia, Typography, styled, Card } from '@mui/material';
-
-import { FavoriteButton } from './FavoriteButton';
-import { Rating } from './Rating';
+import { Rating, LikeButton } from '@ui/index';
 
 const RecipeWrapper = styled(Card)({
   cursor: 'pointer',
@@ -31,9 +29,9 @@ export const Recipe = (props: Props) => {
         <Typography variant="body2" color="text.secondary">
           {`${props.description.slice(0, 120)}...`}
         </Typography>
-        <Rating ratingValue={props.ratingValue} reviewsNumber={props.reviewsNumber} />
+        <Rating value={props.ratingValue} reviewsNumber={props.reviewsNumber} size="medium" readOnly={true} />
       </CardContent>
-      <FavoriteButton />
+      <LikeButton />
     </RecipeWrapper>
   );
 };

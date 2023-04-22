@@ -1,10 +1,10 @@
-import { Layout } from '@layout/Layout';
-import { Recipes } from '@pages/Recipes';
+import { Layout } from '@layout/index';
+import { ShoppingList } from '@pages/ShoppingList';
 
 const App = () => {
   return (
     <div className="App">
-      <Layout board={<Recipes />} />
+      <Layout board={<ShoppingList />} />
     </div>
   );
 };
