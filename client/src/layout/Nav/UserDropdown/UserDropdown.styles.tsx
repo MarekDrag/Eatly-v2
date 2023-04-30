@@ -40,6 +40,7 @@ export const Dropdown = styled(Box)(({ theme }) => ({
   borderRadius: 10,
   background: theme.palette.mode === 'light' ? theme.palette.background.paper : '#414141',
   boxShadow: theme.shadows[1],
+  zIndex: 100,
 }));
 
 export const DropdownButton = styled(Button)(({ theme }) => ({

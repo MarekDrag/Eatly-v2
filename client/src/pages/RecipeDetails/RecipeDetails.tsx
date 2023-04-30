@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import { icons } from '@config/icons';
 
 import { Comments } from './Comments';
@@ -10,9 +12,13 @@ import { data } from './data';
 const props = data;
 
 export const RecipeDetails = () => {
+  const navigate = useNavigate();
+
   return (
     <>
-      <BackButton label={'Powrót'} startIcon={icons.arrowBack} />
+      <BackButton onClick={() => navigate('/recipes')} startIcon={icons.arrowBack}>
+        Powrót
+      </BackButton>
       <RecipeDetailsWrapper>
         <Details {...props} />
         <Image src={props.img} alt={props.name} />

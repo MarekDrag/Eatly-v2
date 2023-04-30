@@ -1,16 +1,15 @@
-import { Box, Typography, styled } from '@mui/material';
+import { WeekSelect } from '@components/index';
 
-export const StyledBox = styled(Box)(({ theme }) => ({
-  display: 'flex',
-  background: theme.palette.background.paper,
-  borderRadius: theme.shape.borderRadius,
-  boxShadow: theme.shadows[1],
-}));
+import { NextShopping } from './NextShopping';
+import { ShoppingListWrapper } from './ShoppingList.styles';
+import { ShoppingTable } from './ShoppingTable';
 
 export const ShoppingList = () => {
   return (
-    <StyledBox>
-      <Typography></Typography>
-    </StyledBox>
+    <ShoppingListWrapper>
+      <NextShopping />
+      <WeekSelect />
+      <ShoppingTable />
+    </ShoppingListWrapper>
   );
 };

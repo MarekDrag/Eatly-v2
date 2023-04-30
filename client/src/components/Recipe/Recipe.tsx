@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import { CardContent, CardMedia, Typography, styled, Card } from '@mui/material';
 import { Rating, LikeButton } from '@ui/index';
 
@@ -19,10 +21,18 @@ type Props = {
 };
 
 export const Recipe = (props: Props) => {
+  const navigate = useNavigate();
+
   return (
-    <RecipeWrapper>
-      <CardMedia component="img" height="200" image={props.img} alt={props.name} />
-      <CardContent>
+    <RecipeWrapper sx={{ width: '100%' }}>
+      <CardMedia
+        component="img"
+        height="200"
+        image={props.img}
+        alt={props.name}
+        onClick={() => navigate('/recipes/:1')}
+      />
+      <CardContent onClick={() => navigate('/recipes/:1')}>
         <Typography gutterBottom variant="h5" component="div">
           {props.name}
         </Typography>

@@ -13,8 +13,9 @@ import {
   FavoriteBorder,
   Favorite,
   Search,
-  FilterAlt,
   ArrowBack,
+  FilterList,
+  Delete,
 } from '@mui/icons-material';
 
 export const icons = {
@@ -32,6 +33,7 @@ export const icons = {
   heart: <FavoriteBorder />,
   heartFilled: <Favorite />,
   search: <Search />,
-  filter: <FilterAlt />,
+  filter: <FilterList />,
   arrowBack: <ArrowBack />,
+  delete: <Delete />,
 };

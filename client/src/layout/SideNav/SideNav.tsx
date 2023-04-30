@@ -43,15 +43,31 @@ export const SideNav = () => {
     <Wrapper>
       <Logo />
       <Divider />
-      <SideNavButton href="" icon={icons.home} label={t('Home')} />
-      <SideNavButton href="" icon={icons.mealPlanner} label={t('Meal planner')} />
-      <SideNavButton href="" icon={icons.shoppingCart} label={t('Shopping list')} />
-      <SideNavButton href="" icon={icons.shoppingList} label={t('Recipes')} />
-      <SideNavButton href="" icon={icons.book} label={t('CookBook')} />
+      <SideNavButton link="/" icon={icons.home}>
+        {t('Home')}
+      </SideNavButton>
+      <SideNavButton link="/mealPlanner" icon={icons.mealPlanner}>
+        {t('Meal planner')}
+      </SideNavButton>
+      <SideNavButton link="/shoppingList" icon={icons.shoppingCart}>
+        {t('Shopping list')}
+      </SideNavButton>
+      <SideNavButton link="/recipes" icon={icons.shoppingList}>
+        {t('Recipes')}
+      </SideNavButton>
+      <SideNavButton link="/" icon={icons.book}>
+        {t('CookBook')}
+      </SideNavButton>
       <Divider />
-      <SideNavButton href="" icon={icons.settings} label={t('Settings')} />
-      <SideNavButton href="" icon={icons.support} label={t('Support')} />
-      <SideNavButton href="" icon={icons.help} label={t('FAQ')} />
+      <SideNavButton link="/" icon={icons.settings}>
+        {t('Settings')}
+      </SideNavButton>
+      <SideNavButton link="/" icon={icons.support}>
+        {t('Support')}
+      </SideNavButton>
+      <SideNavButton link="/" icon={icons.help}>
+        {t('FAQ')}
+      </SideNavButton>
     </Wrapper>
   );
 };

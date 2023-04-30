@@ -7,7 +7,7 @@ const StyledButton = styled(MuiButton)(({ theme }) => ({
   background: theme.palette.mode === 'light' ? theme.palette.primary.main : theme.palette.background.paper,
   '&:hover': {
     background: theme.palette.mode === 'light' ? theme.palette.primary.main : theme.palette.background.paper,
-    opacity: theme.palette.action.hoverOpacity,
+    opacity: 0.9,
   },
   '&:active': {
     background: theme.palette.mode === 'light' ? theme.palette.primary.main : theme.palette.background.paper,
@@ -19,14 +19,10 @@ const StyledButton = styled(MuiButton)(({ theme }) => ({
   },
 }));
 
-type Props = ButtonProps & {
-  label?: string;
-};
-
-export const Button = (props: Props) => {
+export const Button = (props: ButtonProps) => {
   return (
-    <StyledButton href="" {...props} disableRipple>
-      {props.label ?? props.children}
+    <StyledButton {...props} disableRipple>
+      {props.children}
     </StyledButton>
   );
 };

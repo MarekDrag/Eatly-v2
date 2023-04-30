@@ -1,11 +1,8 @@
 import { Box, styled } from '@mui/material';
+import { Router } from '@routes/router';
 
 import { Nav } from './Nav';
 import { SideNav } from './SideNav';
-
-type LayoutProps = {
-  board: JSX.Element;
-};
 
 const LayoutWrapper = styled('div')(({ theme }) => ({
   height: '100%',
@@ -31,12 +28,14 @@ const Board = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const Layout = ({ board }: LayoutProps) => {
+export const Layout = () => {
   return (
     <LayoutWrapper>
       <Nav />
       <SideNav />
-      <Board>{board}</Board>
+      <Board>
+        <Router />
+      </Board>
     </LayoutWrapper>
   );
 };
