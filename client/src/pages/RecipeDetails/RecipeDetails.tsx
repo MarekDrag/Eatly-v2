@@ -16,7 +16,7 @@ export const RecipeDetails = () => {
 
   return (
     <>
-      <BackButton onClick={() => navigate('/recipes')} startIcon={icons.arrowBack}>
+      <BackButton onClick={() => navigate(-1)} startIcon={icons.arrowBack}>
         Powrót
       </BackButton>
       <RecipeDetailsWrapper>

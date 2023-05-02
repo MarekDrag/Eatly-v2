@@ -1,17 +1,31 @@
-import { MealBox, MealTitle, MealWrapper, Text, Image } from './DayRow.styles';
+import { AddCircle } from '@mui/icons-material';
 
-export const MealColumn = () => {
+import { MealBox, MealTitle, MealWrapper, Text, Image, AddButton } from './DayRow.styles';
+
+type Props = {
+  mealType: string;
+  name?: string;
+  calories?: number;
+  href?: string;
+};
+
+export const MealColumn = ({ mealType, name, calories, href }: Props) => {
+  const isMeal = !!(name && calories && href);
+
   return (
     <MealWrapper>
-      <MealTitle>Breakfast</MealTitle>
-      <MealBox>
-        <Text>Pizza pepperoni</Text>
-        <Text>Kal: 300</Text>
-        <Image
-          src="https://cdn.galleries.smcloud.net/t/galleries/gf-cgdk-p5yy-aE4f_pizza-pepperoni-z-jalapeno-to-jadl-joe-biden-z-zolnierzami-w-rzeszowie-1920x1080-nocrop.jpg"
-          alt="pizza"
-        />
-      </MealBox>
+      <MealTitle>{mealType}</MealTitle>
+      {isMeal ? (
+        <MealBox>
+          <Text>{name}</Text>
+          <Text>Kal: {calories}</Text>
+          <Image src={href} alt={name} />
+        </MealBox>
+      ) : (
+        <AddButton sx={{ marginLeft: 4 }}>
+          <AddCircle fontSize="large" />
+        </AddButton>
+      )}
     </MealWrapper>
   );
 };

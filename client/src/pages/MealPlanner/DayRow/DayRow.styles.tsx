@@ -1,5 +1,5 @@
 import { Typography, styled } from '@mui/material';
-import { Box } from '@ui/index';
+import { Box, Button } from '@ui/index';
 
 export const DayBox = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -63,17 +63,27 @@ export const MealBox = styled(Box)(({ theme }) => ({
   width: '50%',
   padding: 10,
   rowGap: 10,
-  boxShadow: theme.shadows[3],
+  boxShadow: theme.shadows[2],
   borderRadius: 5,
   cursor: 'pointer',
   transition: 'transform 0.2s ease',
   '&:hover': {
     transform: 'scale(1.01)',
-    background: theme.palette.action.active,
   },
 }));
 
 export const Text = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.primary,
   fontWeight: 500,
+}));
+
+export const AddButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.primary.main,
+  background: 'none',
+  '&:hover': {
+    background: 'none',
+  },
+  '&:active': {
+    background: 'none',
+  },
 }));

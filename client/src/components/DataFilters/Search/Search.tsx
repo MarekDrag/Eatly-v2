@@ -4,6 +4,7 @@ import { Autocomplete, styled, TextField } from '@mui/material';
 const StyledSearch = styled(Autocomplete)(({ theme }) => ({
   minWidth: 200,
   background: theme.palette.background.paper,
+  borderRadius: 5,
   button: {
     '&:hover': {
       background: theme.palette.background.default,
@@ -23,12 +24,14 @@ const Icon = styled(Clear)(({ theme }) => ({
 
 export const Search = () => {
   return (
-    <StyledSearch
-      id="search"
-      options={[]}
-      freeSolo
-      clearIcon={<Icon />}
-      renderInput={(params) => <TextField {...params} label="Search..." />}
-    />
+    <>
+      <StyledSearch
+        id="search"
+        options={[]}
+        freeSolo
+        clearIcon={<Icon />}
+        renderInput={(params) => <TextField {...params} label="Search..." />}
+      />
+    </>
   );
 };

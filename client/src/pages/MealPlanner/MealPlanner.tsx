@@ -1,32 +1,25 @@
+import { useState } from 'react';
+
 import { WeekSelect } from '@components/index';
-import { styled } from '@mui/material';
-import { Button, Box } from '@ui/index';
 
 import { DayRow } from './DayRow';
-
-export const EditButton = styled(Button)(({ theme }) => ({
-  paddingRight: 20,
-  paddingLeft: 20,
-  textTransform: 'none',
-  border: '2px solid',
-  borderColor: theme.palette.primary.main,
-}));
-
-const Options = styled(Box)({
-  justifyContent: 'flex-start',
-  alignItems: 'flex-end',
-  width: '100%',
-  marginBottom: 10,
-  gap: 10,
-});
+import { ResponsiveDrawer } from './Drawer/Drawer';
+import { EditButton, Options } from './MealPlanner.styles';
 
 const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday '] as const;
 
 export const MealPlanner = () => {
+  const [isEdit, setIsEdit] = useState(false);
+
+  const handleEdit = () => {
+    setIsEdit((prev) => !prev);
+  };
+
   return (
     <>
+      <ResponsiveDrawer isOpen={isEdit} />
       <Options>
-        <EditButton>Edytuj</EditButton>
+        <EditButton onClick={handleEdit}>Edytuj</EditButton>
         <WeekSelect />
       </Options>
       {weekDays.map((day) => (
