@@ -1,9 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 
-import { MealPlanner } from '@pages/MealPlanner/MealPlanner';
-import { RecipeDetails } from '@pages/RecipeDetails';
-import { Recipes } from '@pages/Recipes';
-import { ShoppingList } from '@pages/ShoppingList';
+import { MealPlanner, RecipeDetails, Recipes, ShoppingList, Support, FAQ } from '@pages/index';
 
 export const Router = () => (
   <Routes>
@@ -12,5 +9,7 @@ export const Router = () => (
     <Route path="/shoppingList" element={<ShoppingList />} />
     <Route path="/recipes" element={<Recipes />} />
     <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
+    <Route path="/support" element={<Support />} />
+    <Route path="/faq" element={<FAQ />} />
   </Routes>
 );

@@ -62,10 +62,10 @@ export const SideNav = () => {
       <SideNavButton link="/" icon={icons.settings}>
         {t('Settings')}
       </SideNavButton>
-      <SideNavButton link="/" icon={icons.support}>
+      <SideNavButton link="/support" icon={icons.support}>
         {t('Support')}
       </SideNavButton>
-      <SideNavButton link="/" icon={icons.help}>
+      <SideNavButton link="/faq" icon={icons.help}>
         {t('FAQ')}
       </SideNavButton>
     </Wrapper>

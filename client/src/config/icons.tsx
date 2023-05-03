@@ -16,6 +16,7 @@ import {
   ArrowBack,
   FilterList,
   Delete,
+  Send,
 } from '@mui/icons-material';
 
 export const icons = {
@@ -36,4 +37,5 @@ export const icons = {
   filter: <FilterList />,
   arrowBack: <ArrowBack />,
   delete: <Delete />,
+  send: <Send />,
 };
