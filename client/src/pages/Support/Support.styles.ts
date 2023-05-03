@@ -1,5 +1,5 @@
-import { Typography, styled } from '@mui/material';
-import { Box, Select } from '@ui/index';
+import { Typography, styled, TextField as MuiTextField } from '@mui/material';
+import { Box, Button, Select } from '@ui/index';
 
 export const StyledSelect = styled(Select)({
   width: 300,
@@ -20,3 +20,12 @@ export const ButtonBox = styled(Box)({
   minWidth: 300,
   marginTop: 20,
 });
+
+export const TextField = styled(MuiTextField)(({ theme }) => ({
+  background: theme.palette.background.paper,
+}));
+
+export const SendButton = styled(Button)(({ theme }) => ({
+  border: '2px solid',
+  borderColor: theme.palette.primary.main,
+}));

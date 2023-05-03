@@ -1,10 +1,9 @@
 import { useState } from 'react';
 
 import { icons } from '@config/icons';
-import { SelectChangeEvent, TextField, Typography } from '@mui/material';
-import { Button } from '@ui/index';
+import { SelectChangeEvent, Typography } from '@mui/material';
 
-import { ButtonBox, Label, StyledSelect } from './Support.styles';
+import { ButtonBox, Label, SendButton, StyledSelect, TextField } from './Support.styles';
 import { problemTypes } from './constants';
 
 export const Support = () => {
@@ -16,7 +15,7 @@ export const Support = () => {
 
   return (
     <>
-      <Typography fontSize={40} fontWeight={700} color="primary.main">
+      <Typography fontSize={50} fontWeight={700} color="primary.main">
         Contact Form
       </Typography>
       <Label>Problem Type</Label>
@@ -38,9 +37,9 @@ export const Support = () => {
         minRows={15}
       />
       <ButtonBox>
-        <Button sx={{ textTransform: 'none' }} endIcon={icons.send}>
+        <SendButton sx={{ textTransform: 'none' }} endIcon={icons.send}>
           Send message
-        </Button>
+        </SendButton>
       </ButtonBox>
     </>
   );
