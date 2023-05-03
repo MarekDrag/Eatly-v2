@@ -21,7 +21,7 @@ export const FAQ = () => {
         <StyledAccordion
           expanded={expanded === question.label}
           onChange={() => handleExpand(question.label)}
-          sx={{ borderRadius: expanded === question.label ? '5px' : 0, width: '70%' }}
+          sx={{ borderRadius: expanded === question.label ? '5px' : 0 }}
         >
           <AccordionSummary expandIcon={icons.expandMore}>
             <Typography fontWeight={500}>{question.label}</Typography>

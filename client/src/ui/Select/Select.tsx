@@ -7,6 +7,7 @@ type Props = SelectProps & {
 
 const StyledSelect = styled(MuiSelect)(({ theme }) => ({
   background: theme.palette.background.paper,
+  width: '100%',
 }));
 
 export const Select = ({ items, label, ...props }: Props) => {

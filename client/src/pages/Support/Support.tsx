@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
 import { icons } from '@config/icons';
-import { SelectChangeEvent, Typography } from '@mui/material';
+import { SelectChangeEvent } from '@mui/material';
 
-import { ButtonBox, Label, SendButton, StyledSelect, TextField } from './Support.styles';
+import { ButtonBox, Label, SendButton, StyledSelect, TextField, Title } from './Support.styles';
 import { problemTypes } from './constants';
 
 export const Support = () => {
@@ -15,9 +15,7 @@ export const Support = () => {
 
   return (
     <>
-      <Typography fontSize={50} fontWeight={700} color="primary.main">
-        Contact Form
-      </Typography>
+      <Title>Contact Form</Title>
       <Label>Problem Type</Label>
       <StyledSelect
         labelId="demo-simple-select-label"
@@ -25,6 +23,7 @@ export const Support = () => {
         value={problemType}
         onChange={handleChange}
         items={problemTypes}
+        sx={{ width: 300 }}
       />
       <Label>Subject</Label>
       <TextField id="outlined-basic" variant="outlined" sx={{ width: 300 }} />
