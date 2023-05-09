@@ -26,7 +26,6 @@ export const ThemeProvider = ({ children }: Props) => {
   const [mode, setMode] = useState<PalleteMode>(DEFAULT_MODE);
 
   const toggleTheme = () => {
-    console.log('asd');
     setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 

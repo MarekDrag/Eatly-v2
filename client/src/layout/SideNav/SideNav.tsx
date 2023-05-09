@@ -13,11 +13,9 @@ const Wrapper = styled(Box)(({ theme }) => ({
   height: '100%',
   width: '20%',
   maxWidth: 250,
-  gap: '1rem',
-  borderTopRightRadius: 4,
-  borderBottomRightRadius: 4,
+  gap: 10,
   marginBottom: 20,
-  background: theme.palette.mode === 'light' ? theme.palette.primary.main : theme.palette.background.paper,
+  background: theme.palette.background.paper,
   overflowX: 'hidden',
   overflowY: 'auto',
   '&::-webkit-scrollbar': {
@@ -25,9 +23,6 @@ const Wrapper = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.down('md')]: {
     width: 80,
-  },
-  [theme.breakpoints.down('sm')]: {
-    gap: 2,
   },
 }));
 

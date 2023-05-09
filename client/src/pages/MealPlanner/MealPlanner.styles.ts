@@ -15,4 +15,5 @@ export const Options = styled(Box)({
   width: '100%',
   marginBottom: 10,
   gap: 10,
+  height: 100,
 });

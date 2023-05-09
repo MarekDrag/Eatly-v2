@@ -20,7 +20,7 @@ export const MealPlanner = () => {
       <ResponsiveDrawer isOpen={isEdit} />
       <Options>
         <EditButton onClick={handleEdit}>Edytuj</EditButton>
-        <WeekSelect />
+        <WeekSelect iconSize="medium" />
       </Options>
       {weekDays.map((day) => (
         <DayRow day={day} />

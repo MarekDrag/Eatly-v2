@@ -53,7 +53,6 @@ export const Table = () => {
   const handleChangePage = useCallback(
     (newPage: number) => {
       setPage(newPage);
-      console.log();
       const sortedRows = stableSort(rows, getComparator(order, orderBy));
       const updatedRows = sortedRows.slice(newPage * rowsPerPage, newPage * rowsPerPage + rowsPerPage);
       setVisibleRows(updatedRows);

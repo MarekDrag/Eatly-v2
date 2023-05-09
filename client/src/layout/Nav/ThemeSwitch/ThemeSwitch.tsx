@@ -31,7 +31,6 @@ export const ThemeSwitch = () => {
         checked={mode === 'dark'}
         icon={<StyledLightModeIcon />}
         checkedIcon={<StyledDarkModeIcon />}
-        disableRipple
       />
     </Tooltip>
   );

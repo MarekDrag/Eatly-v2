@@ -5,7 +5,7 @@ export const StyledBox = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexWrap: 'wrap',
   alignContent: 'center',
-  padding: 20,
+  height: '100%',
   background: theme.palette.background.paper,
   borderRadius: theme.shape.borderRadius,
   boxShadow: theme.shadows[1],

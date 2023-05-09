@@ -14,19 +14,11 @@ const StyledButton = styled(Button)(({ theme }) => ({
   height: 50,
   paddingLeft: 30,
   borderRadius: 5,
-  color: theme.palette.mode === 'light' ? theme.palette.primary.contrastText : theme.palette.primary.main,
-  '&:hover': {
-    background: theme.palette.action.hover,
-  },
-  '&:active': {
-    background: theme.palette.action.active,
-  },
-  '&:target': {
-    background: theme.palette.action.selected,
-  },
+  color: theme.palette.text.secondary,
+  background: 'none',
+  textTransform: 'none',
   [theme.breakpoints.down('md')]: {
     fontSize: 12,
-    color: theme.palette.mode === 'light' ? theme.palette.primary.contrastText : theme.palette.primary.main,
   },
 }));
 
@@ -37,10 +29,17 @@ export const SideNavButton = (props: SideNavButtonProps) => {
   const navigate = useNavigate();
 
   const isCurrentLocation = location.pathname === props.link;
+  const backgroundOnTarget = theme.palette.mode === 'light' ? '#ccf0e3' : '#28433D';
 
   return (
     <StyledButton
-      sx={{ background: isCurrentLocation ? theme.palette.action.selected : 'none' }}
+      sx={{
+        color: isCurrentLocation ? theme.palette.primary.main : '',
+        background: isCurrentLocation ? backgroundOnTarget : '',
+        '&:hover': {
+          background: isCurrentLocation ? theme.palette.action.hover : '',
+        },
+      }}
       startIcon={props.icon}
       onClick={() => navigate(props.link)}
       {...props}

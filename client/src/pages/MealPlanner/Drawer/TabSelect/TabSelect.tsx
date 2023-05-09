@@ -37,9 +37,9 @@ export const TabSelect = () => {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <StyledTabs value={value} onChange={handleChange} textColor="inherit">
-          <StyledTab disableRipple value="All" label="All" />
-          <StyledTab disableRipple value="My" label="My" />
-          <StyledTab disableRipple value="Liked" label="Liked" />
+          <StyledTab value="All" label="All" />
+          <StyledTab value="My" label="My" />
+          <StyledTab value="Liked" label="Liked" />
         </StyledTabs>
       </Box>
       <TabPanel value={value} index="All" />
