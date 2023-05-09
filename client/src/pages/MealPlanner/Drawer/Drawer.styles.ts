@@ -16,5 +16,12 @@ export const StyledDrawer = styled(Drawer)(({ theme }) => ({
     borderRadius: 5,
     gap: 10,
     padding: 10,
+    '&::-webkit-scrollbar': {
+      width: 10,
+    },
+    '&::-webkit-scrollbar-thumb': {
+      borderRadius: 20,
+      background: theme.palette.primary.dark,
+    },
   },
 }));

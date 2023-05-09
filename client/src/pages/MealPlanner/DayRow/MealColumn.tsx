@@ -1,5 +1,3 @@
-import { AddCircle } from '@mui/icons-material';
-
 import { MealBox, MealTitle, MealWrapper, Text, Image, AddButton } from './DayRow.styles';
 
 type Props = {
@@ -22,9 +20,7 @@ export const MealColumn = ({ mealType, name, calories, href }: Props) => {
           <Image src={href} alt={name} />
         </MealBox>
       ) : (
-        <AddButton sx={{ marginLeft: 4 }}>
-          <AddCircle fontSize="large" />
-        </AddButton>
+        <AddButton sx={{ marginLeft: 4 }}></AddButton>
       )}
     </MealWrapper>
   );

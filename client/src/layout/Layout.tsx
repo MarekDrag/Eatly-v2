@@ -10,16 +10,15 @@ const LayoutWrapper = styled('div')(({ theme }) => ({
   width: '100%',
   display: 'flex',
   flexWrap: 'wrap',
+  alignContent: 'flex-start',
   background: theme.palette.background.default,
 }));
 
 const Board = styled(Box)(({ theme }) => ({
   height: '100%',
-  minHeight: '100vh',
   width: '100%',
   marginLeft: 250,
   padding: 20,
-  overflowY: 'auto',
   [theme.breakpoints.down('lg')]: {
     marginLeft: '20%',
   },

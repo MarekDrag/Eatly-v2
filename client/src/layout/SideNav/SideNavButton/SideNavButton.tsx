@@ -13,7 +13,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   width: '90%',
   height: 50,
   paddingLeft: 30,
-  borderRadius: 20,
+  borderRadius: 5,
   color: theme.palette.mode === 'light' ? theme.palette.primary.contrastText : theme.palette.primary.main,
   '&:hover': {
     background: theme.palette.action.hover,

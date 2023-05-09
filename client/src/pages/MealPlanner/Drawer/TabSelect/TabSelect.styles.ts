@@ -15,6 +15,5 @@ export const MealsContainer = styled(Box)({
   flexWrap: 'wrap',
   justifyContent: 'space-around',
   alignItems: 'flex-start',
-  width: '100%',
   marginTop: 10,
 });

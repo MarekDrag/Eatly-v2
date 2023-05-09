@@ -6,17 +6,17 @@ import { Recipe } from './Recipe';
 import { MealsContainer, StyledTab, StyledTabs } from './TabSelect.styles';
 
 type TabPanelProps = {
-  index: number;
-  value: number;
+  index: string;
+  value: string;
 };
 
 const arr = new Array(20).fill('');
 
-const TabPanel = ({ value, index, ...other }: TabPanelProps) => {
+const TabPanel = ({ value, index, ...props }: TabPanelProps) => {
   return (
     <>
       {value === index && (
-        <MealsContainer role="tabpanel" hidden={value !== index} {...other}>
+        <MealsContainer {...props}>
           {arr.map((a) => (
             <Recipe />
           ))}
@@ -27,9 +27,9 @@ const TabPanel = ({ value, index, ...other }: TabPanelProps) => {
 };
 
 export const TabSelect = () => {
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState('All');
 
-  const handleChange = (_: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (_: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
 
@@ -37,14 +37,14 @@ export const TabSelect = () => {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <StyledTabs value={value} onChange={handleChange} textColor="inherit">
-          <StyledTab disableRipple value={0} label="Wszystkie" />
-          <StyledTab disableRipple value={1} label="Moje" />
-          <StyledTab disableRipple value={2} label="Polubione" />
+          <StyledTab disableRipple value="All" label="All" />
+          <StyledTab disableRipple value="My" label="My" />
+          <StyledTab disableRipple value="Liked" label="Liked" />
         </StyledTabs>
       </Box>
-      <TabPanel value={value} index={0} />
-      <TabPanel value={value} index={1} />
-      <TabPanel value={value} index={2} />
+      <TabPanel value={value} index="All" />
+      <TabPanel value={value} index="My" />
+      <TabPanel value={value} index="Liked" />
     </Box>
   );
 };
