@@ -1,8 +1,11 @@
+import { useContext } from 'react';
+
 import { Box, styled } from '@mui/material';
 import { Router } from '@routes/router';
 
+import { DrawerContext } from './DrawerContext';
 import { Nav } from './Nav';
-import { SideNav } from './SideNav';
+import { DrawerNav } from './SideNav';
 
 const LayoutWrapper = styled('div')(({ theme }) => ({
   height: '100%',
@@ -14,25 +17,20 @@ const LayoutWrapper = styled('div')(({ theme }) => ({
   background: theme.palette.background.default,
 }));
 
-const Board = styled(Box)(({ theme }) => ({
+const Board = styled(Box)({
   height: '100%',
   width: '100%',
-  marginLeft: 250,
   padding: 20,
-  [theme.breakpoints.down('lg')]: {
-    marginLeft: '20%',
-  },
-  [theme.breakpoints.down('md')]: {
-    marginLeft: 80,
-  },
-}));
+});
 
 export const Layout = () => {
+  const { drawerOpen } = useContext(DrawerContext);
+
   return (
     <LayoutWrapper>
       <Nav />
-      <SideNav />
-      <Board>
+      <DrawerNav />
+      <Board marginLeft={drawerOpen ? '250px' : '80px'}>
         <Router />
       </Board>
     </LayoutWrapper>
