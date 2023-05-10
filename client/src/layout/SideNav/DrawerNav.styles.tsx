@@ -1,11 +1,12 @@
 import { Box, Drawer, Divider as MuiDivider, styled } from '@mui/material';
 
-export const StyledDrawer = styled(Drawer)({
+export const StyledDrawer = styled(Drawer)(({ theme }) => ({
   '& .MuiDrawer-paper': {
     alignItems: 'center',
     gap: 10,
+    background: theme.palette.background.paper,
   },
-});
+}));
 
 export const ContentWrapper = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -17,7 +18,7 @@ export const ContentWrapper = styled(Box)(({ theme }) => ({
   width: '100%',
   overflowY: 'scroll',
   '&::-webkit-scrollbar': {
-    width: 5,
+    width: 0,
   },
   '&::-webkit-scrollbar-thumb': {
     borderRadius: 20,

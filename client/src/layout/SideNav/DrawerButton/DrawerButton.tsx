@@ -28,23 +28,21 @@ export const DrawerButton = (props: DrawerButtonProps) => {
   };
 
   return (
-    <>
-      <StyledButton
-        sx={{
-          color: colorOnTarget,
+    <StyledButton
+      sx={{
+        color: colorOnTarget,
+        background: backgroundOnTarget,
+        '&:hover': {
           background: backgroundOnTarget,
-          '&:hover': {
-            background: backgroundOnTarget,
-            color: colorOnTarget,
-            opacity: 0.8,
-          },
-        }}
-        startIcon={props.icon}
-        onClick={() => navigate(props.link)}
-        {...props}
-      >
-        {drawerOpen ? props.children : null}
-      </StyledButton>
-    </>
+          color: colorOnTarget,
+          opacity: 0.8,
+        },
+      }}
+      startIcon={props.icon}
+      onClick={() => navigate(props.link)}
+      {...props}
+    >
+      {drawerOpen ? props.children : null}
+    </StyledButton>
   );
 };

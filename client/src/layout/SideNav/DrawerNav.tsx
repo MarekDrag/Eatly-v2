@@ -3,7 +3,6 @@ import { useContext } from 'react';
 import { icons } from '@config/icons';
 import { useTranslation } from '@hooks/index';
 import { DrawerContext } from '@layout/DrawerContext';
-import { ChevronLeft, ChevronRight } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 
 import { DrawerButton } from './DrawerButton';
@@ -24,7 +23,7 @@ export const DrawerBody = () => {
   return (
     <>
       <BackIconBox>
-        <IconButton onClick={handleDrawer}>{drawerOpen ? <ChevronLeft /> : <ChevronRight />}</IconButton>
+        <IconButton onClick={handleDrawer}>{drawerOpen ? icons.arrowLeft : icons.arrowRight}</IconButton>
       </BackIconBox>
       <Logo />
       <Divider />

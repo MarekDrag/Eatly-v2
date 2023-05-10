@@ -18,6 +18,8 @@ import {
   Delete,
   Send,
   ExpandMore,
+  ChevronLeft,
+  ChevronRight,
 } from '@mui/icons-material';
 
 export const icons = {
@@ -40,4 +42,6 @@ export const icons = {
   delete: <Delete />,
   send: <Send />,
   expandMore: <ExpandMore />,
+  arrowLeft: <ChevronLeft />,
+  arrowRight: <ChevronRight />,
 };
