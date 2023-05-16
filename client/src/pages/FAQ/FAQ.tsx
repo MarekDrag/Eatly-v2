@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { icons } from '@config/icons';
 import { AccordionDetails, AccordionSummary, Typography } from '@mui/material';
 
-import { StyledAccordion, Title } from './FAQ.styles';
+import { StyledAccordion, Title, Wrapper } from './FAQ.styles';
 import { questions } from './questions';
 
 export const FAQ = () => {
@@ -15,7 +15,7 @@ export const FAQ = () => {
   };
 
   return (
-    <>
+    <Wrapper>
       <Title>Frequently Asked Questions</Title>
       {questions.map((question) => (
         <StyledAccordion
@@ -31,6 +31,6 @@ export const FAQ = () => {
           </AccordionDetails>
         </StyledAccordion>
       ))}
-    </>
+    </Wrapper>
   );
 };

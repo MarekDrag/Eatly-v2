@@ -1,9 +1,16 @@
 import { Accordion, Typography, styled } from '@mui/material';
+import { Box } from '@ui/Box';
+
+export const Wrapper = styled(Box)({
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+});
 
 export const Title = styled(Typography)(({ theme }) => ({
   fontSize: 50,
   marginBottom: 30,
-  fontWeight: 700,
+  fontWeight: 500,
   color: theme.palette.primary.main,
 }));
 

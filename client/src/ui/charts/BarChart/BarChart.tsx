@@ -48,7 +48,7 @@ export const BarChart = () => {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Bar dataKey="calories" fill="#8884d8" />
+          <Bar dataKey="calories" fill="#46B299" />
         </Chart>
       </ResponsiveContainer>
     </Box>

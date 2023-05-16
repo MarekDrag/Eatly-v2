@@ -1,9 +1,10 @@
 import { useState } from 'react';
 
 import { icons } from '@config/icons';
-import { SelectChangeEvent } from '@mui/material';
+import { SelectChangeEvent, TextField } from '@mui/material';
+import { Select } from '@ui/index';
 
-import { ButtonBox, Label, SendButton, StyledSelect, TextField, Title } from './Support.styles';
+import { Label, Row, SendButton, Title, Wrapper, StyledPaper } from './Support.styles';
 import { problemTypes } from './constants';
 
 export const Support = () => {
@@ -14,32 +15,27 @@ export const Support = () => {
   };
 
   return (
-    <>
-      <Title>Contact Form</Title>
-      <Label>Problem Type</Label>
-      <StyledSelect
-        labelId="demo-simple-select-label"
-        id="demo-simple-select"
-        value={problemType}
-        onChange={handleChange}
-        items={problemTypes}
-        sx={{ width: 300 }}
-      />
-      <Label>Subject</Label>
-      <TextField id="outlined-basic" variant="outlined" sx={{ width: 300 }} />
-      <Label>Message:</Label>
-      <TextField
-        id="outlined-basic"
-        variant="outlined"
-        sx={{ width: '70%', minWidth: 300 }}
-        multiline={true}
-        minRows={15}
-      />
-      <ButtonBox>
-        <SendButton sx={{ textTransform: 'none' }} endIcon={icons.send}>
-          Send message
-        </SendButton>
-      </ButtonBox>
-    </>
+    <Wrapper>
+      <StyledPaper>
+        <Title>Contact us</Title>
+        <Row>
+          <Label>Problem Type</Label>
+          <Select value={problemType} onChange={handleChange} items={problemTypes} />
+        </Row>
+        <Row>
+          <Label>Subject</Label>
+          <TextField variant="outlined" fullWidth />
+        </Row>
+        <Row>
+          <Label>Message:</Label>
+          <TextField variant="outlined" multiline={true} minRows={10} fullWidth />
+        </Row>
+        <Row sx={{ justifyContent: 'center' }} marginTop="40px">
+          <SendButton sx={{ textTransform: 'none', paddingLeft: '20%', paddingRight: '20%' }} endIcon={icons.send}>
+            Send message
+          </SendButton>
+        </Row>
+      </StyledPaper>
+    </Wrapper>
   );
 };

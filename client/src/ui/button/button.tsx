@@ -5,6 +5,7 @@ const StyledButton = styled(MuiButton)(({ theme }) => ({
   borderRadius: 5,
   color: theme.palette.mode === 'light' ? theme.palette.primary.contrastText : theme.palette.primary.main,
   background: theme.palette.mode === 'light' ? theme.palette.primary.main : theme.palette.background.paper,
+  textTransform: 'none',
 }));
 
 export const Button = (props: ButtonProps) => {

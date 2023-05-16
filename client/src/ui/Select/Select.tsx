@@ -12,7 +12,7 @@ const StyledSelect = styled(MuiSelect)(({ theme }) => ({
 
 export const Select = ({ items, label, ...props }: Props) => {
   return (
-    <FormControl>
+    <FormControl fullWidth>
       <InputLabel>{label}</InputLabel>
       <StyledSelect label={label} {...props}>
         {items.map((item) => (

@@ -1,15 +1,36 @@
-import { Typography, styled, TextField as MuiTextField } from '@mui/material';
-import { Box, Button, Select } from '@ui/index';
+import { Typography, styled } from '@mui/material';
+import { Box, Button, Paper } from '@ui/index';
+
+export const Wrapper = styled(Box)({
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+});
+
+export const StyledPaper = styled(Paper)(({ theme }) => ({
+  width: '50%',
+  [theme.breakpoints.down('md')]: {
+    width: '100%',
+  },
+}));
+
+export const Row = styled(Box)(({ theme }) => ({
+  width: '60%',
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'flex-start',
+  [theme.breakpoints.down('xl')]: {
+    width: '100%',
+  },
+}));
 
 export const Title = styled(Typography)(({ theme }) => ({
   fontSize: 50,
-  fontWeight: 700,
+  fontWeight: 500,
   color: theme.palette.primary.main,
+  width: '100%',
+  textAlign: 'center',
 }));
-
-export const StyledSelect = styled(Select)({
-  width: 300,
-});
 
 export const Label = styled(Typography)(({ theme }) => ({
   width: '100%',
@@ -17,24 +38,6 @@ export const Label = styled(Typography)(({ theme }) => ({
   marginBottom: 10,
   marginTop: 20,
   color: theme.palette.text.primary,
-}));
-
-export const TextField = styled(MuiTextField)(({ theme }) => ({
-  background: theme.palette.background.paper,
-  [theme.breakpoints.down('md')]: {
-    width: '100%',
-  },
-}));
-
-export const ButtonBox = styled(Box)(({ theme }) => ({
-  display: 'flex',
-  justifyContent: 'flex-end',
-  width: '70%',
-  minWidth: 300,
-  marginTop: 20,
-  [theme.breakpoints.down('md')]: {
-    width: '100%',
-  },
 }));
 
 export const SendButton = styled(Button)(({ theme }) => ({
