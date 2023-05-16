@@ -4,3 +4,5 @@ export * from './CheckboxSelect';
 export * from './LikeButton';
 export * from './Rating';
 export * from './Select';
+export * from './charts';
+export * from './Paper';

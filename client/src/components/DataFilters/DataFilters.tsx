@@ -9,8 +9,8 @@ const DataFiltersWrapper = styled(Box)({
   display: 'flex',
   flexWrap: 'wrap',
   justifyContent: 'flex-start',
-  justifyItems: '',
   alignItems: 'flex-start',
+  width: '100%',
   gap: 10,
   marginBottom: 10,
 });

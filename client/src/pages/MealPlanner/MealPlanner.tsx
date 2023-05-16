@@ -1,30 +1,27 @@
-import { useState } from 'react';
+import { WeekSelect } from '@components/WeekSelect';
+import { DataFilters } from '@components/index';
+import { Box, Typography } from '@mui/material';
+import { Paper } from '@ui/Paper';
 
-import { WeekSelect } from '@components/index';
-
-import { DayRow } from './DayRow';
-import { ResponsiveDrawer } from './Drawer/Drawer';
-import { EditButton, Options } from './MealPlanner.styles';
-
-const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday '] as const;
+import { Planner } from './Planner/Planner';
+import { RecipesList } from './RecipesList';
 
 export const MealPlanner = () => {
-  const [isEdit, setIsEdit] = useState(false);
-
-  const handleEdit = () => {
-    setIsEdit((prev) => !prev);
-  };
-
   return (
     <>
-      <ResponsiveDrawer isOpen={isEdit} />
-      <Options>
-        <EditButton onClick={handleEdit}>Edytuj</EditButton>
-        <WeekSelect iconSize="medium" />
-      </Options>
-      {weekDays.map((day) => (
-        <DayRow day={day} />
-      ))}
+      <Box display="flex" gap="10px" width="100%" marginBottom="20px">
+        <Paper alignContent="space-around">
+          <Typography variant="h4" fontWeight={500} color="text.primary" marginBottom="10px">
+            My weekly Meal plan
+          </Typography>
+          <WeekSelect iconSize="large" />
+        </Paper>
+        <Paper width="60%">
+          <DataFilters />
+          <RecipesList />
+        </Paper>
+      </Box>
+      <Planner />
     </>
   );
 };

@@ -4,7 +4,9 @@ export const StyledDrawer = styled(Drawer)(({ theme }) => ({
   '& .MuiDrawer-paper': {
     alignItems: 'center',
     gap: 10,
-    background: theme.palette.background.paper,
+    border: 'none',
+    boxShadow: theme.shadows[1],
+    padding: 0,
   },
 }));
 

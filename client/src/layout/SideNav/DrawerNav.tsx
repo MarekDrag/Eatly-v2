@@ -28,8 +28,8 @@ export const DrawerBody = () => {
       <Logo />
       <Divider />
       <ContentWrapper>
-        <DrawerButton link="/" icon={icons.home}>
-          {t('Home')}
+        <DrawerButton link="/dashboard" icon={icons.home}>
+          {t('Dashboard')}
         </DrawerButton>
         <DrawerButton link="/mealPlanner" icon={icons.mealPlanner}>
           {t('Meal planner')}

@@ -19,7 +19,6 @@ const LayoutWrapper = styled('div')(({ theme }) => ({
 
 const Board = styled(Box)({
   height: '100%',
-  width: '100%',
   padding: 20,
 });
 
@@ -30,7 +29,10 @@ export const Layout = () => {
     <LayoutWrapper>
       <Nav />
       <DrawerNav />
-      <Board marginLeft={drawerOpen ? '250px' : '80px'}>
+      <Board
+        marginLeft={drawerOpen ? '250px' : '80px'}
+        width={drawerOpen ? 'calc(100vw - 310px)' : 'calc(100vw - 140px)'}
+      >
         <Router />
       </Board>
     </LayoutWrapper>
