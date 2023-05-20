@@ -19,10 +19,9 @@ export const DrawerButton = (props: DrawerButtonProps) => {
   const navigate = useNavigate();
 
   const isCurrentLocation = location.pathname === props.link;
-  const colorOnTarget = isCurrentLocation ? theme.palette.primary.contrastText : '';
   const backgroundOnTarget = () => {
     if (isCurrentLocation) {
-      return theme.palette.mode === 'light' ? theme.palette.primary.main : theme.palette.primary.dark;
+      return theme.palette.mode === 'light' ? theme.palette.primary.light : theme.palette.primary.dark;
     }
     return '';
   };
@@ -30,13 +29,7 @@ export const DrawerButton = (props: DrawerButtonProps) => {
   return (
     <StyledButton
       sx={{
-        color: colorOnTarget,
         background: backgroundOnTarget,
-        '&:hover': {
-          background: backgroundOnTarget,
-          color: colorOnTarget,
-          opacity: 0.8,
-        },
       }}
       startIcon={props.icon}
       onClick={() => navigate(props.link)}

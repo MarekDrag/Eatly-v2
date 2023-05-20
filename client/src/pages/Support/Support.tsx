@@ -30,7 +30,7 @@ export const Support = () => {
           <Label>Message:</Label>
           <TextField variant="outlined" multiline={true} minRows={10} fullWidth />
         </Row>
-        <Row sx={{ justifyContent: 'center' }} marginTop="40px">
+        <Row sx={{ justifyContent: 'center' }} marginTop="30px" marginBottom="20px">
           <SendButton sx={{ textTransform: 'none', paddingLeft: '20%', paddingRight: '20%' }} endIcon={icons.send}>
             Send message
           </SendButton>

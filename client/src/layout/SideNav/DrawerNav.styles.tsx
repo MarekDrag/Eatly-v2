@@ -7,6 +7,7 @@ export const StyledDrawer = styled(Drawer)(({ theme }) => ({
     border: 'none',
     boxShadow: theme.shadows[1],
     padding: 0,
+    background: theme.palette.mode === 'light' ? theme.palette.primary.main : theme.palette.background.paper,
   },
 }));
 

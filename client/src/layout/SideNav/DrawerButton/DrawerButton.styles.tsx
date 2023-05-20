@@ -6,7 +6,11 @@ export const StyledButton = styled(Button)(({ theme }) => ({
   height: 40,
   paddingLeft: 30,
   borderRadius: 5,
-  color: theme.palette.text.secondary,
+  color: theme.palette.primary.contrastText,
   background: 'none',
   textTransform: 'none',
+  '&:hover': {
+    background: theme.palette.mode === 'light' ? theme.palette.primary.light : theme.palette.primary.dark,
+    opacity: 0.8,
+  },
 }));

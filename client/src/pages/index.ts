@@ -5,3 +5,4 @@ export * from './MealPlanner';
 export * from './Support';
 export * from './FAQ';
 export * from './Dashboard';
+export * from './Settings';

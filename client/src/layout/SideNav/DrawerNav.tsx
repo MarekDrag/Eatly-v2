@@ -40,11 +40,11 @@ export const DrawerBody = () => {
         <DrawerButton link="/recipes" icon={icons.shoppingList}>
           {t('Recipes')}
         </DrawerButton>
-        <DrawerButton link="/" icon={icons.book}>
+        <DrawerButton link="/cookBook" icon={icons.book}>
           {t('CookBook')}
         </DrawerButton>
         <Divider />
-        <DrawerButton link="/" icon={icons.settings}>
+        <DrawerButton link="/settings" icon={icons.settings}>
           {t('Settings')}
         </DrawerButton>
         <DrawerButton link="/support" icon={icons.support}>

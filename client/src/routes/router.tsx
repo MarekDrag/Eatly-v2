@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 
-import { MealPlanner, RecipeDetails, Recipes, ShoppingList, Support, FAQ, Dashboard } from '@pages/index';
+import { MealPlanner, RecipeDetails, Recipes, ShoppingList, Support, FAQ, Dashboard, Settings } from '@pages/index';
 
 export const Router = () => (
   <Routes>
@@ -11,6 +11,7 @@ export const Router = () => (
     <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
     <Route path="/support" element={<Support />} />
     <Route path="/faq" element={<FAQ />} />
+    <Route path="/settings" element={<Settings />} />
     <Route path="*" element={<Dashboard />} />
   </Routes>
 );

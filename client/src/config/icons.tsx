@@ -20,6 +20,7 @@ import {
   ExpandMore,
   ChevronLeft,
   ChevronRight,
+  Lock,
 } from '@mui/icons-material';
 
 export const icons = {
@@ -44,4 +45,5 @@ export const icons = {
   expandMore: <ExpandMore />,
   arrowLeft: <ChevronLeft />,
   arrowRight: <ChevronRight />,
+  lock: <Lock />,
 };

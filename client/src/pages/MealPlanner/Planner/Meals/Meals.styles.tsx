@@ -12,7 +12,7 @@ export const MealBox = styled(Box)(({ theme }) => ({
   justifyContent: 'space-between',
   padding: 15,
   rowGap: 10,
-  boxShadow: theme.shadows[1],
+  boxShadow: theme.shadows[3],
   background: theme.palette.background.paper,
   marginTop: 10,
   borderRadius: 5,

@@ -13,7 +13,7 @@ export const Meals = () => {
       {meals.map((meal) => (
         <MealBox>
           <Text width="50%" variant="subtitle2">
-            {'Breakfast'.toLocaleUpperCase()}
+            {meal.toLocaleUpperCase()}
           </Text>
           <Text variant="subtitle2" display="flex" justifyContent="flex-end" width="50%">
             {icons.clock}

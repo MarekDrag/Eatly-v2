@@ -11,7 +11,7 @@ const LogoWrapper = styled(Box)({
 });
 
 const StyledLogo = styled(Typography)(({ theme }) => ({
-  color: theme.palette.primary.main,
+  color: theme.palette.primary.contrastText,
 }));
 
 export const Logo = () => {
