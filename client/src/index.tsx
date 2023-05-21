@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { ThemeProvider } from '@config/theme/ThemeProvider';
 import { DrawerContextProvider } from '@layout/DrawerContext';
-import { Layout } from '@layout/Layout';
+import { AppRoutes } from '@routes/AppRoutes';
 
 import './config/translations/i18n';
 import './globalStyles.css';
@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <ThemeProvider>
       <DrawerContextProvider>
         <BrowserRouter>
-          <Layout />
+          <AppRoutes />
         </BrowserRouter>
       </DrawerContextProvider>
     </ThemeProvider>

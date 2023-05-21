@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
 import { Box, styled } from '@mui/material';
-import { Router } from '@routes/router';
+import { DashboardRoutes } from '@routes/DashboardRoutes';
 
 import { DrawerContext } from './DrawerContext';
 import { Nav } from './Nav';
@@ -22,7 +22,7 @@ const Board = styled(Box)({
   padding: 20,
 });
 
-export const Layout = () => {
+export const DashboardLayout = () => {
   const { drawerOpen } = useContext(DrawerContext);
 
   return (
@@ -33,7 +33,7 @@ export const Layout = () => {
         marginLeft={drawerOpen ? '250px' : '80px'}
         width={drawerOpen ? 'calc(100vw - 310px)' : 'calc(100vw - 140px)'}
       >
-        <Router />
+        <DashboardRoutes />
       </Board>
     </LayoutWrapper>
   );

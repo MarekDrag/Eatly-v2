@@ -31,26 +31,26 @@ export const DrawerBody = () => {
         <DrawerButton link="/dashboard" icon={icons.home}>
           {t('Dashboard')}
         </DrawerButton>
-        <DrawerButton link="/mealPlanner" icon={icons.mealPlanner}>
+        <DrawerButton link="/dashboard/mealPlanner" icon={icons.mealPlanner}>
           {t('Meal planner')}
         </DrawerButton>
-        <DrawerButton link="/shoppingList" icon={icons.shoppingCart}>
+        <DrawerButton link="/dashboard/shoppingList" icon={icons.shoppingCart}>
           {t('Shopping list')}
         </DrawerButton>
-        <DrawerButton link="/recipes" icon={icons.shoppingList}>
+        <DrawerButton link="/dashboard/recipes" icon={icons.shoppingList}>
           {t('Recipes')}
         </DrawerButton>
-        <DrawerButton link="/cookBook" icon={icons.book}>
+        <DrawerButton link="/dashboard/cookBook" icon={icons.book}>
           {t('CookBook')}
         </DrawerButton>
         <Divider />
-        <DrawerButton link="/settings" icon={icons.settings}>
+        <DrawerButton link="/dashboard/settings" icon={icons.settings}>
           {t('Settings')}
         </DrawerButton>
-        <DrawerButton link="/support" icon={icons.support}>
+        <DrawerButton link="/dashboard/support" icon={icons.support}>
           {t('Support')}
         </DrawerButton>
-        <DrawerButton link="/faq" icon={icons.help}>
+        <DrawerButton link="/dashboard/faq" icon={icons.help}>
           {t('FAQ')}
         </DrawerButton>
       </ContentWrapper>

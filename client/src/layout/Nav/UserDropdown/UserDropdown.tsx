@@ -26,10 +26,10 @@ export const UserDropdown = () => {
       </UserProfile>
       {isDropdownVisible && (
         <Dropdown>
-          <DropdownButton startIcon={icons.person} onClick={() => navigate('/settings')}>
+          <DropdownButton startIcon={icons.person} onClick={() => navigate('/dashboard/settings')}>
             {t('My account')}
           </DropdownButton>
-          <DropdownButton startIcon={icons.logout} onClick={() => navigate('/')}>
+          <DropdownButton startIcon={icons.logout} onClick={() => navigate('/dashboard/login')}>
             {t('Log out')}
           </DropdownButton>
         </Dropdown>
