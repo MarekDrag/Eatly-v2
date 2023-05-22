@@ -1,24 +1,27 @@
+import { useTranslation } from '@hooks/index';
 import { Box } from '@mui/material';
 import { Paper } from '@ui/Paper';
 
 import { Calories, NutritionName, NutritionNumber, StyledGridBox } from './Nutrients.styles';
 
 export const Nutrients = () => {
+  const { t } = useTranslation();
+
   return (
     <Paper>
-      <Calories variant="subtitle2">2100 calories</Calories>
+      <Calories variant="subtitle2">2100 {t('calories')}</Calories>
       <StyledGridBox>
         <Box>
           <NutritionNumber color="yellowgreen">122g</NutritionNumber>
-          <NutritionName>PROTEIN</NutritionName>
+          <NutritionName>{t('PROTEIN')}</NutritionName>
         </Box>
         <Box>
           <NutritionNumber color="orange">122g</NutritionNumber>
-          <NutritionName>CARBS</NutritionName>
+          <NutritionName>{t('CARBS')}</NutritionName>
         </Box>
         <Box>
           <NutritionNumber color="pink">122g</NutritionNumber>
-          <NutritionName>FAT</NutritionName>
+          <NutritionName>{t('FAT')}</NutritionName>
         </Box>
       </StyledGridBox>
     </Paper>

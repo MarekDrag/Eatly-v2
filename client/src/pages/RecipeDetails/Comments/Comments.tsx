@@ -1,3 +1,4 @@
+import { useTranslation } from '@hooks/index';
 import { Avatar, ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material';
 
 import { RecipeDetailsBox } from '../RecipeDetails.styles';
@@ -13,10 +14,12 @@ type Props = {
 };
 
 export const Comments = ({ comments }: Props) => {
+  const { t } = useTranslation();
+
   return (
     <RecipeDetailsBox>
       <Typography variant="h5" fontWeight="500" color="text.primary">
-        {comments.length} Komentarze
+        {comments.length} {t('Comments')}
       </Typography>
       {comments.map((comment) => (
         <>

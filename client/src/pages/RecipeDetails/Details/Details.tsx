@@ -1,4 +1,5 @@
 import { icons } from '@config/index';
+import { useTranslation } from '@hooks/index';
 import { Typography } from '@mui/material';
 import { Rating } from '@ui/index';
 
@@ -16,6 +17,8 @@ type Props = {
 };
 
 export const Details = ({ name, calories, ratingValue, reviewsNumber, cookingTime, persons, description }: Props) => {
+  const { t } = useTranslation();
+
   return (
     <RecipeDetailsBox alignContent="flex-start">
       <Title>
@@ -26,7 +29,7 @@ export const Details = ({ name, calories, ratingValue, reviewsNumber, cookingTim
       <Row>
         <Rating value={ratingValue} reviewsNumber={reviewsNumber} size="small" />
         <Typography variant="body1" fontWeight={500} color="text.primary">
-          kalorie: {calories}
+          {t('calories')}: {calories}
         </Typography>
         <IconWithNumber color="text.primary">
           {icons.clock}
@@ -42,7 +45,7 @@ export const Details = ({ name, calories, ratingValue, reviewsNumber, cookingTim
         </IconWithNumber>
       </Row>
       <Typography variant="h5" fontWeight="500" color="text.primary" marginBottom={2}>
-        Opis
+        {t('Description')}
       </Typography>
       <Typography variant="body1" color="text.primary">
         {description}

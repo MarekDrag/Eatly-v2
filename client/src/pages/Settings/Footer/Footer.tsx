@@ -1,3 +1,4 @@
+import { useTranslation } from '@hooks/index';
 import { Box, styled } from '@mui/material';
 import { Button } from '@ui/index';
 
@@ -23,10 +24,12 @@ const SaveButton = styled(Button)(({ theme }) => ({
 }));
 
 export const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <Box width="100%" marginTop="50px">
-      <SaveButton>Save Changes</SaveButton>
-      <CancelButton sx={{ marginLeft: '20px' }}>Cancel</CancelButton>
+      <SaveButton>{t('Save Changes')}</SaveButton>
+      <CancelButton sx={{ marginLeft: '20px' }}>{t('Cancel')}</CancelButton>
     </Box>
   );
 };

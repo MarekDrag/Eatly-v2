@@ -1,4 +1,5 @@
 import { icons } from '@config/icons';
+import { useTranslation } from '@hooks/index';
 import { Box } from '@mui/material';
 
 import { Text, Image, Recipe, RecipesWrapper } from './Recipe.styles';
@@ -6,6 +7,8 @@ import { Text, Image, Recipe, RecipesWrapper } from './Recipe.styles';
 const arr = new Array(20).fill('');
 
 export const RecipesList = () => {
+  const { t } = useTranslation();
+
   return (
     <RecipesWrapper>
       {arr.map((a) => (
@@ -22,7 +25,7 @@ export const RecipesList = () => {
                 <span>30m</span>
               </Text>
               <Text variant="subtitle2" marginTop="10px">
-                cal: 340
+                {t('cal')}: 340
               </Text>
             </Box>
           </Box>

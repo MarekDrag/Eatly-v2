@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { useTranslation } from '@hooks/index';
 import { Box, styled } from '@mui/material';
 import { Typography } from '@ui/index';
 
@@ -10,6 +11,7 @@ export const ListItem = styled('li')(({ theme }) => ({
 }));
 
 export const Password = () => {
+  const { t } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => {
@@ -18,50 +20,50 @@ export const Password = () => {
 
   return (
     <Box width="100%">
-      <Typography variant="h6">Password</Typography>
+      <Typography variant="h6">{t('Password')}</Typography>
       <Box display="grid" gridTemplateColumns="1fr 1fr" columnGap="20px">
         <Box display="grid" gridTemplateColumns="1fr" gap="20px" marginTop="30px">
           <PasswordField
             showPassword={showPassword}
             handleClickShowPassword={handleClickShowPassword}
-            label="Current Password"
+            label={t('Current Password')}
             defaultValue="Marek"
           />
           <PasswordField
             showPassword={showPassword}
             handleClickShowPassword={handleClickShowPassword}
-            label="New Password"
+            label={t('New Password')}
           />
           <PasswordField
             showPassword={showPassword}
             handleClickShowPassword={handleClickShowPassword}
-            label="Confirm Password"
+            label={t('Confirm Password')}
           />
         </Box>
         <Box marginLeft="10%" marginTop="30px">
           <Typography variant="subtitle1">Password requirements:</Typography>
           <Typography variant="subtitle1" sx={{ color: 'text.secondary' }}>
-            Ensure that these requirements are met:
+            {t('Ensure that these requirements are met')}:
           </Typography>
           <ul>
             <ListItem>
               <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
-                Minimum 8 characters long
+                {t('Minimum 8 characters long')}
               </Typography>
             </ListItem>
             <ListItem>
               <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
-                At least one lowercase character
+                {t('At least one lowercase character')}
               </Typography>
             </ListItem>
             <ListItem>
               <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
-                At least one uppercase character
+                {t('At least one uppercase character')}
               </Typography>
             </ListItem>
             <ListItem>
               <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
-                At least one number or symbol
+                {t('At least one number or symbol')}
               </Typography>
             </ListItem>
           </ul>

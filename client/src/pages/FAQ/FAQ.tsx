@@ -1,12 +1,14 @@
 import { useState } from 'react';
 
 import { icons } from '@config/icons';
+import { useTranslation } from '@hooks/index';
 import { AccordionDetails, AccordionSummary, Typography } from '@mui/material';
 
 import { StyledAccordion, Title, Wrapper } from './FAQ.styles';
 import { questions } from './questions';
 
 export const FAQ = () => {
+  const { t } = useTranslation();
   const [expanded, setExpanded] = useState('');
 
   const handleExpand = (label: string) => {
@@ -16,7 +18,7 @@ export const FAQ = () => {
 
   return (
     <Wrapper>
-      <Title>Frequently Asked Questions</Title>
+      <Title>{t('Frequently Asked Questions')}</Title>
       {questions.map((question) => (
         <StyledAccordion
           expanded={expanded === question.label}

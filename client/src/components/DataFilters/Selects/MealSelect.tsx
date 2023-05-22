@@ -8,5 +8,5 @@ export const MealSelect = () => {
 
   const translatedOptions = mealOptions.map((meal) => t(meal));
 
-  return <CheckboxSelect options={translatedOptions} label="Meal" id="meal-select" />;
+  return <CheckboxSelect options={translatedOptions} label={t('Meal')} id="meal-select" />;
 };

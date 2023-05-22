@@ -1,3 +1,4 @@
+import { useTranslation } from '@hooks/index';
 import { Clear } from '@mui/icons-material';
 import { Autocomplete, styled, TextField } from '@mui/material';
 
@@ -23,6 +24,8 @@ const Icon = styled(Clear)(({ theme }) => ({
 }));
 
 export const Search = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <StyledSearch
@@ -30,7 +33,7 @@ export const Search = () => {
         options={[]}
         freeSolo
         clearIcon={<Icon />}
-        renderInput={(params) => <TextField {...params} label="Search..." />}
+        renderInput={(params) => <TextField {...params} label={`${t('Search')}...`} />}
       />
     </>
   );

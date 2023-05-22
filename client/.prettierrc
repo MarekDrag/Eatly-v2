@@ -10,7 +10,6 @@
   "quoteProps": "as-needed",
   "bracketSpacing": true,
   "bracketSameLine": false,
-  "parser": "typescript",
   "arrowParens": "always",
   "endOfLine": "lf",
   "importOrder": ["^react$", "<THIRD_PARTY_MODULES>", "^@(.*)$", "^[./]"],

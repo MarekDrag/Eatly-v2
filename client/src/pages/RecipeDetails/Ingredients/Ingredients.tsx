@@ -1,3 +1,4 @@
+import { useTranslation } from '@hooks/index';
 import { Typography, styled } from '@mui/material';
 
 import { RecipeDetailsBox } from '../RecipeDetails.styles';
@@ -15,10 +16,12 @@ type Props = {
 };
 
 export const Ingredients = ({ ingredients }: Props) => {
+  const { t } = useTranslation();
+
   return (
     <RecipeDetailsBox>
       <Typography variant="h5" fontWeight="500" color="text.primary">
-        Składniki
+        {t('Ingredients')}
       </Typography>
       <List>
         {ingredients.map((ingredient) => (

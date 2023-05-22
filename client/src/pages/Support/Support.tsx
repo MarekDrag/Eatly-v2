@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { icons } from '@config/icons';
+import { useTranslation } from '@hooks/index';
 import { SelectChangeEvent, TextField } from '@mui/material';
 import { Select } from '@ui/index';
 
@@ -8,6 +9,7 @@ import { Label, Row, SendButton, Title, Wrapper, StyledPaper } from './Support.s
 import { problemTypes } from './constants';
 
 export const Support = () => {
+  const { t } = useTranslation();
   const [problemType, setProblemType] = useState('');
 
   const handleChange = (event: SelectChangeEvent<unknown>) => {
@@ -17,22 +19,22 @@ export const Support = () => {
   return (
     <Wrapper>
       <StyledPaper>
-        <Title>Contact us</Title>
+        <Title>{t('Contact us')}</Title>
         <Row>
-          <Label>Problem Type</Label>
-          <Select value={problemType} onChange={handleChange} items={problemTypes} />
+          <Label>{t('Problem Type')}</Label>
+          <Select value={problemType} onChange={handleChange} items={problemTypes} label="problem" />
         </Row>
         <Row>
-          <Label>Subject</Label>
+          <Label>{t('Subject')}</Label>
           <TextField variant="outlined" fullWidth />
         </Row>
         <Row>
-          <Label>Message:</Label>
+          <Label>{t('Message')}:</Label>
           <TextField variant="outlined" multiline={true} minRows={10} fullWidth />
         </Row>
         <Row sx={{ justifyContent: 'center' }} marginTop="30px" marginBottom="20px">
           <SendButton sx={{ textTransform: 'none', paddingLeft: '20%', paddingRight: '20%' }} endIcon={icons.send}>
-            Send message
+            {t('Send message')}
           </SendButton>
         </Row>
       </StyledPaper>
