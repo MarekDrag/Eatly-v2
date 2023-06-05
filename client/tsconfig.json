@@ -38,7 +38,8 @@
       "@shared/*": ["shared/*"],
       "@ui/*": ["ui/*"],
       "@utils/*": ["utils/*"],
-      "@pages/*": ["pages/*"]
+      "@pages/*": ["pages/*"],
+      "@store/*": ["store/*"]
     }
   },
   "include": ["src"],

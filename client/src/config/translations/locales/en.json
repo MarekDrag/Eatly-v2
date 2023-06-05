@@ -76,5 +76,21 @@
   "Account": "Account",
   "Search": "Search",
   "Type": "Type",
-  "Meal": "Meal"
+  "Meal": "Meal",
+  "Forgot your password?": "Forgot your password?",
+  "Please fill in the email that you used to register. You will be sent an email with instructions on how to reset your password.": "Please fill in the email that you used to register. You will be sent an email with instructions on how to reset your password.",
+  "Send Email": "Send Email",
+  "Remember your password?": "Remember your password?",
+  "Sign in": "Sign in",
+  "New here?": "New here?",
+  "Create an account": "Create an account",
+  "Forget password": "Forget password",
+  "Signin with Facebook": "Signin with Facebook",
+  "Signin with Google": "Signin with Google",
+  "Signin with Twitter": "Signin with Twitter",
+  "Sign up": "Sign up",
+  "Have an account?": "Have an account?",
+  "Login": "Login",
+  "By signing up, I agree to Eatly": "By signing up, I agree to Eatly",
+  "Terms of Service & Privacy Policy": "Terms of Service & Privacy Policy"
 }

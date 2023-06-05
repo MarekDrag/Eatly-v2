@@ -1,6 +1,15 @@
 import { Route, Routes } from 'react-router-dom';
 
-import { MealPlanner, RecipeDetails, Recipes, ShoppingList, Support, FAQ, Dashboard, Settings } from '@pages/index';
+import {
+  MealPlanner,
+  RecipeDetails,
+  Recipes,
+  ShoppingList,
+  Support,
+  FAQ,
+  Dashboard,
+  Settings,
+} from '@pages/DashboardPanel/index';
 
 export const DashboardRoutes = () => (
   <Routes>

@@ -30,7 +30,7 @@ export const Recipe = (props: Props) => {
         height="200"
         image={props.img}
         alt={props.name}
-        onClick={() => navigate('/recipes/:1')}
+        onClick={() => navigate('/dashboard/recipes/:1')}
       />
       <CardContent onClick={() => navigate('/recipes/:1')}>
         <Typography gutterBottom variant="h5" component="div">
