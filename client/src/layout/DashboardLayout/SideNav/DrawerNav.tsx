@@ -40,8 +40,8 @@ export const DrawerBody = () => {
         <DrawerButton link="/dashboard/recipes" icon={icons.shoppingList}>
           {t('Recipes')}
         </DrawerButton>
-        <DrawerButton link="/dashboard/cookBook" icon={icons.book}>
-          {t('CookBook')}
+        <DrawerButton link="/dashboard/cookbook" icon={icons.book}>
+          {t('Cookbook')}
         </DrawerButton>
         <Divider />
         <DrawerButton link="/dashboard/settings" icon={icons.settings}>

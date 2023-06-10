@@ -1,7 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 
 import { DashboardLayout } from '@layout/DashboardLayout/index';
-import { Register, Login, ForgetPassword } from '@pages/index';
+import { ForgetPassword } from '@pages/LoginPanel/ForgetPassword';
+import { Login } from '@pages/LoginPanel/Login';
+import { Register } from '@pages/LoginPanel/Register';
 
 export const AppRoutes = () => (
   <Routes>

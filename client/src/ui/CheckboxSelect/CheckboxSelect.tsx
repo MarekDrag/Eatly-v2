@@ -35,7 +35,6 @@ export const CheckboxSelect = ({ options, label, id, ...props }: Props) => {
         id={id}
         value={values}
         onChange={handleChange}
-        multiple
         renderValue={(selected) => selected.join(', ')}
         MenuProps={MenuProps}
         label={label}
@@ -43,7 +42,6 @@ export const CheckboxSelect = ({ options, label, id, ...props }: Props) => {
       >
         {options.map((option) => (
           <StyledMenuItem key={option} value={option} disableRipple>
-            <StyledCheckbox checked={values.includes(option)} disableRipple />
             <ListItemText primary={option} />
           </StyledMenuItem>
         ))}

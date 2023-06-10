@@ -3,7 +3,7 @@ import { Box } from '@ui/Box';
 
 import { Search } from './Search';
 import { MealSelect, TypeSelect } from './Selects';
-import { IngredientSelect } from './Selects/IngredientSelect';
+import { IngredientsSelect } from './Selects/IngredientsSelect';
 
 const DataFiltersWrapper = styled(Box)({
   display: 'flex',
@@ -21,7 +21,7 @@ export const DataFilters = () => {
       <Search />
       <TypeSelect />
       <MealSelect />
-      <IngredientSelect />
+      <IngredientsSelect />
     </DataFiltersWrapper>
   );
 };

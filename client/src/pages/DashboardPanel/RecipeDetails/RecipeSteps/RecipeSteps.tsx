@@ -1,8 +1,6 @@
 import { useTranslation } from '@hooks/index';
 import { Typography } from '@mui/material';
 
-import { RecipeDetailsBox } from '../RecipeDetails.styles';
-
 type Props = {
   steps: {
     content: string;
@@ -21,7 +19,7 @@ export const RecipeSteps = ({ steps }: Props) => {
   });
 
   return (
-    <RecipeDetailsBox>
+    <>
       <Typography variant="h5" fontWeight="500" color="text.primary">
         {t('Recipe')}
       </Typography>
@@ -35,6 +33,6 @@ export const RecipeSteps = ({ steps }: Props) => {
           </Typography>
         </>
       ))}
-    </RecipeDetailsBox>
+    </>
   );
 };

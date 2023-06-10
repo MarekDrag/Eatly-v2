@@ -21,6 +21,8 @@ import {
   ChevronLeft,
   ChevronRight,
   Lock,
+  MoreVert,
+  Add,
 } from '@mui/icons-material';
 
 import { TwitterSVG, FacebookSVG, GoogleSVG } from './svg';
@@ -51,4 +53,6 @@ export const icons = {
   google: <GoogleSVG />,
   twitter: <TwitterSVG />,
   facebook: <FacebookSVG />,
+  actions: <MoreVert />,
+  plus: <Add />,
 };

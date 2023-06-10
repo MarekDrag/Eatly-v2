@@ -1,8 +1,6 @@
 import { useTranslation } from '@hooks/index';
 import { Typography, styled } from '@mui/material';
 
-import { RecipeDetailsBox } from '../RecipeDetails.styles';
-
 const List = styled('ul')({
   width: '100%',
 });
@@ -19,7 +17,7 @@ export const Ingredients = ({ ingredients }: Props) => {
   const { t } = useTranslation();
 
   return (
-    <RecipeDetailsBox>
+    <>
       <Typography variant="h5" fontWeight="500" color="text.primary">
         {t('Ingredients')}
       </Typography>
@@ -33,6 +31,6 @@ export const Ingredients = ({ ingredients }: Props) => {
           </li>
         ))}
       </List>
-    </RecipeDetailsBox>
+    </>
   );
 };

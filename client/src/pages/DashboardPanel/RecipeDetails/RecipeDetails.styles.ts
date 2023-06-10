@@ -1,5 +1,5 @@
 import { styled, Box } from '@mui/material';
-import { Button } from '@ui/index';
+import { Button, Paper } from '@ui/index';
 
 export const RecipeDetailsWrapper = styled(Box)({
   display: 'grid',
@@ -14,16 +14,12 @@ export const Image = styled('img')(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
 }));
 
-export const RecipeDetailsBox = styled(Box)(({ theme }) => ({
+export const StyledPaper = styled(Paper)({
   display: 'flex',
   flexWrap: 'wrap',
   alignContent: 'flex-start',
-  width: 'calc(100% - 20)',
-  padding: 10,
-  background: theme.palette.background.paper,
-  borderRadius: theme.shape.borderRadius,
-  boxShadow: theme.shadows[1],
-}));
+  justifyContent: 'flex-start',
+});
 
 export const BackButton = styled(Button)(({ theme }) => ({
   marginBottom: 10,

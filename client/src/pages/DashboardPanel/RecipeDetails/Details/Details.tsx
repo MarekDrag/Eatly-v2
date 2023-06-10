@@ -3,7 +3,6 @@ import { useTranslation } from '@hooks/index';
 import { Typography } from '@mui/material';
 import { Rating } from '@ui/index';
 
-import { RecipeDetailsBox } from '../RecipeDetails.styles';
 import { Row, IconWithNumber, Title } from './Details.styles';
 
 type Props = {
@@ -20,7 +19,7 @@ export const Details = ({ name, calories, ratingValue, reviewsNumber, cookingTim
   const { t } = useTranslation();
 
   return (
-    <RecipeDetailsBox alignContent="flex-start">
+    <>
       <Title>
         <Typography variant="h3" textAlign="center" color="text.primary">
           {name}
@@ -44,12 +43,10 @@ export const Details = ({ name, calories, ratingValue, reviewsNumber, cookingTim
           </Typography>
         </IconWithNumber>
       </Row>
-      <Typography variant="h5" fontWeight="500" color="text.primary" marginBottom={2}>
-        {t('Description')}
-      </Typography>
+
       <Typography variant="body1" color="text.primary">
         {description}
       </Typography>
-    </RecipeDetailsBox>
+    </>
   );
 };
