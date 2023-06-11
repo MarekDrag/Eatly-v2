@@ -7,7 +7,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 
 @Module({
-  imports: [AuthModule, KnexModule.forRoot({ config: postgresConfig }), UsersModule],
+  imports: [KnexModule.forRoot({ config: postgresConfig }), UsersModule, AuthModule],
   providers: [
     {
       provide: 'APP_INTERCEPTOR',

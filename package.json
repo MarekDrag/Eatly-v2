@@ -1,16 +1,16 @@
 {
   "private": true,
-  "workspaces": [
-    "client",
-    "server"
-  ],
   "name": "eatly-v2",
   "version": "1.0.0",
   "description": "",
   "scripts": {
     "start": "concurrently \"yarn run server\" \"yarn run client\"",
-    "server": "cd server & npm run start:dev",
+    "install": "yarn install & concurrently \"yarn run server:install\" \"yarn run client:install\"",
     "client": "cd client & npm run dev",
+    "server": "cd server & docker-compose up -d",
+    "server:delete": "cd server & docker-compose down",
+    "client:install": "cd client & yarn install",
+    "client:server": "cd server & yarn install",
     "lint": "yarn run lint --parallel",
     "typecheck": "yarn run typecheck --parallel",
     "prettier:write": "concurrently \"cd server & yarn run prettier:write\" \"cd client & yarn run prettier:write\"",
@@ -27,7 +27,6 @@
     "url": "https://github.com/MarekDrag/Eatly-v2/issues"
   },
   "devDependencies": {
-    "concurrently": "^7.5.0",
-    "@trivago/prettier-plugin-sort-imports": "^4.1.1"
+    "concurrently": "^7.5.0"
   }
 }
