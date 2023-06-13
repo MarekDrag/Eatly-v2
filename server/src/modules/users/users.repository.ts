@@ -42,11 +42,6 @@ export class UsersRepository {
     return foundUser;
   }
 
-  async createUser(createUserDto: CreateUserDto): Promise<User | null> {
-    const [createdUser]: User[] = await this.users().insert(createUserDto).returning('*');
-    return createdUser;
-  }
-
   async getUsers(): Promise<User[]> {
     const foundUsers = await this.users()
       .select(['id', 'lastName', 'firstName', 'username', 'email', 'createdAt'])
@@ -57,6 +52,11 @@ export class UsersRepository {
     }
 
     return foundUsers;
+  }
+
+  async createUser(createUserDto: CreateUserDto): Promise<User | null> {
+    const [createdUser]: User[] = await this.users().insert(createUserDto).returning('*');
+    return createdUser;
   }
 
   async updateUser(id: string, updateUserDto: UpdateUserDto): Promise<User> {

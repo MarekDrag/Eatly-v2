@@ -1,11 +1,12 @@
 import { useContext } from 'react';
 
-import { Box, styled } from '@mui/material';
+import { styled } from '@mui/material';
 import { DashboardRoutes } from '@routes/DashboardRoutes';
 import { DrawerContext } from '@store/DrawerContext';
 
 import { Nav } from './Nav';
 import { DrawerNav } from './SideNav';
+import { Box } from '@ui/index';
 
 const LayoutWrapper = styled('div')(({ theme }) => ({
   height: '100%',

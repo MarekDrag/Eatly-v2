@@ -1,6 +1,5 @@
 import { useTranslation } from '@hooks/index';
-import { Box } from '@mui/material';
-import { Paper } from '@ui/Paper';
+import { Paper, Box } from '@ui/index';
 
 import { Calories, NutritionName, NutritionNumber, StyledGridBox } from './Nutrients.styles';
 

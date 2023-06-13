@@ -2,20 +2,8 @@ import { useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
-import { icons } from '@config/icons';
-import {
-  CardContent,
-  CardMedia,
-  Typography,
-  styled,
-  Card,
-  CardHeader,
-  IconButton,
-  Menu,
-  MenuItem,
-  Chip,
-} from '@mui/material';
-import { Rating } from '@ui/index';
+import { CardContent, CardMedia, styled, Card, CardHeader, Menu, MenuItem, Chip } from '@mui/material';
+import { IconButton, Rating } from '@ui/index';
 
 const RecipeWrapper = styled(Card)({
   cursor: 'pointer',
@@ -56,7 +44,7 @@ export const Recipe = (props: Props) => {
         onClick={() => navigate('/dashboard/recipes/:1')}
       />
       <CardHeader
-        action={<IconButton onClick={handleClick}>{icons.actions}</IconButton>}
+        action={<IconButton onClick={handleClick} name="actions" />}
         title={props.name}
         subheader="September 14, 2016"
       />

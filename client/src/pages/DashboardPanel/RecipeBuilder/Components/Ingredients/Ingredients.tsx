@@ -1,10 +1,9 @@
 import { useState } from 'react';
 
-import { IngredientSelect } from '@components/DataFilters/Selects/IngredientSelect';
 import { icons } from '@config/icons';
 import { useTranslation } from '@hooks/index';
-import { FormControl, InputAdornment, OutlinedInput, Typography, styled } from '@mui/material';
-import { Button } from '@ui/index';
+import { FormControl, InputAdornment, OutlinedInput, styled } from '@mui/material';
+import { Button, IngredientSelect, Typography } from '@ui/index';
 
 import { data } from './data';
 

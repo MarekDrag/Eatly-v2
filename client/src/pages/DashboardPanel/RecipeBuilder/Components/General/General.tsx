@@ -1,6 +1,4 @@
-import { MealSelect } from '@components/DataFilters/Selects';
-import { Box, TextField } from '@mui/material';
-
+import { Box, MealSelect, TextField } from '@ui/index';
 import { ImagePicker } from './ImagePicker';
 
 export const General = () => {

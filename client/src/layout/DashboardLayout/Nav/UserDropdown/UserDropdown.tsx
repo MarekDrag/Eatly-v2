@@ -11,7 +11,7 @@ import { ArrowIcon, Dropdown, DropdownButton, UserProfile, Wrapper, UserName } f
 export const UserDropdown = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const [isDropdownVisible, setIsDropdownVisible] = useState(true);
 
   const handleOnBlur = () => {
     setTimeout(() => setIsDropdownVisible(false), 200);

@@ -1,5 +1,5 @@
-import { Box, Typography, styled } from '@mui/material';
-import { Paper } from '@ui/Paper';
+import { styled } from '@mui/material';
+import { Paper, Box, Typography } from '@ui/index';
 
 export const StyledPaper = styled(Paper)(({ theme }) => ({
   background: theme.palette.mode === 'light' ? '#e6e6e6' : ' #3d3d3d',

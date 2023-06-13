@@ -1,8 +1,10 @@
 import { KeyboardArrowDown } from '@mui/icons-material';
-import { styled, Typography } from '@mui/material';
-import { Box, Button } from '@ui/index';
+import { styled } from '@mui/material';
+import { Box, Button, Typography } from '@ui/index';
 
 export const Wrapper = styled(Box)({
+  display: 'flex',
+  alignItems: 'center',
   justifyContent: 'flex-end',
   marginRight: 30,
 });
@@ -32,7 +34,10 @@ export const ArrowIcon = styled(KeyboardArrowDown)({
 
 export const Dropdown = styled(Box)(({ theme }) => ({
   position: 'absolute',
+  display: 'flex',
   flexWrap: 'wrap',
+  alignItems: 'center',
+  justifyContent: 'center',
   width: 130,
   height: 70,
   padding: 5,

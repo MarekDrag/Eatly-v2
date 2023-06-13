@@ -1,5 +1,5 @@
-import { styled, Box } from '@mui/material';
-import { Button, Paper } from '@ui/index';
+import { styled } from '@mui/material';
+import { Button, Paper, Box } from '@ui/index';
 
 export const RecipeDetailsWrapper = styled(Box)({
   display: 'grid',

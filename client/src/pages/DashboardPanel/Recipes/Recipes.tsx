@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-import { Recipe, DataFilters } from '@components/index';
 import { Skeleton, Unstable_Grid2 as Grid } from '@mui/material';
 
 import { data } from './data';
+import { DataFilters, Recipe } from '@ui/index';
 
 export const Recipes = () => {
   const [isLoading, setIsLoading] = useState(true);

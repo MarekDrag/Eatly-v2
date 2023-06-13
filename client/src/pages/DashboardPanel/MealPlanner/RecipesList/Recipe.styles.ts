@@ -1,4 +1,5 @@
-import { Box, Typography, styled } from '@mui/material';
+import { styled } from '@mui/material';
+import { Box, Typography } from '@ui/index';
 
 export const RecipesWrapper = styled(Box)(({ theme }) => ({
   display: 'flex',

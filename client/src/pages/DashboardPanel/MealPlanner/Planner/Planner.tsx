@@ -1,10 +1,10 @@
 import { useTranslation } from '@hooks/index';
-import { Box } from '@mui/material';
 
 import { weekDays } from '../constants';
 import { Meals } from './Meals';
 import { Nutrients } from './Nutrients';
 import { DayName, PlannerWrapper, StyledPaper } from './Planner.styles';
+import { Box } from '@ui/index';
 
 export const Planner = () => {
   const { t } = useTranslation();

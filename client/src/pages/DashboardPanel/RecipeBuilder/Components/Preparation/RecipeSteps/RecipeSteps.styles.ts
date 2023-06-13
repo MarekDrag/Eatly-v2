@@ -1,5 +1,5 @@
-import { Typography, styled } from '@mui/material';
-import { Box } from '@ui/Box';
+import { styled } from '@mui/material';
+import { Box, Typography } from '@ui/index';
 
 export const StyledStep = styled(Box)(({ theme }) => ({
   boxShadow: theme.shadows[2],

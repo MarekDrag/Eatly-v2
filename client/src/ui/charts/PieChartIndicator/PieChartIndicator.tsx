@@ -1,9 +1,8 @@
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
-import { Box } from '@mui/material';
-
 import { cx, cy, iR, oR } from './constants';
 import { indicator } from './utils';
+import { Box } from '@ui/atoms';
 
 const data = [
   { value: 2100, color: '#FFC675' },

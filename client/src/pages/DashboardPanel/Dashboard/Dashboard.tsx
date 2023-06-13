@@ -1,6 +1,6 @@
 import { useTranslation } from '@hooks/index';
-import { Box, Typography, styled } from '@mui/material';
-import { BarChart, Paper } from '@ui/index';
+import { styled } from '@mui/material';
+import { BarChart, Paper, Box, Typography } from '@ui/index';
 
 import { Meals } from '../MealPlanner/Planner/Meals';
 

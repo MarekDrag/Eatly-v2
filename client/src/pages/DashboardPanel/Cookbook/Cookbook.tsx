@@ -2,13 +2,13 @@ import { useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
-import { DataFilters } from '@components/index';
 import { icons } from '@config/icons';
 import { Skeleton, Unstable_Grid2 as Grid, Box } from '@mui/material';
 
 import { AddRecipeButton, HeaderActionsBox } from './Cookbook.styles';
 import { Recipe } from './Recipe';
 import { data } from './data';
+import { DataFilters } from '@ui/index';
 
 export const Cookbook = () => {
   const navigate = useNavigate();

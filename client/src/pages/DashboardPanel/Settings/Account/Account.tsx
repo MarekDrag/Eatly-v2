@@ -1,6 +1,6 @@
 import { useTranslation } from '@hooks/index';
-import { Avatar, Box, TextField } from '@mui/material';
-import { Typography } from '@ui/index';
+import { Avatar } from '@mui/material';
+import { Typography, Box, TextField } from '@ui/index';
 
 export const Account = () => {
   const { t } = useTranslation();

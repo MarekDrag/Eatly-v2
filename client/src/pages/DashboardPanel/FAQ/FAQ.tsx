@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-import { icons } from '@config/icons';
 import { useTranslation } from '@hooks/index';
-import { AccordionDetails, AccordionSummary, Typography } from '@mui/material';
+import { AccordionDetails, AccordionSummary } from '@mui/material';
 
 import { StyledAccordion, Title, Wrapper } from './FAQ.styles';
 import { questions } from './questions';
+import { Icon, Typography } from '@ui/index';
 
 export const FAQ = () => {
   const { t } = useTranslation();
@@ -25,7 +25,7 @@ export const FAQ = () => {
           onChange={() => handleExpand(question.label)}
           sx={{ borderRadius: expanded === question.label ? '5px' : 0 }}
         >
-          <AccordionSummary expandIcon={icons.expandMore}>
+          <AccordionSummary expandIcon={<Icon name="expandMore" />}>
             <Typography fontWeight={500}>{question.label}</Typography>
           </AccordionSummary>
           <AccordionDetails>

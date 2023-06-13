@@ -1,9 +1,7 @@
-import { icons } from '@config/icons';
 import { useTranslation } from '@hooks/index';
-import { IconButton, Typography } from '@mui/material';
-import { Box } from '@ui/Box';
 
 import { StyledContent, StyledStep } from './RecipeSteps.styles';
+import { Box, IconButton, Typography } from '@ui/index';
 
 export type StepType = {
   content: string;
@@ -33,7 +31,7 @@ export const RecipeSteps = ({ steps, handleRemoveStep }: Props) => {
               <StyledContent variant="body1">{step.content}</StyledContent>
             </div>
             <Box height="100%" display="flex" alignContent="flex-start">
-              <IconButton onClick={() => handleRemoveStep(step.order)}>{icons.delete}</IconButton>
+              <IconButton onClick={() => handleRemoveStep(step.order)} name="delete" />
             </Box>
           </StyledStep>
         ))}

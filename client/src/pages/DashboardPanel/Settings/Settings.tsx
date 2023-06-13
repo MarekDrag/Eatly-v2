@@ -2,8 +2,8 @@ import { useState } from 'react';
 
 import { icons } from '@config/icons';
 import { useTranslation } from '@hooks/index';
-import { Box, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-import { Typography, Paper } from '@ui/index';
+import { List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import { Typography, Paper, Box } from '@ui/index';
 
 import { Account } from './Account';
 import { Footer } from './Footer';

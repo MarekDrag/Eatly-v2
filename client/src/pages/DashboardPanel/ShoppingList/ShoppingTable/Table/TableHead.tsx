@@ -1,8 +1,9 @@
-import { TableSortLabel, TableRow, TableHead as MUITableHead, TableCell, Box } from '@mui/material';
+import { TableSortLabel, TableRow, TableHead as MUITableHead, TableCell } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
-import { StyledCheckbox } from '@ui/CheckboxSelect/CheckboxSelect.styles';
 
 import { Data, EnhancedTableProps, TableHeaders } from '../types';
+import { StyledCheckbox } from '../../ShoppingList.styles';
+import { Box } from '@ui/index';
 
 const tableHeaders: TableHeaders = [
   {

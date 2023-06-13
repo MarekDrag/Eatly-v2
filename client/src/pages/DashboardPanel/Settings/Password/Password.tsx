@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 import { useTranslation } from '@hooks/index';
-import { Box, styled } from '@mui/material';
-import { Typography } from '@ui/index';
+import { styled } from '@mui/material';
+import { Box, Typography } from '@ui/index';
 
 import { PasswordField } from './PasswordField';
 

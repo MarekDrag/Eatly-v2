@@ -2,8 +2,8 @@ import { useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
-import { Box, Button, Stepper as MuiStepper, Step, StepLabel } from '@mui/material';
-import { Paper } from '@ui/index';
+import { Stepper as MuiStepper, Step, StepLabel } from '@mui/material';
+import { Paper, Box, Button } from '@ui/index';
 
 import { General } from './Components/General';
 import { Ingredients } from './Components/Ingredients';

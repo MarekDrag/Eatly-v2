@@ -2,10 +2,9 @@ import { useNavigate } from 'react-router-dom';
 
 import { useTranslation } from '@hooks/index';
 import { LoginLayout } from '@layout/LoginLayout';
-import { TextField } from '@mui/material';
-import { Typography } from '@ui/Typography';
 
 import { SendButton } from './styles';
+import { TextField, Typography } from '@ui/index';
 
 export const ForgetPassword = () => {
   const { t } = useTranslation();

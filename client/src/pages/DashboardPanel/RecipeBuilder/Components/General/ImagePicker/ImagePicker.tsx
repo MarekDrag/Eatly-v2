@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 
-import { Typography } from '@ui/Typography';
+import { Typography } from '@ui/index';
 
 import { EmptyImage, FileInput, FileLabel, FileText, UploadedImage } from './ImagePicker.styles';
 

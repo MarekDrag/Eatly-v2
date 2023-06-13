@@ -1,7 +1,8 @@
 import { useContext } from 'react';
 
-import { Box, styled, Typography } from '@mui/material';
+import { styled } from '@mui/material';
 import { DrawerContext } from '@store/DrawerContext';
+import { Box, Typography } from '@ui/index';
 
 const LogoWrapper = styled(Box)({
   display: 'flex',

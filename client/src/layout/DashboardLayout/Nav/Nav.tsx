@@ -7,8 +7,10 @@ import { UserDropdown } from './UserDropdown/UserDropdown';
 export const Wrapper = styled(Box)({
   width: '100%',
   height: 80,
+  display: 'flex',
   flexWrap: 'wrap',
   justifyContent: 'flex-end',
+  alignItems: 'center',
 });
 
 export const Nav = () => {

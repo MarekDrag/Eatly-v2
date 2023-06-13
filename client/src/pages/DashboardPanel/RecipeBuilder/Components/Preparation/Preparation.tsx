@@ -1,8 +1,7 @@
 import { useState } from 'react';
 
 import { icons } from '@config/icons';
-import { TextField } from '@mui/material';
-import { Button } from '@ui/index';
+import { Button, TextField } from '@ui/index';
 
 import { RecipeSteps, StepType } from './RecipeSteps';
 

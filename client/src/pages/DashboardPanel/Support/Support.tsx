@@ -2,8 +2,8 @@ import { useState } from 'react';
 
 import { icons } from '@config/icons';
 import { useTranslation } from '@hooks/index';
-import { SelectChangeEvent, TextField } from '@mui/material';
-import { Select } from '@ui/index';
+import { SelectChangeEvent } from '@mui/material';
+import { Select, TextField } from '@ui/index';
 
 import { Label, Row, SendButton, Title, Wrapper, StyledPaper } from './Support.styles';
 import { problemTypes } from './constants';

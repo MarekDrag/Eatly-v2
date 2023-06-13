@@ -1,12 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 
-import { RecipeSteps } from '@components/index';
 import { icons } from '@config/icons';
 import { useTranslation } from '@hooks/index';
 
-import { Comments } from './Comments';
-import { Details } from './Details';
-import { Ingredients } from './Ingredients/Ingredients';
+import { Comments, Details, Ingredients, RecipeSteps } from './Components';
 import { RecipeDetailsWrapper, Image, BackButton, StyledPaper } from './RecipeDetails.styles';
 import { data } from './data';
 

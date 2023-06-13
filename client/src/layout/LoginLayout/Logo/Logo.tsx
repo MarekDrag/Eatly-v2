@@ -1,4 +1,5 @@
-import { styled, Typography } from '@mui/material';
+import { styled } from '@mui/material';
+import { Typography } from '@ui/index';
 
 const StyledLogo = styled(Typography)(({ theme }) => ({
   width: '100%',

@@ -1,5 +1,5 @@
-import { Box, styled } from '@mui/material';
-import { Typography } from '@ui/Typography';
+import { styled } from '@mui/material';
+import { Typography, Box } from '@ui/index';
 
 export const FileInput = styled('input')({
   display: 'none',

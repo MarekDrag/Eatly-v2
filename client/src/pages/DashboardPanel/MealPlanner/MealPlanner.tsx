@@ -1,11 +1,8 @@
-import { WeekSelect } from '@components/WeekSelect';
-import { DataFilters } from '@components/index';
 import { useTranslation } from '@hooks/index';
-import { Box, Typography } from '@mui/material';
-import { Paper } from '@ui/Paper';
 
 import { Planner } from './Planner/Planner';
 import { RecipesList } from './RecipesList';
+import { WeekSelect, DataFilters, Paper, Box, Typography } from '@ui/index';
 
 export const MealPlanner = () => {
   const { t } = useTranslation();

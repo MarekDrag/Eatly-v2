@@ -1,4 +1,5 @@
-import { Box, styled } from '@mui/material';
+import { styled } from '@mui/material';
+import { Box } from '@ui/index';
 
 export const Background = styled(Box)({
   display: 'flex',

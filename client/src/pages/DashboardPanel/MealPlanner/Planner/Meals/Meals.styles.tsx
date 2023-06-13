@@ -1,4 +1,5 @@
-import { Box, Typography, styled } from '@mui/material';
+import { styled } from '@mui/material';
+import { Box, Typography } from '@ui/index';
 
 export const Image = styled('img')(({ theme }) => ({
   width: '50%',

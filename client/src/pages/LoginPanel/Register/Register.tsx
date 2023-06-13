@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { icons } from '@config/icons';
 import { useTranslation } from '@hooks/index';
 import { LoginLayout } from '@layout/LoginLayout';
-import { Box, Button, Divider, TextField, styled } from '@mui/material';
-import { Typography } from '@ui/Typography';
+import { styled } from '@mui/material';
+import { Typography, Box, Button, Divider, TextField } from '@ui/index';
 
 export const Background = styled(Box)({
   display: 'flex',
@@ -34,10 +34,12 @@ export const LoginBox = styled(Box)({
 
 export const SendButton = styled(Button)(({ theme }) => ({
   background: theme.palette.primary.light,
+  justifyContent: 'center',
   color: '#fff',
 }));
 
 export const SocialButton = styled(Button)({
+  justifyContent: 'center',
   background: '#fff',
   color: '#000',
   textTransform: 'none',

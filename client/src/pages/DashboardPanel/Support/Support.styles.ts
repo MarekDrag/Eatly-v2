@@ -1,5 +1,5 @@
-import { Typography, styled } from '@mui/material';
-import { Box, Button, Paper } from '@ui/index';
+import { styled } from '@mui/material';
+import { Box, Button, Paper, Typography } from '@ui/index';
 
 export const Wrapper = styled(Box)({
   width: '100%',

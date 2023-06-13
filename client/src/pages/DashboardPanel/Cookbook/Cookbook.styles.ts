@@ -1,5 +1,5 @@
-import { Box, styled } from '@mui/material';
-import { Button } from '@ui/Button';
+import { styled } from '@mui/material';
+import { Button, Box } from '@ui/index';
 
 export const AddRecipeButton = styled(Button)(({ theme }) => ({
   width: '150px',

@@ -1,4 +1,5 @@
-import { Box, Drawer, Divider as MuiDivider, styled } from '@mui/material';
+import { Drawer, styled } from '@mui/material';
+import { Box } from '@ui/index';
 
 export const StyledDrawer = styled(Drawer)(({ theme }) => ({
   '& .MuiDrawer-paper': {
@@ -28,11 +29,6 @@ export const ContentWrapper = styled(Box)(({ theme }) => ({
     background: theme.palette.primary.light,
   },
 }));
-
-export const Divider = styled(MuiDivider)({
-  color: 'rgba(255,255,255, 0.54)',
-  width: '80%',
-});
 
 export const BackIconBox = styled(Box)({
   position: 'absolute',

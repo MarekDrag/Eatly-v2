@@ -1,7 +1,7 @@
 import { useTranslation } from '@hooks/index';
-import { Box } from '@mui/material';
 
 import { CancelButton, SaveButton } from './Footer.styles';
+import { Box } from '@ui/index';
 
 export const Footer = () => {
   const { t } = useTranslation();

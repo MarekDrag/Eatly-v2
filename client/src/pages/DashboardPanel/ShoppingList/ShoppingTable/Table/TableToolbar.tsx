@@ -1,7 +1,7 @@
-import { icons } from '@config/icons';
-import { Typography, Tooltip, Toolbar, IconButton, styled } from '@mui/material';
+import { Tooltip, Toolbar, styled } from '@mui/material';
 
 import { BoldText } from '../../ShoppingList.styles';
+import { IconButton, Typography } from '@ui/index';
 
 const StyledTooltip = styled(Tooltip)(({ theme }) => ({
   marginLeft: '95%',
@@ -33,11 +33,11 @@ export const TableToolbar = ({ numSelected }: { numSelected: number }) => {
       )}
       {numSelected > 0 ? (
         <StyledTooltip title="Delete">
-          <IconButton disableRipple>{icons.delete}</IconButton>
+          <IconButton disableRipple name="delete" />
         </StyledTooltip>
       ) : (
         <StyledTooltip title="Filter list">
-          <IconButton disableRipple>{icons.filter}</IconButton>
+          <IconButton disableRipple name="filter" />
         </StyledTooltip>
       )}
     </Toolbar>

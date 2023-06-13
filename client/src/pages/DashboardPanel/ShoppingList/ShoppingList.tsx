@@ -1,6 +1,4 @@
-import { WeekSelect } from '@components/index';
-import { Paper } from '@ui/Paper';
-
+import { Paper, WeekSelect } from '@ui/index';
 import { NextShopping } from './NextShopping';
 import { ShoppingListWrapper } from './ShoppingList.styles';
 import { ShoppingTable } from './ShoppingTable';

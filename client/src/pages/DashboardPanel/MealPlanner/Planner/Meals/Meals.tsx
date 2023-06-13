@@ -1,10 +1,10 @@
 import { icons } from '@config/icons';
 import { useTranslation } from '@hooks/index';
-import { Typography } from '@mui/material';
 import { data } from '@pages/DashboardPanel/RecipeDetails/data';
 
 import { meals } from '../../constants';
 import { MealBox, Text, Image } from './Meals.styles';
+import { Typography } from '@ui/index';
 
 const props = data;
 

@@ -1,4 +1,5 @@
-import { Box, Checkbox, Typography, styled } from '@mui/material';
+import { Checkbox, styled } from '@mui/material';
+import { Box, Typography } from '@ui/index';
 
 export const StyledBox = styled(Box)(({ theme }) => ({
   display: 'flex',

@@ -1,8 +1,8 @@
 import { icons } from '@config/icons';
 import { useTranslation } from '@hooks/index';
-import { Box } from '@mui/material';
 
 import { Text, Image, Recipe, RecipesWrapper } from './Recipe.styles';
+import { Box } from '@ui/index';
 
 const arr = new Array(20).fill('');
 

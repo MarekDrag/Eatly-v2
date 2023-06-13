@@ -1,8 +1,8 @@
 import i18next from 'i18next';
 
 import { useTranslation } from '@hooks/index';
-import { Box, SelectChangeEvent, Switch } from '@mui/material';
-import { Typography, Select } from '@ui/index';
+import { SelectChangeEvent, Switch } from '@mui/material';
+import { Typography, Select, Box } from '@ui/index';
 
 export const Preferences = () => {
   const { t } = useTranslation();

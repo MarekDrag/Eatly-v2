@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction } from 'react';
 
 import { TableRow, TableCell, TableBody as MuiTableBody, styled } from '@mui/material';
-import { StyledCheckbox } from '@ui/CheckboxSelect/CheckboxSelect.styles';
 
 import { Data } from '../types';
+import { StyledCheckbox } from '../../ShoppingList.styles';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   background: theme.palette.background.paper,
