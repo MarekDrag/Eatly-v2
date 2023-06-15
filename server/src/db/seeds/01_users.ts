@@ -5,7 +5,7 @@ export const user1 = {
   first_name: 'Marek',
   last_name: 'Nowak',
   username: 'mareknowak',
-  password: '$2a$10$iRZss/VgvQGlrblOqYfdEuUCNtJOlGymPiOp3iMGbpgtmfUnNlOi6', // pass
+  password: '$2a$10$yfhiN/KZkGpAkN49OMc6PecxnbSjKcOV6Z07DQpuFxmAz4DKaygC2', // Password1
   email: 'marek@gmail.com',
 };
 export const user2 = {
@@ -13,7 +13,7 @@ export const user2 = {
   first_name: 'Dawid',
   last_name: 'Kowalski',
   username: 'dawidkowalski',
-  password: '$2a$10$iRZss/VgvQGlrblOqYfdEuUCNtJOlGymPiOp3iMGbpgtmfUnNlOi6', // pass
+  password: '$2a$10$yfhiN/KZkGpAkN49OMc6PecxnbSjKcOV6Z07DQpuFxmAz4DKaygC2', // Password1
   email: 'dawid@gmail.com',
 };
 

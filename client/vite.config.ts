@@ -7,8 +7,8 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   server: {
-    open: 'http://localhost:5000',
-    port: 5000,
+    open: 'http://localhost:3000',
+    port: 3000,
   },
   resolve: {
     alias: {
@@ -21,7 +21,7 @@ export default defineConfig({
       '@ui': path.resolve(__dirname, './src/ui'),
       '@utils': path.resolve(__dirname, './src/utils'),
       '@pages': path.resolve(__dirname, './src/pages'),
-      '@store': path.resolve(__dirname, './src/store'),
+      '@contexts': path.resolve(__dirname, './src/contexts'),
     },
   },
 });

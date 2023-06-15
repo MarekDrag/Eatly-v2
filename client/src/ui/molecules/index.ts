@@ -4,3 +4,4 @@ export * from './Rating';
 export * from './Select';
 export * from './CustomSelects';
 export * from './Search';
+export * from './Logo';

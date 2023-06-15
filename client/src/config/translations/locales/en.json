@@ -92,5 +92,10 @@
   "Have an account?": "Have an account?",
   "Login": "Login",
   "By signing up, I agree to Eatly": "By signing up, I agree to Eatly",
-  "Terms of Service & Privacy Policy": "Terms of Service & Privacy Policy"
+  "Terms of Service & Privacy Policy": "Terms of Service & Privacy Policy",
+  "Password must contain at least one lowercase letter, one uppercase letter, and one number": "Password must contain at least one lowercase letter, one uppercase letter, and one number",
+  "Password must be at least 8 characters long": "Password must be at least 8 characters long",
+  "Invalid Email": "Invalid Email",
+  "Incorrect Email or Password": "Incorrect Email or Password",
+  "Service is currently not available": "Service is currently not available"
 }

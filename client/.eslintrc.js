@@ -13,7 +13,7 @@ module.exports = {
     sourceType: 'module',
     ecmaFeatures: { jsx: true },
   },
-  plugins: ['@typescript-eslint', 'react', 'jest'],
+  plugins: ['@typescript-eslint', 'react', 'jest', 'plugins', '@tanstack/query'],
   extends: [
     'airbnb-typescript',
     'eslint:recommended',
@@ -84,6 +84,8 @@ module.exports = {
     'import/order': 0, // turned of as we're using trivago for sorting
     'import/prefer-default-export': 0, // we're using default exports only for pages
     'import/no-useless-path-segments': 0,
+    '@tanstack/query/exhaustive-deps': 'error',
+    '@tanstack/query/prefer-query-object-syntax': 'error',
   },
   overrides: [
     {

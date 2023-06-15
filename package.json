@@ -5,7 +5,6 @@
   "description": "",
   "scripts": {
     "start": "concurrently \"yarn run server\" \"yarn run client\"",
-    "install": "yarn install & concurrently \"yarn run server:install\" \"yarn run client:install\"",
     "client": "cd client & npm run dev",
     "server": "cd server & docker-compose up -d",
     "server:delete": "cd server & docker-compose down",

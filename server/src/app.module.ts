@@ -13,10 +13,10 @@ import { UsersModule } from './modules/users/users.module';
       provide: 'APP_INTERCEPTOR',
       useClass: ClassSerializerInterceptor,
     },
-    {
-      provide: 'APP_PIPE',
-      useValue: new ValidationPipe({ transform: true, whitelist: true }),
-    },
+    // {
+    //   provide: 'APP_PIPE',
+    //   useValue: new ValidationPipe({ transform: true, whitelist: true }),
+    // },
   ],
 })
 export class AppModule {}

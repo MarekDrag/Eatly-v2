@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
 import { useTranslation } from '@hooks/index';
-import { DrawerContext } from '@store/DrawerContext';
+import { DrawerContext } from '@contexts/DrawerContext';
 
 import { DrawerButton } from './DrawerButton';
 import { BackIconBox, ContentWrapper, StyledDrawer } from './DrawerNav.styles';

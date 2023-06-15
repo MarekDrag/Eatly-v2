@@ -1,4 +1,4 @@
-import { Button as MuiButton, ButtonProps, styled } from '@mui/material';
+import { Button as MuiButton, ButtonProps, styled, CircularProgress } from '@mui/material';
 
 const StyledButton = styled(MuiButton)(({ theme }) => ({
   justifyContent: 'flex-start',
@@ -8,6 +8,10 @@ const StyledButton = styled(MuiButton)(({ theme }) => ({
   textTransform: 'none',
 }));
 
-export const Button = (props: ButtonProps) => {
-  return <StyledButton {...props}>{props.children}</StyledButton>;
+type Props = ButtonProps & { isLoading?: boolean };
+
+export const Button = (props: Props) => {
+  const content = props.isLoading ? <CircularProgress size={25} /> : props.children;
+
+  return <StyledButton {...props}>{content}</StyledButton>;
 };

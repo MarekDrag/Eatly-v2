@@ -6,3 +6,7 @@ export * from './IconButton';
 export * from './Paper';
 export * from './TextField';
 export * from './Typography';
+export * from './Link';
+export * from './FormField';
+export * from './FormCheckbox';
+export * from './Notification';

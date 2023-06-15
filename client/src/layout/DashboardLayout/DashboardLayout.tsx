@@ -2,7 +2,7 @@ import { useContext } from 'react';
 
 import { styled } from '@mui/material';
 import { DashboardRoutes } from '@routes/DashboardRoutes';
-import { DrawerContext } from '@store/DrawerContext';
+import { DrawerContext } from '@contexts/DrawerContext';
 
 import { Nav } from './Nav';
 import { DrawerNav } from './SideNav';

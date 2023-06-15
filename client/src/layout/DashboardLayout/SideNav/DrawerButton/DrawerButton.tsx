@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { ButtonProps, useTheme } from '@mui/material';
-import { DrawerContext } from '@store/DrawerContext';
+import { DrawerContext } from '@contexts/DrawerContext';
 
 import { StyledButton } from './DrawerButton.styles';
 
