@@ -30,4 +30,5 @@ export const LoginBox = styled(Box)({
 export const SendButton = styled(Button)(({ theme }) => ({
   background: theme.palette.primary.light,
   color: '#fff',
+  textAlign: 'center',
 }));

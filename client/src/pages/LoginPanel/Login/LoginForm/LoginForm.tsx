@@ -12,18 +12,18 @@ import { LoginFormValues, useLoginForm } from './useLoginForm';
 export const LoginForm = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { loginMutation } = useUserMutations();
+  const { loginUserMutation } = useUserMutations();
   const { handleSubmit, register, errors } = useLoginForm();
 
   const onSubmit = (data: LoginFormValues) => {
-    loginMutation.mutate(data);
+    loginUserMutation.mutate(data);
   };
 
   useEffect(() => {
-    if (loginMutation.isSuccess) {
+    if (loginUserMutation.isSuccess) {
       navigate('/dashboard');
     }
-  }, [loginMutation.isSuccess]);
+  }, [loginUserMutation.isSuccess]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} style={{ display: 'grid', width: '100%', gap: '20px' }}>
@@ -42,7 +42,7 @@ export const LoginForm = () => {
         errorMessage={errors.password?.message}
         fullWidth
       />
-      <SendButton type="submit" isLoading={loginMutation.isLoading}>
+      <SendButton type="submit" isLoading={loginUserMutation.isLoading}>
         {t('Sign in')}
       </SendButton>
     </form>

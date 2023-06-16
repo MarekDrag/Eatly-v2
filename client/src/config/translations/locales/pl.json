@@ -78,7 +78,7 @@
   "Type": "Typ",
   "Meal": "Posiłek",
   "Forgot your password?": "Zapomniałeś hasła?",
-  "Please fill in the email that you used to register. You will be sent an email with instructions on how to reset your password.": "Proszę podać adres e-mail, który został użyty podczas rejestracji. Otrzymasz e-mail z instrukcjami dotyczącymi resetowania hasła.",
+  "Please fill in the email that you used to register. You will be sent an email with instructions on how to reset your password.": "Podaj adres e-mail, który został użyty podczas rejestracji. Dostaniesz wiadomość na swój e-mail z instrukcjami dotyczącymi resetowania hasła.",
   "Send Email": "Wyślij email",
   "Remember your password?": "Pamiętasz hasło?",
   "Sign in": "Zaloguj się",
@@ -97,5 +97,11 @@
   "Password must be at least 8 characters long": "Hasło musi mieć co najmniej 8 znaków.",
   "Invalid Email": "Niepoprawny Email",
   "Incorrect Email or Password": "Nieprawidłowy email lub hasło",
-  "Service is currently not available": "Serwis jest obecnie niedostępny"
+  "Service is currently not available": "Serwis jest obecnie niedostępny",
+  "User with this email already exist": "Użytkownik o podanym adresie e-mail już istnieje",
+  "First name must be at least 3 characters long": "Imię musi mieć co najmniej 3 znaki",
+  "Last name must be at least 3 characters long": "Nazwisko musi mieć co najmniej 3 znaki",
+  "Passwords don't match": "Hasła nie są takie same",
+  "First name": "Imię",
+  "Last name": "Nazwisko"
 }

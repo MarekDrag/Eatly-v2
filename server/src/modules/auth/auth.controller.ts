@@ -11,9 +11,12 @@ export class AuthController {
   constructor(private usersService: UsersService, private authService: AuthService) {}
 
   @Post('register')
-  async registerUser(@Body() createUserDto: CreateUserDto): Promise<UserDto> {
-    const createdUser: UserDto = await this.usersService.registerUser(createUserDto);
-    return createdUser;
+  async registerUser(@Body() createUserDto: CreateUserDto): Promise<AccessToken & { user: UserDto }> {
+    const user: UserDto = await this.usersService.registerUser(createUserDto);
+    const { id, email } = user;
+    const accessToken = await this.authService.getAccessToken({ id, email });
+
+    return { accessToken, user };
   }
 
   @Post('login')

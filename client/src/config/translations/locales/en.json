@@ -97,5 +97,11 @@
   "Password must be at least 8 characters long": "Password must be at least 8 characters long",
   "Invalid Email": "Invalid Email",
   "Incorrect Email or Password": "Incorrect Email or Password",
-  "Service is currently not available": "Service is currently not available"
+  "Service is currently not available": "Service is currently not available",
+  "User with this email already exist": "User with this email already exist",
+  "First name must be at least 3 characters long": "First name must be at least 3 characters long",
+  "Last name must be at least 3 characters long": "Last name must be at least 3 characters long",
+  "Passwords don't match": "Passwords don't match",
+  "First name": "First name",
+  "Last name": "Last name"
 }

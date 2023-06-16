@@ -2,9 +2,9 @@ import { useNavigate } from 'react-router-dom';
 
 import { useTranslation } from '@hooks/index';
 import { LoginLayout } from '@layout/LoginLayout';
+import { TextField, Typography } from '@ui/index';
 
 import { SendButton } from './styles';
-import { TextField, Typography } from '@ui/index';
 
 export const ForgetPassword = () => {
   const { t } = useTranslation();
@@ -22,10 +22,10 @@ export const ForgetPassword = () => {
       <Typography variant="body2" sx={{ color: '#aeb2b1' }}>
         {t(
           'Please fill in the email that you used to register. You will be sent an email with instructions on how to reset your password.',
-        )}{' '}
+        )}
       </Typography>
       <TextField variant="outlined" fullWidth label="Email" />
-      <SendButton sx={{ textTransform: 'none' }} fullWidth onClick={handleSubmit}>
+      <SendButton fullWidth onClick={handleSubmit}>
         {t('Send Email')}
       </SendButton>
       <Typography variant="body2" sx={{ color: '#aeb2b1' }} textAlign="center" onClick={() => navigate('/login')}>

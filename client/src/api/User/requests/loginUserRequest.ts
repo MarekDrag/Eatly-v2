@@ -1,0 +1,14 @@
+import { axios } from '@config/axios';
+
+import { User } from '../types';
+
+export type LoginUserRequirements = {
+  email: string;
+  password: string;
+};
+
+type LoginUserResponse = { user: User; accessToken: string };
+
+export const loginUserRequest = async (data: LoginUserRequirements) => {
+  return axios.post<LoginUserResponse>('/users/login', data);
+};

@@ -11,7 +11,7 @@ const StyledButton = styled(MuiButton)(({ theme }) => ({
 type Props = ButtonProps & { isLoading?: boolean };
 
 export const Button = (props: Props) => {
-  const content = props.isLoading ? <CircularProgress size={25} /> : props.children;
+  const content = props.isLoading ? <CircularProgress size={24} /> : props.children;
 
   return <StyledButton {...props}>{content}</StyledButton>;
 };
