@@ -20,7 +20,7 @@ export class AuthService {
     return { id: foundUser.id, email: foundUser.email };
   }
 
-  async getAccessToken(user: AccessTokenContent): Promise<{ accessToken: string }> {
-    return { accessToken: this.jwtService.sign(user) };
+  async getAccessToken(user: AccessTokenContent): Promise<string> {
+    return this.jwtService.sign(user);
   }
 }

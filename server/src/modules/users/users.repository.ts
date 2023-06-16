@@ -23,15 +23,6 @@ export class UsersRepository {
     return foundUser;
   }
 
-  async getUserByUsername(username: string): Promise<User | null> {
-    const foundUser = await this.users().where('username', username).andWhere('deletedAt', null).first();
-
-    if (!foundUser) {
-      return null;
-    }
-    return foundUser;
-  }
-
   async getUserById(id: string): Promise<User | null> {
     const foundUser = await this.users().where('id', id).andWhere('deletedAt', null).first();
 

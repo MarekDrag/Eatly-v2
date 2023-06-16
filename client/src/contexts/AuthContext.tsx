@@ -1,7 +1,9 @@
 import { Dispatch, ReactNode, SetStateAction, createContext, useState } from 'react';
 
+import { User } from '@api/User';
+
 type AuthState = {
-  currentUser: undefined;
+  user: User | undefined;
   accessToken: string | undefined;
 };
 
@@ -11,14 +13,14 @@ export type AuthContextType = AuthState & {
 };
 
 export const AuthContext = createContext<AuthContextType>({
-  currentUser: undefined,
+  user: undefined,
   accessToken: undefined,
   setAuthContext: () => {},
   logout: () => {},
 });
 
 const defaultValues = {
-  currentUser: undefined,
+  user: undefined,
   accessToken: undefined,
 };
 

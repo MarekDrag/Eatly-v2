@@ -9,10 +9,6 @@ export class CreateUserDto {
   @MinLength(3)
   lastName: string;
 
-  @IsString()
-  @MinLength(3)
-  username: string;
-
   @IsEmail()
   email: string;
 

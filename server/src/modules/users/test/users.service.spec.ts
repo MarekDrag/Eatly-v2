@@ -13,7 +13,6 @@ describe('UsersService', () => {
   beforeEach(async () => {
     usersRepo = {
       getUserByEmail: jest.fn(),
-      getUserByUsername: jest.fn(),
       getUserById: jest.fn(),
       createUser: jest.fn(),
     };
@@ -26,19 +25,6 @@ describe('UsersService', () => {
 
   it('should be defined', () => {
     expect(service).toBeDefined();
-  });
-
-  it('should throw error if client would try to create a user with already occupied username', async () => {
-    //arrange
-    usersRepo.getUserByUsername.mockImplementation(async (username) => {
-      return { ...defaultUser, username };
-    });
-
-    //act
-    const registerUser: Promise<UserDto> = service.registerUser(defaultCreateUserDto);
-
-    //assert
-    expect(registerUser).rejects.toEqual(new ConflictException('there is already a user with this username'));
   });
 
   it('should throw error if client would try to create a user with already occcupied email', async () => {

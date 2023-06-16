@@ -13,7 +13,7 @@ export const UserDropdown = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
 
   const handleOnBlur = () => {
     setTimeout(() => setIsDropdownVisible(false), 200);
@@ -23,7 +23,7 @@ export const UserDropdown = () => {
     <Wrapper>
       <UserProfile onClick={() => setIsDropdownVisible((prev) => !prev)} onBlur={handleOnBlur}>
         <UserAvatar />
-        <UserName variant="subtitle2">Marek</UserName>
+        <UserName variant="subtitle2">{user?.firstName}</UserName>
         <ArrowIcon transform={`rotate(${isDropdownVisible ? 180 : 0})`} />
       </UserProfile>
       {isDropdownVisible && (

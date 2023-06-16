@@ -16,11 +16,6 @@ export class UsersService {
       throw new ConflictException('there is already a user with this email');
     }
 
-    const foundUserByUsername = await this.usersRepo.getUserByUsername(createUserDto.username);
-    if (foundUserByUsername) {
-      throw new ConflictException('there is already a user with this username');
-    }
-
     const hash: string = await bcrypt.hash(createUserDto.password, 10);
 
     const newUser: CreateUserDto = { ...createUserDto, password: hash };
@@ -65,13 +60,6 @@ export class UsersService {
       const foundUserByEmail = await this.usersRepo.getUserByEmail(updateUserDto.email);
       if (foundUserByEmail) {
         throw new ConflictException('this email is already occupied');
-      }
-    }
-
-    if (updateUserDto.username) {
-      const foundUserByUsername = await this.usersRepo.getUserByEmail(updateUserDto.username);
-      if (foundUserByUsername) {
-        throw new ConflictException('this username is already occupied');
       }
     }
 

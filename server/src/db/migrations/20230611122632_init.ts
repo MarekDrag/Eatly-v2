@@ -7,7 +7,6 @@ export async function up(knex: Knex): Promise<void> {
     tb.uuid('id', { primaryKey: true }).defaultTo(knex.raw('uuid_generate_v4()'));
     tb.string('first_name').notNullable();
     tb.string('last_name').notNullable();
-    tb.string('username').notNullable().unique();
     tb.string('password').notNullable();
     tb.string('email').notNullable().unique();
     tb.dateTime('created_at', { useTz: false }).notNullable().defaultTo(knex.fn.now());

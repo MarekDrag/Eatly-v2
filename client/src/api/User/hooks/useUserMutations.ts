@@ -16,8 +16,8 @@ export const useUserMutations = () => {
       return (await loginRequest(body)).data;
     },
     {
-      onSuccess: ({ accessToken }) => {
-        setAuthContext((prev) => ({ ...prev, accessToken }));
+      onSuccess: ({ accessToken, user }) => {
+        setAuthContext({ user, accessToken });
       },
       onError: (res: AxiosError) => {
         if (res.request.status === 401) {
