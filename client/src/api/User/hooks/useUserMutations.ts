@@ -2,20 +2,22 @@ import { AxiosError } from 'axios';
 import { toast } from 'react-toastify';
 
 import { useTranslation } from '@hooks/index';
+import { useAuth } from '@hooks/useAuth';
 import { useMutation } from '@tanstack/react-query';
 
 import { LoginProps, loginRequest } from '../requests';
 
 export const useUserMutations = () => {
   const { t } = useTranslation();
+  const { setAuthContext } = useAuth();
 
   const loginMutation = useMutation(
     async (body: LoginProps) => {
       return (await loginRequest(body)).data;
     },
     {
-      onSuccess: (res) => {
-        console.log(res);
+      onSuccess: ({ accessToken }) => {
+        setAuthContext((prev) => ({ ...prev, accessToken }));
       },
       onError: (res: AxiosError) => {
         if (res.request.status === 401) {

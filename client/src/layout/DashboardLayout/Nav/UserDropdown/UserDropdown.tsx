@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { icons } from '@config/icons';
 import { useTranslation } from '@hooks/index';
+import { useAuth } from '@hooks/useAuth';
 
 import { UserAvatar } from './UserAvatar';
 import { ArrowIcon, Dropdown, DropdownButton, UserProfile, Wrapper, UserName } from './UserDropdown.styles';
@@ -12,6 +13,7 @@ export const UserDropdown = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const { logout } = useAuth();
 
   const handleOnBlur = () => {
     setTimeout(() => setIsDropdownVisible(false), 200);
@@ -29,7 +31,7 @@ export const UserDropdown = () => {
           <DropdownButton startIcon={icons.person} onClick={() => navigate('/dashboard/settings')}>
             {t('My account')}
           </DropdownButton>
-          <DropdownButton startIcon={icons.logout} onClick={() => navigate('/login')}>
+          <DropdownButton startIcon={icons.logout} onClick={() => logout()}>
             {t('Log out')}
           </DropdownButton>
         </Dropdown>
