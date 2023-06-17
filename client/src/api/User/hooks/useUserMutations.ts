@@ -5,7 +5,14 @@ import { useTranslation } from '@hooks/index';
 import { useAuth } from '@hooks/useAuth';
 import { useMutation } from '@tanstack/react-query';
 
-import { LoginUserRequirements, loginUserRequest, RegisterRequirements, createUserRequest } from '../requests';
+import {
+  LoginUserRequirements,
+  loginUserRequest,
+  RegisterRequirements,
+  createUserRequest,
+  PasswordRemindRequirements,
+  postPasswordRemindRequest,
+} from '../requests';
 
 export const useUserMutations = () => {
   const { t } = useTranslation();
@@ -47,5 +54,19 @@ export const useUserMutations = () => {
     },
   );
 
-  return { loginUserMutation, registerUserMutation };
+  const remindUserPassword = useMutation(
+    async (data: PasswordRemindRequirements) => {
+      return (await postPasswordRemindRequest(data)).data;
+    },
+    {
+      onSuccess: () => {
+        toast.success(t('Message has been sent to your e-mail'));
+      },
+      onError: () => {
+        toast.error(t('Service is currently not available'));
+      },
+    },
+  );
+
+  return { loginUserMutation, registerUserMutation, remindUserPassword };
 };

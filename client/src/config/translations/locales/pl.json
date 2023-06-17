@@ -103,5 +103,6 @@
   "Last name must be at least 3 characters long": "Nazwisko musi mieć co najmniej 3 znaki",
   "Passwords don't match": "Hasła nie są takie same",
   "First name": "Imię",
-  "Last name": "Nazwisko"
+  "Last name": "Nazwisko",
+  "Message has been sent to your e-mail": "Wiadomość została wysłana na twój email"
 }

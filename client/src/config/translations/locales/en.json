@@ -103,5 +103,6 @@
   "Last name must be at least 3 characters long": "Last name must be at least 3 characters long",
   "Passwords don't match": "Passwords don't match",
   "First name": "First name",
-  "Last name": "Last name"
+  "Last name": "Last name",
+  "Message has been sent to your e-mail": "Message has been sent to your e-mail"
 }

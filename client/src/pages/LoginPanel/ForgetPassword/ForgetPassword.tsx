@@ -1,17 +1,21 @@
 import { useNavigate } from 'react-router-dom';
 
+import { useUserMutations } from '@api/User';
 import { useTranslation } from '@hooks/index';
 import { LoginLayout } from '@layout/LoginLayout';
-import { TextField, Typography } from '@ui/index';
+import { FormField, Link, Typography } from '@ui/index';
 
-import { SendButton } from './styles';
+import { SendButton } from './ForgetPassword.styles';
+import { ForgetPasswordFormValues, useForgetPasswordForm } from './useForgetPaswordForm';
 
 export const ForgetPassword = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { handleSubmit, register, errors } = useForgetPasswordForm();
+  const { remindUserPassword } = useUserMutations();
 
-  const handleSubmit = () => {
-    navigate('/dashboard');
+  const onSubmit = (data: ForgetPasswordFormValues) => {
+    remindUserPassword.mutate(data);
   };
 
   return (
@@ -24,12 +28,20 @@ export const ForgetPassword = () => {
           'Please fill in the email that you used to register. You will be sent an email with instructions on how to reset your password.',
         )}
       </Typography>
-      <TextField variant="outlined" fullWidth label="Email" />
-      <SendButton fullWidth onClick={handleSubmit}>
-        {t('Send Email')}
-      </SendButton>
+      <form onSubmit={handleSubmit(onSubmit)} style={{ display: 'grid', width: '100%', gap: '20px' }}>
+        <FormField<ForgetPasswordFormValues>
+          name="email"
+          label={t('Email')}
+          register={register}
+          errorMessage={errors.email?.message}
+          fullWidth
+        />
+        <SendButton type="submit" isLoading={remindUserPassword.isLoading}>
+          {t('Send Email')}
+        </SendButton>
+      </form>
       <Typography variant="body2" sx={{ color: '#aeb2b1' }} textAlign="center" onClick={() => navigate('/login')}>
-        {t('Remember your password?')} <span style={{ color: '#189f80', fontWeight: 500 }}>{t('Sign in')}</span>
+        {t('Remember your password?')} <Link>{t('Sign in')}</Link>
       </Typography>
     </LoginLayout>
   );

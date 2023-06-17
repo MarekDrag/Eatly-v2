@@ -21,7 +21,8 @@
     "paths": {
       "@db": ["db/*"],
       "@modules": ["modules/*"],
-      "@types": ["types/*"]
+      "@types": ["types/*"],
+      "@utils": ["utils/*"],
     }
   },
   "include": ["src", "test", "src/db", "src/db/migrations"],
