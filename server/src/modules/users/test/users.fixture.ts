@@ -9,6 +9,7 @@ export const defaultUser: User = {
   email: 'test@gmail.com',
   createdAt: '',
   deletedAt: null,
+  imgUrl: null,
 };
 
 export const defaultCreateUserDto: CreateUserDto = {

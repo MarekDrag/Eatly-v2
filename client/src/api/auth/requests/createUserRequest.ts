@@ -12,5 +12,5 @@ export type RegisterRequirements = {
 type createUserResponse = { user: User; accessToken: string };
 
 export const createUserRequest = async (data: RegisterRequirements) => {
-  return axios.post<createUserResponse>('/users/register', data);
+  return axios.post<createUserResponse>('/auth/register', data);
 };

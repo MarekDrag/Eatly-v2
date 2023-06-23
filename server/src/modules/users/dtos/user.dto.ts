@@ -7,6 +7,8 @@ export class UserDto {
   email: string;
   createdAt: string;
   deletedAt: string;
+  imgUrl: string | null;
+
   @Exclude({ toPlainOnly: true })
   password: string;
 }

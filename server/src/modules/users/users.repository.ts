@@ -64,6 +64,21 @@ export class UsersRepository {
     return updatedUser[0];
   }
 
+  async updateUserImgUrl(id: string, imgUrl: string): Promise<User> {
+    if (Object.keys(imgUrl).length === 0) {
+      throw new BadRequestException('empty object');
+    }
+
+    const foundUser = await this.getUserById(id);
+
+    if (!foundUser) {
+      throw new NotFoundException('user not found');
+    }
+
+    const updatedUser = await this.users().where('id', id).update('imgUrl', imgUrl).returning(['*']);
+    return updatedUser[0];
+  }
+
   async deleteUser(id: string): Promise<void> {
     const foundUser = await this.getUserById(id);
     if (!foundUser) {

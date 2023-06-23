@@ -10,5 +10,5 @@ export type LoginUserRequirements = {
 type LoginUserResponse = { user: User; accessToken: string };
 
 export const loginUserRequest = async (data: LoginUserRequirements) => {
-  return axios.post<LoginUserResponse>('/users/login', data);
+  return axios.post<LoginUserResponse>('/auth/login', data);
 };

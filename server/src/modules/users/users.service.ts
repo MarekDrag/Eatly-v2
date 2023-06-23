@@ -3,12 +3,13 @@ import { ConflictException, Injectable } from '@nestjs/common';
 import bcrypt from 'bcryptjs';
 import { plainToClass } from 'class-transformer';
 
+import { S3Service } from '../s3';
 import { CreateUserDto, UpdateUserDto, UserDto } from './dtos';
 import { UsersRepository } from './users.repository';
 
 @Injectable()
 export class UsersService {
-  constructor(private usersRepo: UsersRepository) {}
+  constructor(private usersRepo: UsersRepository, private s3Service: S3Service) {}
 
   async registerUser(createUserDto: CreateUserDto): Promise<UserDto> {
     const foundUserByEmail = await this.usersRepo.getUserByEmail(createUserDto.email);
@@ -42,25 +43,13 @@ export class UsersService {
     return this.usersRepo.getUsers();
   }
 
-  async updateUser(id: string, updateUserDto: UpdateUserDto): Promise<UserDto> {
+  async updateUser(id: string, updateUserDto: UpdateUserDto, image?: Express.Multer.File): Promise<UserDto> {
     if (updateUserDto.password) {
       const hash: string = await bcrypt.hash(updateUserDto.password, 10);
       updateUserDto.password = hash;
     }
-
-    const foundUserById = await this.usersRepo.getUserById(id);
-
-    Object.keys(updateUserDto).forEach((key) => {
-      if (foundUserById[key] === updateUserDto[key]) {
-        throw new ConflictException(`you cannot change users field "${key}" to its current value`);
-      }
-    });
-
-    if (updateUserDto.email) {
-      const foundUserByEmail = await this.usersRepo.getUserByEmail(updateUserDto.email);
-      if (foundUserByEmail) {
-        throw new ConflictException('this email is already occupied');
-      }
+    if (image) {
+      await this.updateUserImage(id, image);
     }
 
     const updatedUserDb = await this.usersRepo.updateUser(id, updateUserDto);
@@ -70,6 +59,24 @@ export class UsersService {
   }
 
   async deleteUser(id: string): Promise<void> {
+    await this.deleteUserImage(id);
     await this.usersRepo.deleteUser(id);
+  }
+
+  async updateUserImage(id: string, image: Express.Multer.File): Promise<void> {
+    const key = `${image.fieldname}-${id}-${Date.now()}`;
+    const imageUrl = await this.s3Service.uploadFile(image, key);
+
+    await this.deleteUserImage(id);
+
+    await this.usersRepo.updateUserImgUrl(id, imageUrl);
+  }
+
+  async deleteUserImage(id: string) {
+    const { imgUrl } = await this.getUserById(id);
+
+    if (imgUrl) {
+      await this.s3Service.deleteFile(imgUrl);
+    }
   }
 }

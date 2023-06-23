@@ -14,7 +14,7 @@ import {
   postPasswordRemindRequest,
 } from '../requests';
 
-export const useUserMutations = () => {
+export const useAuthMutations = () => {
   const { t } = useTranslation();
   const { setAuthContext } = useAuth();
 

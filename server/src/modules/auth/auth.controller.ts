@@ -6,7 +6,7 @@ import { CreateUserDto, UserDto, UsersService } from '../users';
 import { AuthService } from './auth.service';
 import { AccessToken } from './dtos';
 
-@Controller('users')
+@Controller('auth')
 export class AuthController {
   constructor(private usersService: UsersService, private authService: AuthService) {}
 

@@ -2,7 +2,7 @@ import knexStringcase from 'knex-stringcase';
 
 const options = {
   client: 'pg',
-  connection: 'postgres://admin:secret@postgres:5432/dev',
+  connection: process.env.DB_URL,
   migrations: {
     directory: './src/db/migrations',
   },

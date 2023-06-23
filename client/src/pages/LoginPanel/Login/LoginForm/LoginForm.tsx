@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
-import { useUserMutations } from '@api/User';
+import { useAuthMutations } from '@api/auth';
 import { useTranslation } from '@hooks/index';
 import { FormField } from '@ui/index';
 
@@ -12,7 +12,7 @@ import { LoginFormValues, useLoginForm } from './useLoginForm';
 export const LoginForm = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { loginUserMutation } = useUserMutations();
+  const { loginUserMutation } = useAuthMutations();
   const { handleSubmit, register, errors } = useLoginForm();
 
   const onSubmit = (data: LoginFormValues) => {

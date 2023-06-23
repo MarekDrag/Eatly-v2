@@ -6,7 +6,6 @@ import { List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 import { Typography, Paper, Box } from '@ui/index';
 
 import { Account } from './Account';
-import { Footer } from './Footer';
 import { Password } from './Password';
 import { Preferences } from './Preferences';
 import { Wrapper } from './Settings.styles';
@@ -48,7 +47,6 @@ export const Settings = () => {
           {value === 'Account' && <Account />}
           {value === 'Password' && <Password />}
           {value === 'Preferences' && <Preferences />}
-          <Footer />
         </Paper>
       </Wrapper>
     </>

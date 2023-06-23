@@ -1,4 +1,17 @@
-import { Body, Controller, Delete, Get, Param, ParseUUIDPipe, Patch, Request, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  ParseUUIDPipe,
+  Patch,
+  Request,
+  UploadedFile,
+  UseGuards,
+  UseInterceptors,
+} from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 import { JwtAuthGuard } from '../auth';
 import { GetUserDto, UpdateUserDto } from './dtos';
@@ -10,11 +23,11 @@ import { UsersService } from './users.service';
 export class UsersControllers {
   constructor(private usersService: UsersService) {}
 
-  @Get()
-  @UseGuards(JwtAuthGuard)
-  async findAll(): Promise<User[]> {
-    return this.usersService.getUsers();
-  }
+  // @Get()
+  // @UseGuards(JwtAuthGuard)
+  // async findAll(): Promise<User[]> {
+  //   return this.usersService.getUsers();
+  // }
 
   @Get('me')
   @UseGuards(JwtAuthGuard)
@@ -46,14 +59,16 @@ export class UsersControllers {
   }
 
   @Patch('/:id')
+  @UseInterceptors(FileInterceptor('image'))
   @UseGuards(JwtAuthGuard)
   async updateUserById(
+    @UploadedFile() image: Express.Multer.File,
     @Param('id', ParseUUIDPipe)
     id,
     @Body()
     updateUserDto: UpdateUserDto,
   ): Promise<User> {
-    return this.usersService.updateUser(id, updateUserDto);
+    return this.usersService.updateUser(id, updateUserDto, image);
   }
 
   @Delete()

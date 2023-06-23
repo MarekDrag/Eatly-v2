@@ -1,27 +1,31 @@
-import { Dispatch, ReactNode, SetStateAction, createContext, useState } from 'react';
+import { ReactNode, createContext, useState } from 'react';
 
 import { User } from '@api/User';
+import { setCookie } from '@utils/cookies';
 
 type AuthState = {
   user: User | undefined;
   accessToken: string | undefined;
+  refreshToken: string | undefined;
 };
 
 export type AuthContextType = AuthState & {
-  setAuthContext: Dispatch<SetStateAction<AuthState>>;
+  setAuthContext: (data: Partial<AuthState>) => void;
   logout: () => void;
 };
 
 export const AuthContext = createContext<AuthContextType>({
   user: undefined,
   accessToken: undefined,
-  setAuthContext: () => {},
+  refreshToken: undefined,
+  setAuthContext: (_) => {},
   logout: () => {},
 });
 
-const defaultValues = {
+const defaultValues: AuthState = {
   user: undefined,
   accessToken: undefined,
+  refreshToken: undefined,
 };
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
@@ -31,9 +35,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setAuthState(defaultValues);
   };
 
-  return (
-    <AuthContext.Provider value={{ ...authState, setAuthContext: setAuthState, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  const setAuthContext = (data: Partial<AuthState>) => {
+    if (data.accessToken) {
+      setCookie('accessToken', data.accessToken, 1);
+    }
+    setAuthState((prev) => ({ ...prev, ...data }));
+  };
+
+  return <AuthContext.Provider value={{ ...authState, setAuthContext, logout }}>{children}</AuthContext.Provider>;
 };

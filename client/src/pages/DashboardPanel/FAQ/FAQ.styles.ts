@@ -5,6 +5,8 @@ export const Wrapper = styled(Box)({
   width: '100%',
   display: 'flex',
   justifyContent: 'center',
+  alignContent: 'center',
+  flexWrap: 'wrap',
 });
 
 export const Title = styled(Typography)(({ theme }) => ({

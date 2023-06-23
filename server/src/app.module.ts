@@ -5,7 +5,7 @@ import { KnexModule } from 'nestjs-knex';
 import postgresConfig from './db/postgresConfig';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
-import { UsersPasswordModule } from './modules/users/usersPassword';
+import { UsersPasswordModule } from './modules/usersPassword';
 
 @Module({
   imports: [KnexModule.forRoot({ config: postgresConfig }), UsersModule, AuthModule, UsersPasswordModule],

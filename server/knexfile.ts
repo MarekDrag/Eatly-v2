@@ -1,4 +1,5 @@
 import { Knex } from 'knex';
+
 import postgresConfig from './src/db/postgresConfig';
 
 const config: { [key: string]: Knex.Config } = {

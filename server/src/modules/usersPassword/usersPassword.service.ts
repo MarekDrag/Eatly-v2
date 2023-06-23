@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 import { sendMail } from 'src/utils/sendMail';
 
-import { UsersService } from '../users.service';
+import { UsersService } from '../users';
 import { RemindUserPasswordDto } from './dtos';
 
 @Injectable()
