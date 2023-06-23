@@ -1,4 +1,4 @@
-import { User } from '@api/User';
+import { User } from '@api/types';
 import { axios } from '@config/axios';
 
 type getMeResponse = { user: User };

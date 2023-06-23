@@ -13,7 +13,6 @@ export const AccountForm = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { loginUserMutation } = useAuthMutations();
-  const {} = useUserQuery();
   const { handleSubmit, register, errors } = useAccountForm();
 
   const onSubmit = (data: AccountFormValues) => {

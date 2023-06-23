@@ -1,6 +1,6 @@
 import { axios } from '@config/axios';
 
-import { User } from '../types';
+import { User } from '../../types/user';
 
 export type LoginUserRequirements = {
   email: string;

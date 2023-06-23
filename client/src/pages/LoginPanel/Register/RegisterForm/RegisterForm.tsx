@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
-import { useUserMutations } from '@api/User';
 import { useAuthMutations } from '@api/auth';
 import { useTranslation } from '@hooks/index';
 import { FormField } from '@ui/index';
