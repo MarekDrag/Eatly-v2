@@ -14,7 +14,7 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 
 import { JwtAuthGuard } from '../auth';
-import { GetUserDto, UpdateUserDto } from './dtos';
+import { GetUserDto, UpdateUserDto, UpdateUserPasswordDto } from './dtos';
 import { UserJwtPayload } from './interfaces';
 import { User } from './types';
 import { UsersService } from './users.service';
@@ -28,6 +28,28 @@ export class UsersControllers {
   // async findAll(): Promise<User[]> {
   //   return this.usersService.getUsers();
   // }
+
+  @Patch('/image')
+  @UseGuards(JwtAuthGuard)
+  @UseInterceptors(FileInterceptor('image'))
+  async updateUserImage(
+    @Request()
+    req: UserJwtPayload,
+    @UploadedFile() image: Express.Multer.File,
+  ): Promise<User> {
+    return this.usersService.updateUserImage(req.user.id, image);
+  }
+
+  @Patch('/password')
+  @UseGuards(JwtAuthGuard)
+  async updateUserPassword(
+    @Request()
+    req: UserJwtPayload,
+    @Body()
+    updateUserPasswordDto: UpdateUserPasswordDto,
+  ): Promise<void> {
+    await this.usersService.updateUserPassword(req.user.id, updateUserPasswordDto);
+  }
 
   @Get('me')
   @UseGuards(JwtAuthGuard)
@@ -59,16 +81,14 @@ export class UsersControllers {
   }
 
   @Patch('/:id')
-  @UseInterceptors(FileInterceptor('image'))
   @UseGuards(JwtAuthGuard)
   async updateUserById(
-    @UploadedFile() image: Express.Multer.File,
     @Param('id', ParseUUIDPipe)
     id,
     @Body()
     updateUserDto: UpdateUserDto,
   ): Promise<User> {
-    return this.usersService.updateUser(id, updateUserDto, image);
+    return this.usersService.updateUser(id, updateUserDto);
   }
 
   @Delete()

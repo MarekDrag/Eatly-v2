@@ -1,10 +1,10 @@
-import { ConflictException, Injectable } from '@nestjs/common';
+import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 
 import bcrypt from 'bcryptjs';
 import { plainToClass } from 'class-transformer';
 
 import { S3Service } from '../s3';
-import { CreateUserDto, UpdateUserDto, UserDto } from './dtos';
+import { CreateUserDto, UpdateUserDto, UpdateUserPasswordDto, UserDto } from './dtos';
 import { UsersRepository } from './users.repository';
 
 @Injectable()
@@ -39,15 +39,15 @@ export class UsersService {
     return foundUser;
   }
 
+  async updateUserLastLogin(email: string): Promise<void> {
+    await this.usersRepo.updateUserLastLogin(email);
+  }
+
   async getUsers(): Promise<UserDto[]> {
     return this.usersRepo.getUsers();
   }
 
   async updateUser(id: string, updateUserDto: UpdateUserDto, image?: Express.Multer.File): Promise<UserDto> {
-    if (updateUserDto.password) {
-      const hash: string = await bcrypt.hash(updateUserDto.password, 10);
-      updateUserDto.password = hash;
-    }
     if (image) {
       await this.updateUserImage(id, image);
     }
@@ -63,13 +63,13 @@ export class UsersService {
     await this.usersRepo.deleteUser(id);
   }
 
-  async updateUserImage(id: string, image: Express.Multer.File): Promise<void> {
+  async updateUserImage(id: string, image: Express.Multer.File): Promise<UserDto> {
     const key = `${image.fieldname}-${id}-${Date.now()}`;
     const imageUrl = await this.s3Service.uploadFile(image, key);
 
     await this.deleteUserImage(id);
 
-    await this.usersRepo.updateUserImgUrl(id, imageUrl);
+    return this.usersRepo.updateUserImgUrl(id, imageUrl);
   }
 
   async deleteUserImage(id: string) {
@@ -78,5 +78,24 @@ export class UsersService {
     if (imgUrl) {
       await this.s3Service.deleteFile(imgUrl);
     }
+  }
+
+  async updateUserPassword(id: string, updateUserPasswordDto: UpdateUserPasswordDto) {
+    if (updateUserPasswordDto.password === updateUserPasswordDto.newPassword) {
+      throw new ConflictException('Passwords must be different');
+    }
+
+    const foundedUser = await this.getUserById(id);
+    if (!foundedUser) {
+      throw new NotFoundException('User not found');
+    }
+
+    const matched = await bcrypt.compare(updateUserPasswordDto.password, foundedUser.password);
+    if (!matched) {
+      throw new ConflictException("Password don't match");
+    }
+
+    const hashedPassword: string = await bcrypt.hash(updateUserPasswordDto.newPassword, 10);
+    await this.usersRepo.updateUserPassword(id, hashedPassword);
   }
 }

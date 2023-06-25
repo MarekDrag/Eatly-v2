@@ -5,3 +5,4 @@ export * from './Select';
 export * from './CustomSelects';
 export * from './Search';
 export * from './Logo';
+export * from './Modal';

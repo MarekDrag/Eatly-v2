@@ -1,6 +1,5 @@
+import { User } from '@api/types';
 import { axios } from '@config/axios';
-
-import { User } from '../../types/user';
 
 export type RegisterRequirements = {
   email: string;

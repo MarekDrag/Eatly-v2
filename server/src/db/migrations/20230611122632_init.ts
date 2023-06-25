@@ -11,7 +11,7 @@ export async function up(knex: Knex): Promise<void> {
     tb.string('email').notNullable().unique();
     tb.string('imgUrl').defaultTo(null);
     tb.dateTime('created_at', { useTz: false }).notNullable().defaultTo(knex.fn.now());
-    tb.dateTime('deleted_at', { useTz: false });
+    tb.dateTime('last_login', { useTz: false });
   });
 }
 

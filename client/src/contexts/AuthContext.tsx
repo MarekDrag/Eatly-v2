@@ -1,10 +1,11 @@
-import { ReactNode, createContext, useState } from 'react';
+import { ReactNode, createContext, useEffect, useState } from 'react';
 
-import { User } from '@api/User';
+import { useMeQuery } from '@api/me';
+import { User } from '@api/types';
 import { setCookie } from '@utils/cookies';
 
 type AuthState = {
-  user: User | undefined;
+  user: User;
   accessToken: string | undefined;
   refreshToken: string | undefined;
 };
@@ -14,8 +15,18 @@ export type AuthContextType = AuthState & {
   logout: () => void;
 };
 
+const defaultUser: User = {
+  id: '',
+  firstName: '',
+  lastName: '',
+  email: '',
+  createdAt: new Date(),
+  lastLogin: new Date(),
+  imgUrl: '',
+};
+
 export const AuthContext = createContext<AuthContextType>({
-  user: undefined,
+  user: defaultUser,
   accessToken: undefined,
   refreshToken: undefined,
   setAuthContext: (_) => {},
@@ -23,13 +34,14 @@ export const AuthContext = createContext<AuthContextType>({
 });
 
 const defaultValues: AuthState = {
-  user: undefined,
+  user: defaultUser,
   accessToken: undefined,
   refreshToken: undefined,
 };
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [authState, setAuthState] = useState<AuthState>(defaultValues);
+  const me = useMeQuery();
 
   const logout = () => {
     setAuthState(defaultValues);
@@ -41,6 +53,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
     setAuthState((prev) => ({ ...prev, ...data }));
   };
+
+  useEffect(() => {
+    if (me.isSuccess && me.data) {
+      setAuthState((prev) => ({ ...prev, ...me.data }));
+    }
+  }, [me.isStale]);
 
   return <AuthContext.Provider value={{ ...authState, setAuthContext, logout }}>{children}</AuthContext.Provider>;
 };

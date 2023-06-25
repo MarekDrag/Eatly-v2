@@ -1,4 +1,4 @@
-import { BadRequestException, ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 
 import { Knex } from 'knex';
 import { InjectKnex, Knex as KnexModule } from 'nestjs-knex';
@@ -15,7 +15,7 @@ export class UsersRepository {
   }
 
   async getUserByEmail(email: string): Promise<User | null> {
-    const foundUser: User = await this.users().where('email', email).andWhere('deletedAt', null).first();
+    const foundUser: User = await this.users().where('email', email).first();
 
     if (!foundUser) {
       return null;
@@ -23,8 +23,12 @@ export class UsersRepository {
     return foundUser;
   }
 
+  async updateUserLastLogin(email: string) {
+    await this.users().where('email', email).update('lastLogin', new Date().toISOString());
+  }
+
   async getUserById(id: string): Promise<User | null> {
-    const foundUser = await this.users().where('id', id).andWhere('deletedAt', null).first();
+    const foundUser = await this.users().where('id', id).first();
 
     if (!foundUser) {
       return null;
@@ -34,9 +38,7 @@ export class UsersRepository {
   }
 
   async getUsers(): Promise<User[]> {
-    const foundUsers = await this.users()
-      .select(['id', 'lastName', 'firstName', 'username', 'email', 'createdAt'])
-      .where('deletedAt', null);
+    const foundUsers = await this.users().select(['id', 'lastName', 'firstName', 'username', 'email', 'createdAt']);
 
     if (foundUsers.length == 0) {
       throw new NotFoundException('users not found');
@@ -84,10 +86,11 @@ export class UsersRepository {
     if (!foundUser) {
       throw new NotFoundException('user not found');
     }
-    if (foundUser.deletedAt) {
-      throw new ConflictException('This user is already deleted');
-    }
 
-    await this.users().where('id', id).update('deletedAt', new Date().toISOString());
+    await this.users().where('id', id).delete();
+  }
+
+  async updateUserPassword(id: string, password: string): Promise<void> {
+    await this.users().where('id', id).update('password', password);
   }
 }

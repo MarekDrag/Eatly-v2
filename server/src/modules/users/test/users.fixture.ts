@@ -8,7 +8,7 @@ export const defaultUser: User = {
   lastName: 'Nowak',
   email: 'test@gmail.com',
   createdAt: '',
-  deletedAt: null,
+  lastLogin: '',
   imgUrl: null,
 };
 

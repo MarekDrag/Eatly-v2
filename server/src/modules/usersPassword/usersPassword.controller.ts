@@ -12,7 +12,6 @@ export class UsersPasswordControllers {
     @Body()
     remindUserPasswordDto: RemindUserPasswordDto,
   ): Promise<void> {
-    this.usersPasswordService.sendPasswordReminder(remindUserPasswordDto);
-    return;
+    await this.usersPasswordService.sendPasswordReminder(remindUserPasswordDto);
   }
 }

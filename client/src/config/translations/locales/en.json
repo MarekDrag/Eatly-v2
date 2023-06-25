@@ -104,5 +104,13 @@
   "Passwords don't match": "Passwords don't match",
   "First name": "First name",
   "Last name": "Last name",
-  "Message has been sent to your e-mail": "Message has been sent to your e-mail"
+  "Message has been sent to your e-mail": "Message has been sent to your e-mail",
+  "Your account has been updated": "Your account has been updated",
+  "Your password has been updated": "Your password has been updated",
+  "Delete account": "Delete account",
+  "Delete": "Delete",
+  "Are you sure you want to delete this account? This action is irreversible.": "Are you sure you want to delete this account? This action is irreversible.",
+  "Your image has been updated": "Your image has been updated",
+  "Incorrect password provided": "Incorrect password provided",
+  "The new password must be different from the old one": "New password must be different"
 }

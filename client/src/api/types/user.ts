@@ -4,5 +4,6 @@ export type User = {
   lastName: string;
   email: string;
   createdAt: Date;
-  deletedAt: Date;
+  lastLogin: Date;
+  imgUrl: string;
 };

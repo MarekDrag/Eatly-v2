@@ -21,6 +21,8 @@ export class AuthService {
   }
 
   async getAccessToken(user: AccessTokenContent): Promise<string> {
+    await this.usersService.updateUserLastLogin;
+
     return this.jwtService.sign(user);
   }
 }

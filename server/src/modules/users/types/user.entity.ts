@@ -6,7 +6,7 @@ export class User {
   lastName: string;
   email: string;
   createdAt: string;
-  deletedAt: string;
+  lastLogin: string;
   imgUrl: string | null;
 
   @Exclude()

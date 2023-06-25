@@ -22,7 +22,7 @@ export const UserDropdown = () => {
   return (
     <Wrapper>
       <UserProfile onClick={() => setIsDropdownVisible((prev) => !prev)} onBlur={handleOnBlur}>
-        <UserAvatar />
+        <UserAvatar image={user.imgUrl} />
         <UserName variant="subtitle2">{user?.firstName}</UserName>
         <ArrowIcon transform={`rotate(${isDropdownVisible ? 180 : 0})`} />
       </UserProfile>
