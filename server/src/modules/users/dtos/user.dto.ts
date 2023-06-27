@@ -5,9 +5,13 @@ export class UserDto {
   firstName: string;
   lastName: string;
   email: string;
-  createdAt: string;
-  lastLogin: string;
   imgUrl: string | null;
+  language: 'en' | 'pl';
+  themeMode: 'light' | 'dark';
+  emailNotificationsAgreement: boolean;
+  newRecipesAgreement: boolean;
+  lastLogin: string;
+  createdAt: string;
 
   @Exclude({ toPlainOnly: true })
   password: string;

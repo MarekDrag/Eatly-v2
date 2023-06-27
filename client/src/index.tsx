@@ -3,9 +3,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
-import { ThemeProvider } from '@config/theme/ThemeProvider';
 import { AuthProvider } from '@contexts/AuthContext';
 import { DrawerContextProvider } from '@contexts/DrawerContext';
+import { ThemeProvider } from '@contexts/ThemeContext';
 import { AppRoutes } from '@routes/AppRoutes';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Notifications } from '@ui/atoms';

@@ -1,5 +1,7 @@
 import { ReactNode, createContext, useEffect, useState } from 'react';
 
+import i18next from 'i18next';
+
 import { useMeQuery } from '@api/me';
 import { User } from '@api/types';
 import { setCookie } from '@utils/cookies';
@@ -23,6 +25,10 @@ const defaultUser: User = {
   createdAt: new Date(),
   lastLogin: new Date(),
   imgUrl: '',
+  language: 'en',
+  themeMode: 'light',
+  emailNotificationsAgreement: false,
+  newRecipesAgreement: false,
 };
 
 export const AuthContext = createContext<AuthContextType>({
@@ -59,6 +65,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setAuthState((prev) => ({ ...prev, ...me.data }));
     }
   }, [me.isStale]);
+
+  useEffect(() => {
+    i18next.changeLanguage(authState.user.language);
+  }, [authState.user.language]);
 
   return <AuthContext.Provider value={{ ...authState, setAuthContext, logout }}>{children}</AuthContext.Provider>;
 };

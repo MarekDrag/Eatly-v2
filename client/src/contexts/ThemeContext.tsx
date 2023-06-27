@@ -1,8 +1,9 @@
-import { createContext, ReactNode, useMemo, useState } from 'react';
+import { createContext, ReactNode, useEffect, useMemo, useState } from 'react';
 
+import { useAuth } from '@hooks/useAuth';
 import { createTheme, ThemeProvider as MuiThemeProvider, ThemeOptions } from '@mui/material';
 
-import { getTheme, PalleteMode } from './theme';
+import { getTheme, PalleteMode } from '../config/theme/theme';
 
 type Props = {
   children: ReactNode;
@@ -24,10 +25,15 @@ export const ThemeContext = createContext<ThemeContextProps>({
 
 export const ThemeProvider = ({ children }: Props) => {
   const [mode, setMode] = useState<PalleteMode>(DEFAULT_MODE);
+  const { user } = useAuth();
 
   const toggleTheme = () => {
     setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
+
+  useEffect(() => {
+    setMode(user.themeMode);
+  }, [user.themeMode]);
 
   const theme = useMemo(() => createTheme(getTheme(mode)), [mode]);
 

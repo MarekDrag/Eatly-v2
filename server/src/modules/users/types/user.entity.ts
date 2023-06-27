@@ -6,6 +6,10 @@ export class User {
   lastName: string;
   email: string;
   createdAt: string;
+  language: 'en' | 'pl';
+  themeMode: 'light' | 'dark';
+  emailNotificationsAgreement: boolean;
+  newRecipesAgreement: boolean;
   lastLogin: string;
   imgUrl: string | null;
 

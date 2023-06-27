@@ -1,8 +1,8 @@
 import { FormControl, InputLabel, MenuItem, Select as MuiSelect, SelectProps, styled } from '@mui/material';
 
 type Props = SelectProps & {
-  items: string[];
-  label?: string;
+  items: { value: string; label: string }[];
+  label: string;
 };
 
 const StyledSelect = styled(MuiSelect)(({ theme }) => ({
@@ -16,8 +16,8 @@ export const Select = ({ items, label, ...props }: Props) => {
       <InputLabel>{label}</InputLabel>
       <StyledSelect label={label} {...props}>
         {items.map((item) => (
-          <MenuItem value={item} key={item}>
-            {item}
+          <MenuItem value={item.value} key={item.value}>
+            {item.label}
           </MenuItem>
         ))}
       </StyledSelect>

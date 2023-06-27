@@ -7,6 +7,10 @@ export type PatchUserRequirements = {
   email?: string;
   firstName?: string;
   lastName?: string;
+  language?: 'en' | 'pl';
+  themeMode?: 'light' | 'dark';
+  emailNotificationsAgreement?: boolean;
+  newRecipesAgreement?: boolean;
 };
 
 export const patchUser = async (data: PatchUserRequirements) => {

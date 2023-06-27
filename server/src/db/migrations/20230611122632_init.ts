@@ -10,6 +10,10 @@ export async function up(knex: Knex): Promise<void> {
     tb.string('password').notNullable();
     tb.string('email').notNullable().unique();
     tb.string('imgUrl').defaultTo(null);
+    tb.enum('language', ['en', 'pl']).defaultTo('en');
+    tb.enum('themeMode', ['light', 'dark']).defaultTo('light');
+    tb.boolean('emailNotificationsAgreement').defaultTo(false);
+    tb.boolean('newRecipesAgreement').defaultTo(false);
     tb.dateTime('created_at', { useTz: false }).notNullable().defaultTo(knex.fn.now());
     tb.dateTime('last_login', { useTz: false });
   });

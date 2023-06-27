@@ -10,6 +10,10 @@ export const defaultUser: User = {
   createdAt: '',
   lastLogin: '',
   imgUrl: null,
+  language: 'en',
+  themeMode: 'light',
+  emailNotificationsAgreement: false,
+  newRecipesAgreement: false,
 };
 
 export const defaultCreateUserDto: CreateUserDto = {

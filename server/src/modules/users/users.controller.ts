@@ -23,34 +23,6 @@ import { UsersService } from './users.service';
 export class UsersControllers {
   constructor(private usersService: UsersService) {}
 
-  // @Get()
-  // @UseGuards(JwtAuthGuard)
-  // async findAll(): Promise<User[]> {
-  //   return this.usersService.getUsers();
-  // }
-
-  @Patch('/image')
-  @UseGuards(JwtAuthGuard)
-  @UseInterceptors(FileInterceptor('image'))
-  async updateUserImage(
-    @Request()
-    req: UserJwtPayload,
-    @UploadedFile() image: Express.Multer.File,
-  ): Promise<User> {
-    return this.usersService.updateUserImage(req.user.id, image);
-  }
-
-  @Patch('/password')
-  @UseGuards(JwtAuthGuard)
-  async updateUserPassword(
-    @Request()
-    req: UserJwtPayload,
-    @Body()
-    updateUserPasswordDto: UpdateUserPasswordDto,
-  ): Promise<void> {
-    await this.usersService.updateUserPassword(req.user.id, updateUserPasswordDto);
-  }
-
   @Get('me')
   @UseGuards(JwtAuthGuard)
   async getByToken(
@@ -69,15 +41,32 @@ export class UsersControllers {
     return this.usersService.getUserById(getUserDto.id);
   }
 
-  @Patch()
+  // @Get()
+  // @UseGuards(JwtAuthGuard)
+  // async findAll(): Promise<User[]> {
+  //   return this.usersService.getUsers();
+  // }
+
+  @Patch('/password')
   @UseGuards(JwtAuthGuard)
-  async updateUserByToken(
+  async updateUserPassword(
     @Request()
     req: UserJwtPayload,
     @Body()
-    updateUserDto: UpdateUserDto,
+    updateUserPasswordDto: UpdateUserPasswordDto,
+  ): Promise<void> {
+    await this.usersService.updateUserPassword(req.user.id, updateUserPasswordDto);
+  }
+
+  @Patch('/image')
+  @UseGuards(JwtAuthGuard)
+  @UseInterceptors(FileInterceptor('image'))
+  async updateUserImage(
+    @Request()
+    req: UserJwtPayload,
+    @UploadedFile() image: Express.Multer.File,
   ): Promise<User> {
-    return this.usersService.updateUser(req.user.id, updateUserDto);
+    return this.usersService.updateUserImage(req.user.id, image);
   }
 
   @Patch('/:id')
@@ -91,13 +80,15 @@ export class UsersControllers {
     return this.usersService.updateUser(id, updateUserDto);
   }
 
-  @Delete()
+  @Patch()
   @UseGuards(JwtAuthGuard)
-  async deleteUserByToken(
+  async updateUserByToken(
     @Request()
     req: UserJwtPayload,
-  ): Promise<void> {
-    await this.usersService.deleteUser(req.user.id);
+    @Body()
+    updateUserDto: UpdateUserDto,
+  ): Promise<User> {
+    return this.usersService.updateUser(req.user.id, updateUserDto);
   }
 
   @Delete('/:id')
@@ -107,5 +98,14 @@ export class UsersControllers {
     id,
   ): Promise<void> {
     await this.usersService.deleteUser(id);
+  }
+
+  @Delete()
+  @UseGuards(JwtAuthGuard)
+  async deleteUserByToken(
+    @Request()
+    req: UserJwtPayload,
+  ): Promise<void> {
+    await this.usersService.deleteUser(req.user.id);
   }
 }
