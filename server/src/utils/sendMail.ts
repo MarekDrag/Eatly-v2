@@ -12,7 +12,7 @@ type Props = {
 };
 
 export const sendMail = async ({ to, messageTemplate }: Props) => {
-  const user = { email: 'noreply.eatly@gmail.com', password: 'qfbadctpvmfltxsf' };
+  const user = { email: process.env.NO_REPLY_EMAIL, password: process.env.NO_REPLY_PASSWORD };
 
   const transporter = createTransport({
     service: 'gmail',

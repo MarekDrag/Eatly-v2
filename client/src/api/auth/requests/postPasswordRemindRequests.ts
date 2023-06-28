@@ -5,5 +5,5 @@ export type PasswordRemindRequirements = {
 };
 
 export const postPasswordRemindRequest = async (data: PasswordRemindRequirements) => {
-  return axios.post('/auth/password/remind', data);
+  return axios.post('/users/password/remind', data);
 };

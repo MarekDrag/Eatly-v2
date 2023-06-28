@@ -1,9 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 
+import { AccessTokenContent } from '@types';
 import { ExtractJwt, Strategy } from 'passport-jwt';
-
-import { AccessTokenContent } from '../../../types/access-token-content.type';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -11,7 +10,8 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: 'asda',
+      expiresIn: process.env.ACCESS_TOKEN_EXPIRATION_TIME,
+      secretOrKey: process.env.ACCESS_TOKEN_KEY,
     });
   }
 

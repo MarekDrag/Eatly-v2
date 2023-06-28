@@ -19,10 +19,7 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
-      "@db": ["db/*"],
-      "@modules": ["modules/*"],
-      "@types": ["types/*"],
-      "@utils": ["utils/*"],
+      "@*": ["src/*"],
     }
   },
   "include": ["src", "test", "src/db", "src/db/migrations"],

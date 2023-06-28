@@ -13,10 +13,11 @@ import {
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 
-import { JwtAuthGuard } from '../auth';
+import { JwtAuthGuard } from '@modules/auth/guards';
+import { User } from '@types';
+
 import { GetUserDto, UpdateUserDto, UpdateUserPasswordDto } from './dtos';
 import { UserJwtPayload } from './interfaces';
-import { User } from './types';
 import { UsersService } from './users.service';
 
 @Controller('users')

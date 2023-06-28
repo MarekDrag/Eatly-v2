@@ -1,5 +1,6 @@
+import { User } from '@types';
+
 import { CreateUserDto } from '../dtos';
-import { User } from '../types';
 
 export const defaultUser: User = {
   id: 'f02bfdea-e383-4a4b-a877-5dc67327d2c8',
