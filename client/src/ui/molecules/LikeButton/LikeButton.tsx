@@ -11,14 +11,16 @@ const CheckedIcon = styled(Favorite)(({ theme }) => ({
   color: theme.palette.primary.light,
 }));
 
-type Props = CheckboxProps;
+type Props = CheckboxProps & {
+  id: string;
+};
 
-export const LikeButton = (props: Props) => {
+export const LikeButton = ({ id, ...props }: Props) => {
   const [state, setState] = useState(false);
 
   return (
     <CardActions onClick={() => setState((prev) => !prev)}>
-      <Checkbox icon={<Icon />} checkedIcon={<CheckedIcon />} disableRipple {...props} />
+      <Checkbox id={`like-button-${id}`} icon={<Icon />} checkedIcon={<CheckedIcon />} disableRipple {...props} />
     </CardActions>
   );
 };

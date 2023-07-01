@@ -1,9 +1,12 @@
 import { useState } from 'react';
 
-import { useAuth } from '@hooks/useAuth';
+import { User } from '@api/types';
 
-export const usePreferencesForm = () => {
-  const { user } = useAuth();
+type Props = {
+  user: User;
+};
+
+export const usePreferencesForm = ({ user }: Props) => {
   const { language, themeMode, emailNotificationsAgreement, newRecipesAgreement } = user;
   const [formValues, setFormValues] = useState({
     language,

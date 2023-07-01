@@ -1,5 +1,5 @@
 import { styled } from '@mui/material';
-import { data } from '@pages/DashboardPanel/Recipes/data';
+import { data } from '@pages/DashboardPanel/MealPlanner/data';
 import { Paper, Recipe, WeekSelect, BarChart, PieChartIndicator, Typography, Box } from '@ui/index';
 
 const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] as const;

@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 
-import { CardContent, CardMedia, styled, Card } from '@mui/material';
-import { LikeButton, Rating } from '@ui/molecules';
+import { CardContent, styled, Card, CardMedia } from '@mui/material';
 import { Typography } from '@ui/atoms';
+import { LikeButton, Rating } from '@ui/molecules';
 
 const RecipeWrapper = styled(Card)({
   cursor: 'pointer',
@@ -13,7 +13,8 @@ const RecipeWrapper = styled(Card)({
 });
 
 type Props = {
-  img: string;
+  id: string;
+  imgUrl: string | null;
   name: string;
   ratingValue: number;
   reviewsNumber: number;
@@ -24,25 +25,27 @@ type Props = {
 export const Recipe = (props: Props) => {
   const navigate = useNavigate();
 
+  const description = props.description.length > 120 ? `${props.description.slice(0, 120)}...` : props.description;
+
   return (
     <RecipeWrapper sx={{ width: '100%' }}>
       <CardMedia
         component="img"
         height="200"
-        image={props.img}
+        image={props.imgUrl || ''}
         alt={props.name}
-        onClick={() => navigate('/dashboard/recipes/:1')}
+        onClick={() => navigate(`/dashboard/recipes/${props.id}`)}
       />
-      <CardContent onClick={() => navigate('/recipes/:1')}>
+      <CardContent onClick={() => navigate(`/dashboard/recipes/${props.id}`)}>
         <Typography gutterBottom variant="h5">
           {props.name}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {`${props.description.slice(0, 120)}...`}
+        <Typography variant="body2" color="text.secondary" height="80px">
+          {description}
         </Typography>
         <Rating value={props.ratingValue} reviewsNumber={props.reviewsNumber} size="medium" readOnly={true} />
       </CardContent>
-      <LikeButton />
+      <LikeButton id={props.id} />
     </RecipeWrapper>
   );
 };

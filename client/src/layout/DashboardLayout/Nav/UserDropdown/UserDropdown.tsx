@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
+import { useMeQuery } from '@api/me';
 import { icons } from '@config/icons';
 import { useTranslation } from '@hooks/index';
 import { useAuth } from '@hooks/useAuth';
@@ -13,7 +14,8 @@ export const UserDropdown = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-  const { logout, user } = useAuth();
+  const { logout } = useAuth();
+  const { data } = useMeQuery();
 
   const handleOnBlur = () => {
     setTimeout(() => setIsDropdownVisible(false), 200);
@@ -22,8 +24,8 @@ export const UserDropdown = () => {
   return (
     <Wrapper>
       <UserProfile onClick={() => setIsDropdownVisible((prev) => !prev)} onBlur={handleOnBlur}>
-        <UserAvatar image={user.imgUrl} />
-        <UserName variant="subtitle2">{user?.firstName}</UserName>
+        <UserAvatar image={data?.imgUrl || ''} firstName={data?.firstName || ''} lastName={data?.lastName || ''} />
+        <UserName variant="subtitle2">{data?.firstName}</UserName>
         <ArrowIcon transform={`rotate(${isDropdownVisible ? 180 : 0})`} />
       </UserProfile>
       {isDropdownVisible && (

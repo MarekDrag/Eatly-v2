@@ -2,9 +2,9 @@ import { TFunction } from 'i18next';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
+import { User } from '@api/types';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslation } from '@hooks/index';
-import { useAuth } from '@hooks/useAuth';
 
 const buildValidationSchema = (t: TFunction) =>
   z.object({
@@ -15,10 +15,9 @@ const buildValidationSchema = (t: TFunction) =>
 
 export type AccountFormValues = z.infer<ReturnType<typeof buildValidationSchema>>;
 
-export const useAccountForm = () => {
+export const useAccountForm = (user: User) => {
   const { t } = useTranslation();
   const validationSchema = buildValidationSchema(t);
-  const { user } = useAuth();
 
   const {
     handleSubmit,

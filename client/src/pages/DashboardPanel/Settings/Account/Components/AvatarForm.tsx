@@ -1,12 +1,14 @@
 import { ChangeEvent } from 'react';
 
 import { useUserMutations } from '@api/user';
-import { useAuth } from '@hooks/useAuth';
 import { Avatar } from '@mui/material';
 
-export const AvatarForm = () => {
+type Props = {
+  imgUrl: string;
+};
+
+export const AvatarForm = ({ imgUrl }: Props) => {
   const { updateUserImageMutation } = useUserMutations();
-  const { user } = useAuth();
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
@@ -19,7 +21,7 @@ export const AvatarForm = () => {
   return (
     <>
       <label htmlFor="image">
-        <Avatar sx={{ width: 70, height: 70, marginTop: '20px', marginBottom: '30px' }} src={user.imgUrl} />
+        <Avatar sx={{ width: 70, height: 70, marginTop: '20px', marginBottom: '30px' }} src={imgUrl} />
       </label>
       <input id="image" type="file" accept="image/*" onChange={handleFileChange} style={{ display: 'none' }} />
     </>

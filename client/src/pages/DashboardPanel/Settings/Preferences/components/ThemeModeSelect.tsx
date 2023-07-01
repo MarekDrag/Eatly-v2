@@ -1,15 +1,14 @@
 import { useTranslation } from '@hooks/index';
-import { useAuth } from '@hooks/useAuth';
 import { SelectChangeEvent } from '@mui/material';
 import { Select } from '@ui/index';
 
 type Props = {
   handleChange: (event: SelectChangeEvent<unknown>, fieldName: 'themeMode') => void;
+  defaultValue: 'light' | 'dark';
 };
 
-export const ThemeModeSelect = ({ handleChange }: Props) => {
+export const ThemeModeSelect = ({ handleChange, defaultValue }: Props) => {
   const { t } = useTranslation();
-  const { user } = useAuth();
 
   const defaultThemeOptions = [
     { label: t('Light'), value: 'light' },
@@ -21,7 +20,7 @@ export const ThemeModeSelect = ({ handleChange }: Props) => {
       label={t('Default Theme')}
       name="themeMode"
       items={defaultThemeOptions}
-      defaultValue={user.themeMode}
+      defaultValue={defaultValue}
       onChange={(e) => handleChange(e, 'themeMode')}
     />
   );

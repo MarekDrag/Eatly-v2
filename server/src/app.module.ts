@@ -4,7 +4,7 @@ import { KnexModule } from 'nestjs-knex';
 
 import postgresConfig from './db/postgresConfig';
 import { AuthModule } from './modules/auth';
-// import { RecipesModule } from './modules/recipes';
+import { RecipesModule } from './modules/recipes';
 import { UsersModule } from './modules/users';
 import { UsersPasswordModule } from './modules/usersPassword';
 
@@ -14,7 +14,7 @@ import { UsersPasswordModule } from './modules/usersPassword';
     AuthModule,
     UsersPasswordModule,
     UsersModule,
-    // RecipesModule,
+    RecipesModule,
   ],
   providers: [
     {

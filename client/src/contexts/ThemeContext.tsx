@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useEffect, useMemo, useState } from 'react';
 
-import { useAuth } from '@hooks/useAuth';
+import { useMeQuery } from '@api/me';
 import { createTheme, ThemeProvider as MuiThemeProvider, ThemeOptions } from '@mui/material';
 
 import { getTheme, PalleteMode } from '../config/theme/theme';
@@ -25,15 +25,17 @@ export const ThemeContext = createContext<ThemeContextProps>({
 
 export const ThemeProvider = ({ children }: Props) => {
   const [mode, setMode] = useState<PalleteMode>(DEFAULT_MODE);
-  const { user } = useAuth();
+  const meQuery = useMeQuery();
 
   const toggleTheme = () => {
     setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
   useEffect(() => {
-    setMode(user.themeMode);
-  }, [user.themeMode]);
+    if (meQuery.data?.themeMode) {
+      setMode(meQuery.data.themeMode);
+    }
+  }, [meQuery.data?.themeMode]);
 
   const theme = useMemo(() => createTheme(getTheme(mode)), [mode]);
 

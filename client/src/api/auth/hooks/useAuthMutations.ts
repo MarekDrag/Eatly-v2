@@ -23,8 +23,8 @@ export const useAuthMutations = () => {
       return (await loginUserRequest(data)).data;
     },
     {
-      onSuccess: ({ accessToken, user }) => {
-        setAuthContext({ user, accessToken });
+      onSuccess: ({ accessToken }) => {
+        setAuthContext({ accessToken });
       },
       onError: (res: AxiosError) => {
         if (res.request.status === 401) {
@@ -41,8 +41,8 @@ export const useAuthMutations = () => {
       return (await createUserRequest(data)).data;
     },
     {
-      onSuccess: ({ accessToken, user }) => {
-        setAuthContext({ user, accessToken });
+      onSuccess: ({ accessToken }) => {
+        setAuthContext({ accessToken });
       },
       onError: (res: AxiosError) => {
         if (res.request.status === 409) {

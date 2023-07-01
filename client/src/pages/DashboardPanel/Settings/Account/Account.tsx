@@ -1,51 +1,31 @@
-import { useUserMutations } from '@api/user';
+import { useMeQuery } from '@api/me';
 import { useTranslation } from '@hooks/index';
-import { Typography, Box, FormField } from '@ui/index';
+import { CircularProgress } from '@mui/material';
+import { Typography, Box } from '@ui/index';
 
-import { AccountFormFooter } from './Components/AccountFormFooter';
+import { AccountForm } from './Components/AccountForm';
 import { AvatarForm } from './Components/AvatarForm';
-import { AccountFormValues, useAccountForm } from './hooks/useAccountForm';
 
 export const Account = () => {
   const { t } = useTranslation();
-  const { updateUserAccountMutation } = useUserMutations();
-  const { handleSubmit, register, errors } = useAccountForm();
+  const meQuery = useMeQuery();
 
-  const onSubmit = (data: AccountFormValues) => {
-    updateUserAccountMutation.mutate(data);
-  };
+  if (!meQuery.isSuccess) {
+    return (
+      <Box width="100%">
+        <Typography variant="h6">{t('General info')}</Typography>
+        <Box display="flex" justifyContent="center" mt="50px">
+          <CircularProgress />
+        </Box>
+      </Box>
+    );
+  }
 
   return (
     <Box width="100%">
       <Typography variant="h6">{t('General info')}</Typography>
-      <AvatarForm />
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Box style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', width: '100%', gap: '20px' }}>
-          <FormField<AccountFormValues>
-            name="firstName"
-            label={t('First Name')}
-            register={register}
-            errorMessage={errors.firstName?.message}
-            fullWidth
-          />
-          <FormField<AccountFormValues>
-            name="lastName"
-            label={t('Last Name')}
-            register={register}
-            errorMessage={errors.lastName?.message}
-            fullWidth
-          />
-          <FormField<AccountFormValues>
-            name="email"
-            label={t('Email')}
-            register={register}
-            errorMessage={errors.lastName?.message}
-            fullWidth
-            disabled
-          />
-        </Box>
-        <AccountFormFooter />
-      </form>
+      <AvatarForm imgUrl={meQuery.data.imgUrl ?? ''} />
+      <AccountForm user={meQuery.data} />
     </Box>
   );
 };

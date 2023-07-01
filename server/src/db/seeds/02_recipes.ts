@@ -31,7 +31,7 @@ const generateRecipe = () => {
     img_url: faker.image.url(),
     rating_value: faker.number.float({ min: 1, max: 5, precision: 0.01 }),
     reviews_number: faker.number.int({ min: 1, max: 2000 }),
-    description: faker.lorem.sentence({ min: 10, max: 100 }),
+    description: faker.lorem.sentence({ min: 10, max: 50 }),
     time: Math.floor(Math.random() * 23 + 1) * 5, // random number between 5 and 120 incremented by 5
   };
 };

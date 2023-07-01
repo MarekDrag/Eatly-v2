@@ -1,7 +1,8 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Query } from '@nestjs/common';
 import { Get, UseGuards } from '@nestjs/common';
 
-import { Recipe } from 'src/types';
+import { PaginationOptions, Recipe } from '@types';
+import { Pagination } from '@utils/pagination';
 
 import { JwtAuthGuard } from '../auth';
 import { RecipesService } from './recipes.service';
@@ -12,7 +13,7 @@ export class RecipesController {
 
   @Get()
   @UseGuards(JwtAuthGuard)
-  async findAll(): Promise<Recipe[]> {
-    return this.recipesService.getRecipes();
+  async findAll(@Query() options: PaginationOptions): Promise<Pagination<Recipe[]>> {
+    return this.recipesService.getRecipes(options);
   }
 }

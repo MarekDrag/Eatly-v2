@@ -13,8 +13,8 @@ import { LocalStrategy } from './strategies/local.strategy';
     UsersModule,
     PassportModule,
     JwtModule.register({
-      secret: 'asda',
-      signOptions: { expiresIn: '15m' },
+      secret: process.env.API_SECRET_TOKEN_KEY,
+      signOptions: { expiresIn: process.env.API_SECRET_TOKEN_KEY_EXPIRATION_TIME },
     }),
   ],
   providers: [LocalStrategy, JwtStrategy, AuthService],

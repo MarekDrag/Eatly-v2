@@ -10,7 +10,7 @@ type Props = {
 export const Rating = ({ reviewsNumber, ...props }: Props) => {
   return (
     <RatingWrapper color="text.secondary">
-      <Box>
+      <Box display="flex">
         <StyledRating precision={0.5} emptyIcon={<EmptyIcon fontSize={'inherit'} />} {...props} />
         <Typography variant="body1" marginLeft={1}>
           ({reviewsNumber})

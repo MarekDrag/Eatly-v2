@@ -2,10 +2,9 @@ import { AxiosError } from 'axios';
 import { toast } from 'react-toastify';
 
 import { ME_QUERY_KEY } from '@api/me';
-import { User } from '@api/types';
 import { useTranslation } from '@hooks/index';
 import { useAuth } from '@hooks/useAuth';
-import { QueryClient, useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import {
   PatchUserImageRequirements,
@@ -19,16 +18,15 @@ import {
 
 export const useUserMutations = () => {
   const { t } = useTranslation();
-  const queryClient = new QueryClient();
-  const { setAuthContext, logout } = useAuth();
+  const queryClient = useQueryClient();
+  const { logout } = useAuth();
 
   const updateUserAccountMutation = useMutation(
     async (data: PatchUserRequirements) => {
       return (await patchUser(data)).data;
     },
     {
-      onSuccess: (user: User) => {
-        setAuthContext({ user });
+      onSuccess: () => {
         queryClient.invalidateQueries([ME_QUERY_KEY]);
         toast.success(t('Your account has been updated'));
       },
@@ -53,8 +51,7 @@ export const useUserMutations = () => {
       return (await patchUserImage(data)).data;
     },
     {
-      onSuccess: (user: User) => {
-        setAuthContext({ user });
+      onSuccess: () => {
         queryClient.invalidateQueries([ME_QUERY_KEY]);
         toast.success(t('Your image has been updated'));
       },

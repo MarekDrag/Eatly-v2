@@ -1,30 +1,47 @@
 import { useState } from 'react';
 
-import { Skeleton, Unstable_Grid2 as Grid } from '@mui/material';
+import { useRecipesQuery } from '@api/recipes';
+import { Unstable_Grid2 as Grid } from '@mui/material';
+import { Box, DataFilters, Recipe, Typography } from '@ui/index';
 
-import { data } from './data';
-import { DataFilters, Recipe } from '@ui/index';
+import { Pagination } from './Pagination/Pagination';
+import { useCurrentPageNumber } from './Pagination/useCurrentPageNumber';
+import { RecipesSkeleton } from './RecipesSkeleton';
+
+const defaultPagination = {
+  page: 1,
+  limit: 50,
+};
 
 export const Recipes = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  setTimeout(() => {
-    setIsLoading(false);
-  }, 3000);
+  const currentPage = useCurrentPageNumber();
+  const [page, setPage] = useState(currentPage);
+  const { data, isLoading } = useRecipesQuery({
+    pagination: { ...defaultPagination, page: currentPage },
+  });
 
   return (
     <>
       <DataFilters />
-      <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 2 }}>
-        {data.map((recipe) => {
-          return (
-            <Grid xs={12} lg={4} xl={3}>
-              {!isLoading && <Recipe {...recipe} key={recipe.name} />}
-              {isLoading && <Skeleton variant="rounded" height={340} animation="pulse" />}
-            </Grid>
-          );
-        })}
-      </Grid>
+      <Box display="flex" justifyContent="space-between" alignContent="center" marginTop="20px" marginBottom="20px">
+        <Typography variant="h5">Recipes ({data?.pagination.total ?? 50})</Typography>
+        <Pagination pages={data?.pagination.pages} limit={defaultPagination.limit} page={page} setPage={setPage} />
+      </Box>
+      {isLoading && <RecipesSkeleton limit={defaultPagination.limit} />}
+      {!isLoading && !!data && (
+        <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 2 }}>
+          {data.data.map((recipe) => {
+            return (
+              <Grid xs={12} lg={4} xl={3} key={recipe.id}>
+                {!isLoading && <Recipe {...recipe} key={recipe.id} />}
+              </Grid>
+            );
+          })}
+        </Grid>
+      )}
+      <Box display="flex" justifyContent="flex-end" alignContent="center" marginTop="20px" marginBottom="20px">
+        <Pagination pages={data?.pagination.pages} limit={defaultPagination.limit} page={page} setPage={setPage} />
+      </Box>
     </>
   );
 };

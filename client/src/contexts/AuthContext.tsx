@@ -1,15 +1,9 @@
-import { ReactNode, createContext, useEffect, useState } from 'react';
+import { ReactNode, createContext, useState } from 'react';
 
-import i18next from 'i18next';
-
-import { useMeQuery } from '@api/me';
-import { User } from '@api/types';
-import { setCookie } from '@utils/cookies';
+import { deleteCookie, getCookie, setCookie } from '@utils/cookies';
 
 type AuthState = {
-  user: User;
-  accessToken: string | undefined;
-  refreshToken: string | undefined;
+  accessToken: string | null;
 };
 
 export type AuthContextType = AuthState & {
@@ -17,40 +11,20 @@ export type AuthContextType = AuthState & {
   logout: () => void;
 };
 
-const defaultUser: User = {
-  id: '',
-  firstName: '',
-  lastName: '',
-  email: '',
-  createdAt: new Date(),
-  lastLogin: new Date(),
-  imgUrl: '',
-  language: 'en',
-  themeMode: 'light',
-  emailNotificationsAgreement: false,
-  newRecipesAgreement: false,
-};
-
 export const AuthContext = createContext<AuthContextType>({
-  user: defaultUser,
-  accessToken: undefined,
-  refreshToken: undefined,
+  accessToken: null,
   setAuthContext: (_) => {},
   logout: () => {},
 });
 
-const defaultValues: AuthState = {
-  user: defaultUser,
-  accessToken: undefined,
-  refreshToken: undefined,
-};
-
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [authState, setAuthState] = useState<AuthState>(defaultValues);
-  const me = useMeQuery();
+  const [authState, setAuthState] = useState<AuthState>({
+    accessToken: getCookie('accessToken') ?? null,
+  });
 
   const logout = () => {
-    setAuthState(defaultValues);
+    setAuthState({ accessToken: null });
+    deleteCookie('accessToken');
   };
 
   const setAuthContext = (data: Partial<AuthState>) => {
@@ -59,16 +33,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
     setAuthState((prev) => ({ ...prev, ...data }));
   };
-
-  useEffect(() => {
-    if (me.isSuccess && me.data) {
-      setAuthState((prev) => ({ ...prev, ...me.data }));
-    }
-  }, [me.isStale]);
-
-  useEffect(() => {
-    i18next.changeLanguage(authState.user.language);
-  }, [authState.user.language]);
 
   return <AuthContext.Provider value={{ ...authState, setAuthContext, logout }}>{children}</AuthContext.Provider>;
 };

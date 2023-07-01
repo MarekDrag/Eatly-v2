@@ -1,15 +1,14 @@
 import { useTranslation } from '@hooks/index';
-import { useAuth } from '@hooks/useAuth';
 import { Switch } from '@mui/material';
 import { Typography, Box } from '@ui/index';
 
 type Props = {
   handleChange: (checked: boolean, fieldName: 'newRecipesAgreement') => void;
+  defaultValue: boolean;
 };
 
-export const NewRecipesSwitch = ({ handleChange }: Props) => {
+export const NewRecipesSwitch = ({ handleChange, defaultValue }: Props) => {
   const { t } = useTranslation();
-  const { user } = useAuth();
 
   return (
     <Box display="grid" gridTemplateColumns="2fr 1fr">
@@ -23,7 +22,7 @@ export const NewRecipesSwitch = ({ handleChange }: Props) => {
       </Box>
       <Switch
         name="newRecipesAgreement"
-        defaultChecked={user.newRecipesAgreement}
+        defaultChecked={defaultValue}
         onChange={(_, checked) => handleChange(checked, 'newRecipesAgreement')}
       />
     </Box>

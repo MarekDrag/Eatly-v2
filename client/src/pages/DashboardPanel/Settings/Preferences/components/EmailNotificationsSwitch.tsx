@@ -1,15 +1,14 @@
 import { useTranslation } from '@hooks/index';
-import { useAuth } from '@hooks/useAuth';
 import { Switch } from '@mui/material';
 import { Typography, Box } from '@ui/index';
 
 type Props = {
   handleChange: (checked: boolean, fieldName: 'emailNotificationsAgreement') => void;
+  defaultValue: boolean;
 };
 
-export const EmailNotificationsSwitch = ({ handleChange }: Props) => {
+export const EmailNotificationsSwitch = ({ handleChange, defaultValue }: Props) => {
   const { t } = useTranslation();
-  const { user } = useAuth();
 
   return (
     <Box display="grid" gridTemplateColumns="2fr 1fr">
@@ -23,7 +22,7 @@ export const EmailNotificationsSwitch = ({ handleChange }: Props) => {
       </Box>
       <Switch
         name="emailNotificationsAgreement"
-        defaultChecked={user.emailNotificationsAgreement}
+        defaultChecked={defaultValue}
         onChange={(_, checked) => handleChange(checked, 'emailNotificationsAgreement')}
       />
     </Box>
