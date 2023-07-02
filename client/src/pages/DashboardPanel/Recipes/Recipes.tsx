@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { useRecipesQuery } from '@api/recipes';
+import { useTranslation } from '@hooks/index';
 import { Unstable_Grid2 as Grid } from '@mui/material';
 import { Box, DataFilters, Recipe, Typography } from '@ui/index';
 
@@ -14,6 +15,7 @@ const defaultPagination = {
 };
 
 export const Recipes = () => {
+  const { t } = useTranslation();
   const currentPage = useCurrentPageNumber();
   const [page, setPage] = useState(currentPage);
   const { data, isLoading } = useRecipesQuery({
@@ -24,7 +26,9 @@ export const Recipes = () => {
     <>
       <DataFilters />
       <Box display="flex" justifyContent="space-between" alignContent="center" marginTop="20px" marginBottom="20px">
-        <Typography variant="h5">Recipes ({data?.pagination.total ?? 50})</Typography>
+        <Typography variant="h5">
+          {t('Recipes')} ({data?.pagination.total ?? 50})
+        </Typography>
         <Pagination pages={data?.pagination.pages} limit={defaultPagination.limit} page={page} setPage={setPage} />
       </Box>
       {isLoading && <RecipesSkeleton limit={defaultPagination.limit} />}

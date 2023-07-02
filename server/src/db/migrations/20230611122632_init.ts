@@ -11,7 +11,7 @@ export async function up(knex: Knex): Promise<void> {
     tb.string('email').notNullable().unique();
     tb.text('img_url').defaultTo(null);
     tb.enum('language', ['en', 'pl']).defaultTo('en');
-    tb.enum('themeMode', ['light', 'dark']).defaultTo('light');
+    tb.enum('theme_mode', ['light', 'dark']).defaultTo('light');
     tb.boolean('emailNotificationsAgreement').defaultTo(false);
     tb.boolean('newRecipesAgreement').defaultTo(false);
     tb.dateTime('created_at', { useTz: false }).notNullable().defaultTo(knex.fn.now());
@@ -29,9 +29,16 @@ export async function up(knex: Knex): Promise<void> {
     tb.dateTime('created_at', { useTz: false }).notNullable().defaultTo(knex.fn.now());
     tb.dateTime('deleted_at', { useTz: false });
   });
+
+  await knex.schema.createTable('liked_recipes', (tb) => {
+    tb.uuid('id', { primaryKey: true }).defaultTo(knex.raw('uuid_generate_v4()'));
+    tb.uuid('user_id').notNullable().references('id').inTable('users').onDelete('CASCADE').onUpdate('CASCADE');
+    tb.uuid('recipe_id').notNullable().references('id').inTable('recipes').onDelete('CASCADE').onUpdate('CASCADE');
+  });
 }
 
 export async function down(knex: Knex): Promise<void> {
   await knex.schema.dropTable('users');
   await knex.schema.dropTable('recipes');
+  await knex.schema.dropTable('liked_recipes');
 }

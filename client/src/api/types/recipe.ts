@@ -6,4 +6,5 @@ export type Recipe = {
   reviewsNumber: number;
   time: number;
   description: string;
+  isLiked: boolean;
 };

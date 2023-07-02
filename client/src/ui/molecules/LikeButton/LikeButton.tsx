@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
+import { useRecipeMutation } from '@api/recipes';
 import { Favorite, FavoriteBorder } from '@mui/icons-material';
 import { CardActions, Checkbox, CheckboxProps, styled } from '@mui/material';
 
@@ -12,15 +13,33 @@ const CheckedIcon = styled(Favorite)(({ theme }) => ({
 }));
 
 type Props = CheckboxProps & {
-  id: string;
+  recipeId: string;
+  isLiked: boolean;
 };
 
-export const LikeButton = ({ id, ...props }: Props) => {
-  const [state, setState] = useState(false);
+export const LikeButton = ({ recipeId, isLiked, ...props }: Props) => {
+  const [liked, setLiked] = useState(isLiked);
+  const { addRecipeToUserLiked, deleteRecipeFromUserLiked } = useRecipeMutation();
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.checked) {
+      addRecipeToUserLiked.mutate({ recipeId });
+    } else {
+      deleteRecipeFromUserLiked.mutate({ recipeId });
+    }
+    setLiked(event.target.checked);
+  };
 
   return (
-    <CardActions onClick={() => setState((prev) => !prev)}>
-      <Checkbox id={`like-button-${id}`} icon={<Icon />} checkedIcon={<CheckedIcon />} disableRipple {...props} />
+    <CardActions>
+      <Checkbox
+        icon={<Icon />}
+        checkedIcon={<CheckedIcon />}
+        disableRipple
+        checked={liked}
+        onChange={(e) => handleChange(e)}
+        {...props}
+      />
     </CardActions>
   );
 };

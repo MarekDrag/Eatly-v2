@@ -20,6 +20,7 @@ type Props = {
   reviewsNumber: number;
   time: number;
   description: string;
+  isLiked: boolean;
 };
 
 export const Recipe = (props: Props) => {
@@ -45,7 +46,7 @@ export const Recipe = (props: Props) => {
         </Typography>
         <Rating value={props.ratingValue} reviewsNumber={props.reviewsNumber} size="medium" readOnly={true} />
       </CardContent>
-      <LikeButton id={props.id} />
+      <LikeButton recipeId={props.id} isLiked={props.isLiked} />
     </RecipeWrapper>
   );
 };

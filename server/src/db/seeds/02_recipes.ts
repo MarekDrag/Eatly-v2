@@ -37,7 +37,7 @@ const generateRecipe = () => {
 };
 
 const generateRecipesArray = () => {
-  return Array.from({ length: 200 }, generateRecipe);
+  return Array.from({ length: 400 }, generateRecipe);
 };
 
 export const RecipesArray = generateRecipesArray();
