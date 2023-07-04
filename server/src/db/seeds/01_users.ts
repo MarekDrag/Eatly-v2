@@ -7,7 +7,7 @@ export const permanentUser1 = {
   last_name: 'Nowak',
   password: '$2a$10$yfhiN/KZkGpAkN49OMc6PecxnbSjKcOV6Z07DQpuFxmAz4DKaygC2', // Password1
   email: 'marek@gmail.com',
-  imgUrl: 'https://eatlybucket.s3.eu-central-1.amazonaws.com/image-a35f7306-34c1-48f0-a487-6f4f6e75ad48-1687725013772',
+  imgUrl: 'https://eatlybucket.s3.eu-central-1.amazonaws.com/image-be9f3579-f027-482f-a1d2-da613d68d1b6-1688395309230',
 };
 
 export const permanentUser2 = {

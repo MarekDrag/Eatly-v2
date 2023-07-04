@@ -1,16 +1,35 @@
 type Props = {
   url: string;
-  pagination: {
+  pagination?: {
     page: number;
     limit: number;
   };
 };
 
-export const providePaginationToUrl = ({ url, pagination }: Props): string => {
+const addPaginationToUrl = (url: string, page: number, limit: number) => {
   if (url.includes('?')) {
-    url += `&page=${pagination.page}&limit=${pagination.limit}`;
+    url += `&page=${page}&limit=${limit}`;
   } else {
-    url += `?page=${pagination.page}&limit=${pagination.limit}`;
+    url += `?page=${page}&limit=${limit}`;
   }
+
   return url;
+};
+
+export const providePaginationToUrl = ({ url, pagination }: Props) => {
+  const previousPage = new URLSearchParams(location.search).get('page');
+  const previousLimit = new URLSearchParams(location.search).get('limit');
+
+  if (pagination && previousPage && previousLimit) {
+    return url.replace(
+      `page=${previousPage}&limit=${previousLimit}`,
+      `page=${pagination.page}&limit=${pagination.limit}`,
+    );
+  }
+
+  if (pagination && !previousPage && !previousLimit) {
+    return addPaginationToUrl(url, pagination.page, pagination.limit);
+  }
+
+  return '';
 };

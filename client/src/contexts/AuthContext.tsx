@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const setAuthContext = (data: Partial<AuthState>) => {
     if (data.accessToken) {
-      setCookie('accessToken', data.accessToken, 1);
+      setCookie('accessToken', data.accessToken, 60);
     }
     setAuthState((prev) => ({ ...prev, ...data }));
   };

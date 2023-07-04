@@ -1,16 +1,9 @@
 import { Recipe } from '@api/types';
-import { PaginatedResponseType, providePaginationToUrl, resolvePaginatedResponse } from '@api/utils';
+import { PaginatedResponseType, resolvePaginatedResponse } from '@api/utils';
 import { axios } from '@config/axios';
 
-export type GetRecipesRequestOptions = {
-  pagination: {
-    page: number;
-    limit: number;
-  };
-};
-
-export const getRecipesRequest = async (options: GetRecipesRequestOptions) => {
-  const url = providePaginationToUrl({ url: '/recipes', pagination: options.pagination });
+export const getRecipesRequest = async () => {
+  const url = '/recipes' + location.search;
 
   return resolvePaginatedResponse(await axios.get<PaginatedResponseType<Recipe>>(url));
 };

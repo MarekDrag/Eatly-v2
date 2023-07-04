@@ -17,13 +17,13 @@ export const Pagination = ({ pages, limit, page, setPage }: Props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const urlWithPagination = providePaginationToUrl({ url: location.pathname, pagination: { page, limit } });
-    navigate(urlWithPagination);
+    const urlWithPagination = providePaginationToUrl({ url: location.search, pagination: { page, limit } });
+    navigate(location.pathname + urlWithPagination);
   }, [page]);
 
   useEffect(() => {
-    if (pages) {
-      setPagesTotal(pages);
+    if (typeof pages === 'number') {
+      setPagesTotal(pages > 0 ? pages : 1);
     }
   }, [pages]);
 

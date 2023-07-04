@@ -1,8 +1,7 @@
 import { Body, Controller, Delete, Get, Param, ParseUUIDPipe, Post, Query, Request, UseGuards } from '@nestjs/common';
 
 import { UserJwtPayload } from '@modules/users';
-import { PaginationOptions, Recipe } from '@types';
-import { Pagination } from '@utils/pagination';
+import { PaginatedResponse, QueryParamsOptions, Recipe } from '@types';
 
 import { JwtAuthGuard } from '../auth';
 import { CreateUserRecipeLikeDto } from './dtos';
@@ -17,8 +16,8 @@ export class RecipesController {
   async findAll(
     @Request()
     req: UserJwtPayload,
-    @Query() options: PaginationOptions,
-  ): Promise<Pagination<Recipe[]>> {
+    @Query() options?: QueryParamsOptions,
+  ): Promise<PaginatedResponse<Recipe[]>> {
     return this.recipesService.getRecipes(req.user.id, options);
   }
 

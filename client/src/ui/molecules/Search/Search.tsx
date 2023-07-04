@@ -1,3 +1,8 @@
+import { ChangeEvent, useEffect, useState } from 'react';
+
+import { useNavigate } from 'react-router-dom';
+
+import { provideSearchToUrl } from '@api/utils/provideSearchToUrl';
 import { useTranslation } from '@hooks/index';
 import { Clear } from '@mui/icons-material';
 import { Autocomplete, styled } from '@mui/material';
@@ -26,6 +31,15 @@ const Icon = styled(Clear)(({ theme }) => ({
 
 export const Search = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const [searchText, setSearchText] = useState('');
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => setSearchText(event.target.value);
+
+  useEffect(() => {
+    const urlWithSearch = provideSearchToUrl({ url: location.search, search: searchText });
+    navigate(urlWithSearch);
+  }, [searchText]);
 
   return (
     <>
@@ -33,8 +47,10 @@ export const Search = () => {
         id="search"
         options={[]}
         freeSolo
-        clearIcon={<Icon />}
-        renderInput={(params) => <TextField {...params} label={`${t('Search')}...`} />}
+        clearIcon={<Icon onClick={() => setSearchText('')} />}
+        renderInput={(params) => (
+          <TextField {...params} label={`${t('Search')}...`} value={searchText} onChange={handleChange} />
+        )}
       />
     </>
   );
