@@ -6,6 +6,8 @@ export class Recipe {
   reviewsNumber: number;
   time: number;
   description: string;
+  type: 'meat' | 'vege';
+  meal: 'breakfast' | 'lunch' | 'dinner' | 'snack' | 'dessert';
   createdAt: string;
   deletedAt: string;
 }

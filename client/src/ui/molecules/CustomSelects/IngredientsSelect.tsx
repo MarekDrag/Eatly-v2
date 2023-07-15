@@ -4,12 +4,8 @@ import { CheckboxSelect } from '@ui/index';
 // TODO: add ingredient query
 const ingredientsOptions = ['Breakfast', 'Lunch', 'Dinner', 'Dessert', 'Snack'];
 
-type Props = {
-  label?: string;
-};
-
-export const IngredientsSelect = ({ label }: Props) => {
+export const IngredientsSelect = () => {
   const { t } = useTranslation();
-
-  return <CheckboxSelect options={ingredientsOptions} label={label ?? t('Ingredients')} id="ingredient-select" />;
+  return <div></div>;
+  // return <CheckboxSelect options={ingredientsOptions} label={t('Ingredients')} id="ingredient-select" />;
 };

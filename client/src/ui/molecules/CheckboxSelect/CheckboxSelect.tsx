@@ -1,6 +1,4 @@
-import { useState } from 'react';
-
-import { InputLabel, ListItemText, Select, SelectChangeEvent, SelectProps } from '@mui/material';
+import { Checkbox, InputLabel, ListItemText, Select, SelectProps } from '@mui/material';
 
 import { StyledMenuItem, Wrapper } from './CheckboxSelect.styles';
 
@@ -14,17 +12,18 @@ const MenuProps = {
 };
 
 type Props = SelectProps<string[]> & {
-  options: string[];
+  options: { value: string; label: string }[];
+  values: string[];
   label: string;
   id: string;
 };
 
-export const CheckboxSelect = ({ options, label, id, ...props }: Props) => {
-  const [values, setValues] = useState<string[]>([]);
+export const CheckboxSelect = ({ options, label, id, values, ...props }: Props) => {
+  const renderValue = (values: string[]) => {
+    const filteredOptions = options.filter((option) => values.includes(option.value));
+    const labels = filteredOptions.flatMap((option) => option.label);
 
-  const handleChange = (e: SelectChangeEvent<string[]>) => {
-    const value = e.target.value;
-    setValues(typeof value === 'string' ? value.split(',') : value);
+    return labels.join(', ');
   };
 
   return (
@@ -33,16 +32,16 @@ export const CheckboxSelect = ({ options, label, id, ...props }: Props) => {
       <Select
         labelId={id}
         id={id}
-        value={values}
-        onChange={handleChange}
-        renderValue={(selected) => selected.join(', ')}
+        renderValue={renderValue}
         MenuProps={MenuProps}
         label={label}
+        value={values}
         {...props}
       >
         {options.map((option) => (
-          <StyledMenuItem key={option} value={option} disableRipple>
-            <ListItemText primary={option} />
+          <StyledMenuItem key={option.value} value={option.value} disableRipple>
+            <Checkbox checked={values.includes(option.value)} />
+            <ListItemText primary={option.label} />
           </StyledMenuItem>
         ))}
       </Select>

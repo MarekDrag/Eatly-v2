@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 
+import { DEFAULT_PAGINATION } from '@config/constants';
 import { LikedRecipe, Options, PaginatedResponse, Recipe } from '@types';
+import { resolvePaginatedItems } from '@utils/resolvePaginatedItems';
 import { Knex } from 'knex';
 import { InjectKnex, Knex as KnexModule } from 'nestjs-knex';
 
@@ -16,9 +18,9 @@ export class RecipesRepository {
     this.likedRecipes = () => knex<LikedRecipe>('likedRecipes');
   }
 
-  async getRecipes(userId: string, { pagination, search }: Options): Promise<PaginatedResponse<Recipe[]>> {
-    const { limit = 50, page = 1 } = pagination;
-    const offset = page > 0 ? (page - 1) * limit : 50;
+  async getRecipes(userId: string, options: Options): Promise<PaginatedResponse<Recipe[]>> {
+    const limit = DEFAULT_PAGINATION.limit;
+    const offset = options.page > 0 ? (options.page - 1) * limit : limit;
 
     const queryAllRecipes = this.recipes()
       .select(['recipes.id', 'name', 'imgUrl', 'ratingValue', 'reviewsNumber', 'time', 'description'])
@@ -31,9 +33,16 @@ export class RecipesRepository {
       .groupBy('recipes.id');
     const queryAllRecipesTotal = this.recipes().count('id', { as: 'total' }).where('deletedAt', null);
 
-    if (search) {
-      queryAllRecipes.andWhereILike('name', `%${search}%`);
-      queryAllRecipesTotal.andWhereILike('name', `%${search}%`);
+    if (options.search) {
+      queryAllRecipes.andWhereILike('name', `%${options.search}%`);
+      queryAllRecipesTotal.andWhereILike('name', `%${options.search}%`);
+    }
+
+    if (options.filters) {
+      for (const key in options.filters) {
+        queryAllRecipes.whereIn(key, options.filters[key]);
+        queryAllRecipesTotal.whereIn(key, options.filters[key]);
+      }
     }
 
     const [foundRecipes, totalCount] = await Promise.all([
@@ -42,15 +51,7 @@ export class RecipesRepository {
     ]);
     const mappedRecipes = foundRecipes.map((recipe) => ({ ...recipe, isLiked: recipe.isLiked > 0 }));
 
-    return {
-      items: mappedRecipes,
-      pagination: {
-        total: Number(totalCount[0].total),
-        pages: Math.ceil(totalCount[0].total / limit),
-        page: search ? 1 : page,
-        limit,
-      },
-    };
+    return resolvePaginatedItems({ items: mappedRecipes, options, totalCount, limit });
   }
 
   async createUserRecipeLike(createUserRecipeLikeDto: CreateUserRecipeLikeDto) {

@@ -26,6 +26,8 @@ export async function up(knex: Knex): Promise<void> {
     tb.float('rating_value').notNullable().defaultTo(0);
     tb.integer('reviews_number').notNullable().defaultTo(0);
     tb.text('img_url').defaultTo(null);
+    tb.enum('type', ['meat', 'vege']).notNullable();
+    tb.enum('meal', ['breakfast', 'lunch', 'dinner', 'snack', 'dessert']).notNullable();
     tb.dateTime('created_at', { useTz: false }).notNullable().defaultTo(knex.fn.now());
     tb.dateTime('deleted_at', { useTz: false });
   });

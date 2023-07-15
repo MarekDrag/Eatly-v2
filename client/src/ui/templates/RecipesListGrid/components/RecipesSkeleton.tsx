@@ -1,11 +1,12 @@
 import { Skeleton } from '@mui/material';
 import { Unstable_Grid2 as Grid } from '@mui/material';
+import { memo } from 'react';
 
 type Props = {
   limit: number;
 };
 
-export const RecipesSkeleton = ({ limit }: Props) => {
+export const RecipesSkeleton = memo(({ limit }: Props) => {
   const array = new Array(limit).fill('');
 
   return (
@@ -17,4 +18,4 @@ export const RecipesSkeleton = ({ limit }: Props) => {
       ))}
     </Grid>
   );
-};
+});

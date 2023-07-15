@@ -3,10 +3,8 @@ import { Box } from '@ui/atoms';
 import { IngredientsSelect, MealSelect, Search, TypeSelect } from '@ui/molecules';
 
 const DataFiltersWrapper = styled(Box)({
-  display: 'flex',
-  flexWrap: 'wrap',
-  justifyContent: 'flex-start',
-  alignItems: 'flex-start',
+  display: 'grid',
+  gridTemplateColumns: 'repeat(4, 1fr)',
   width: '100%',
   gap: 10,
   marginBottom: 10,

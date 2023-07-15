@@ -112,5 +112,6 @@
   "Are you sure you want to delete this account? This action is irreversible.": "Are you sure you want to delete this account? This action is irreversible.",
   "Your image has been updated": "Your image has been updated",
   "Incorrect password provided": "Incorrect password provided",
-  "The new password must be different from the old one": "New password must be different"
+  "The new password must be different from the old one": "New password must be different",
+  "No recipes matching your search criteria": "No recipes matching your search criteria"
 }

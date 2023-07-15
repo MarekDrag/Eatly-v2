@@ -1,16 +1,16 @@
-export type PaginationOptions = {
-  page: number;
-  limit: number;
+type TypeFilter = {
+  type?: string;
+};
+type MealFilter = {
+  meal?: string;
 };
 
-export type FilterOptions = {
-  key: string;
-  values: string[];
-};
+export type FilterOptions = TypeFilter & MealFilter;
 
 export type Options = {
-  pagination?: PaginationOptions;
+  page?: number;
   search?: string;
   filters?: FilterOptions;
 };
-export type QueryParamsOptions = Partial<PaginationOptions> & Partial<FilterOptions> & { search?: string };
+
+export type QueryParamsOptions = Partial<FilterOptions> & { search?: string; page?: number };
