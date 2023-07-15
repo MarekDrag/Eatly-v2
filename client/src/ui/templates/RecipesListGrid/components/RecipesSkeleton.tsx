@@ -1,6 +1,7 @@
+import { memo } from 'react';
+
 import { Skeleton } from '@mui/material';
 import { Unstable_Grid2 as Grid } from '@mui/material';
-import { memo } from 'react';
 
 type Props = {
   limit: number;

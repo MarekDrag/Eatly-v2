@@ -5,13 +5,13 @@ import { DEFAULT_PAGINATION } from '@config/constants';
 import { useTranslation } from '@hooks/index';
 import { Unstable_Grid2 as Grid } from '@mui/material';
 import { Box, DataFilters, Recipe, Typography } from '@ui/index';
-import { PaginationType } from '@utils/options';
-
-import { useUrlParams } from '@utils/useUrlParams';
+import { PaginationType } from '@utils/resolvePaginatedResponse';
 import { useDebounce } from '@utils/useDebounce';
+import { useUrlParams } from '@utils/useUrlParams';
+
+import { NoRecipesFound } from './components/NoRecipesFound';
 import { Pagination } from './components/Pagination';
 import { RecipesSkeleton } from './components/RecipesSkeleton';
-import { NoRecipesFound } from './components/NoRecipesFound';
 
 type Props = {
   data: RecipeType[];
@@ -24,7 +24,9 @@ type Props = {
 export const RecipesListGrid = ({ data, pagination, isSuccess, isLoading, type }: Props) => {
   const { t } = useTranslation();
   const [pageNumberFromUrl, setPageToUrl] = useUrlParams('page');
-  const [page, setPage] = useState<number>(Number(pageNumberFromUrl) ?? DEFAULT_PAGINATION.page);
+  const initialPage =
+    pageNumberFromUrl && Number(pageNumberFromUrl) > 0 ? Number(pageNumberFromUrl) : DEFAULT_PAGINATION.page;
+  const [page, setPage] = useState<number>(initialPage);
   const debouncedPage = useDebounce(page, 300);
 
   useEffect(() => {
@@ -50,6 +52,7 @@ export const RecipesListGrid = ({ data, pagination, isSuccess, isLoading, type }
         <Pagination pages={pagination?.pages} page={page} setPage={setPage} />
       </Box>
       {isLoading && <RecipesSkeleton limit={DEFAULT_PAGINATION.limit} />}
+      {!isData && <NoRecipesFound />}
       {isData && (
         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 2 }}>
           {data.map((recipe) => (
@@ -59,7 +62,6 @@ export const RecipesListGrid = ({ data, pagination, isSuccess, isLoading, type }
           ))}
         </Grid>
       )}
-      {!isData && <NoRecipesFound />}
       {isPaginationVisible && (
         <Box display="flex" justifyContent="flex-end" alignContent="center" marginTop="20px" marginBottom="20px">
           <Pagination pages={pagination?.pages} page={page} setPage={setPage} />

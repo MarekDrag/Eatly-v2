@@ -8,7 +8,7 @@ export const parseQueryParamsOptions = (options: QueryParamsOptions, possibleFil
 
   return {
     search: options.search,
-    page,
+    page: Number(page),
     ...(filters.length > 0 ? { filters: Object.assign({}, ...filters) } : []),
   };
 };

@@ -1,6 +1,7 @@
 import { ConflictException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 
+import { S3Service } from '../../s3/s3.service';
 import { UserDto } from '../dtos';
 import { UsersRepository } from '../users.repository';
 import { UsersService } from '../users.service';
@@ -9,6 +10,7 @@ import { defaultCreateUserDto, defaultUser } from './users.fixture';
 describe('UsersService', () => {
   let service: UsersService;
   let usersRepo: jest.Mocked<Partial<UsersRepository>>;
+  let s3Service: jest.Mocked<Partial<S3Service>>;
 
   beforeEach(async () => {
     usersRepo = {
@@ -16,8 +18,16 @@ describe('UsersService', () => {
       getUserById: jest.fn(),
       createUser: jest.fn(),
     };
+    s3Service = {
+      deleteFile: jest.fn(),
+      uploadFile: jest.fn(),
+    };
     const module: TestingModule = await Test.createTestingModule({
-      providers: [UsersService, { provide: UsersRepository, useValue: usersRepo }],
+      providers: [
+        UsersService,
+        { provide: UsersRepository, useValue: usersRepo },
+        { provide: S3Service, useValue: s3Service },
+      ],
     }).compile();
 
     service = module.get<UsersService>(UsersService);

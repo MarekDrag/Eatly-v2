@@ -1,3 +1,5 @@
+/// <reference types="vitest"/>
+/// <reference types="vite/client"/>
 import path from 'path';
 import { defineConfig } from 'vite';
 
@@ -23,5 +25,11 @@ export default defineConfig({
       '@pages': path.resolve(__dirname, './src/pages'),
       '@contexts': path.resolve(__dirname, './src/contexts'),
     },
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    css: true,
+    setupFiles: './src/test/setup.ts',
   },
 });

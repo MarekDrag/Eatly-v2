@@ -1,9 +1,9 @@
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 
-import { S3Service } from '@modules/s3';
 import bcrypt from 'bcryptjs';
 import { plainToClass } from 'class-transformer';
 
+import { S3Service } from '../s3/s3.service';
 import { CreateUserDto, UpdateUserDto, UpdateUserPasswordDto, UserDto } from './dtos';
 import { UsersRepository } from './users.repository';
 

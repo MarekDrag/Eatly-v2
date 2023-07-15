@@ -1,6 +1,6 @@
 import { Recipe } from '@api/types';
 import { axios } from '@config/axios';
-import { PaginatedResponseType, resolvePaginatedResponse } from '@utils/options';
+import { PaginatedResponseType, resolvePaginatedResponse } from '@utils/resolvePaginatedResponse';
 
 export const getRecipesRequest = async (params: string) => {
   const url = '/recipes' + params;
