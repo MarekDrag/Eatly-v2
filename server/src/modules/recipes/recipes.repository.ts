@@ -30,8 +30,12 @@ export class RecipesRepository {
         this.on('recipes.id', '=', 'likedRecipes.recipeId').onIn('likedRecipes.userId', [userId]);
       })
       .where('recipes.deletedAt', null)
+      .andWhere('recipes.status', 'public')
       .groupBy('recipes.id');
-    const queryAllRecipesTotal = this.recipes().count('id', { as: 'total' }).where('deletedAt', null);
+    const queryAllRecipesTotal = this.recipes()
+      .count('id', { as: 'total' })
+      .where('deletedAt', null)
+      .andWhere('recipes.status', 'public');
 
     if (options.search) {
       queryAllRecipes.andWhereILike('name', `%${options.search}%`);
@@ -52,6 +56,39 @@ export class RecipesRepository {
     const mappedRecipes = foundRecipes.map((recipe) => ({ ...recipe, isLiked: recipe.isLiked > 0 }));
 
     return resolvePaginatedItems({ items: mappedRecipes, options, totalCount, limit });
+  }
+
+  async getUserRecipes(userId: string, options: Options): Promise<PaginatedResponse<Recipe[]>> {
+    const limit = DEFAULT_PAGINATION.limit;
+    const offset = options.page > 0 ? (options.page - 1) * limit : limit;
+
+    const queryAllRecipes = this.recipes()
+      .select(['id', 'name', 'imgUrl', 'ratingValue', 'reviewsNumber', 'time', 'description', 'status'])
+      .where('deletedAt', null)
+      .andWhere('creatorId', userId);
+    const queryAllRecipesTotal = this.recipes()
+      .count('id', { as: 'total' })
+      .where('deletedAt', null)
+      .andWhere('creatorId', userId);
+
+    if (options.search) {
+      queryAllRecipes.andWhereILike('name', `%${options.search}%`);
+      queryAllRecipesTotal.andWhereILike('name', `%${options.search}%`);
+    }
+
+    if (options.filters) {
+      for (const key in options.filters) {
+        queryAllRecipes.whereIn(key, options.filters[key]);
+        queryAllRecipesTotal.whereIn(key, options.filters[key]);
+      }
+    }
+
+    const [foundRecipes, totalCount] = await Promise.all([
+      queryAllRecipes.offset(offset).limit(limit),
+      queryAllRecipesTotal,
+    ]);
+
+    return resolvePaginatedItems({ items: foundRecipes, options, totalCount, limit });
   }
 
   async createUserRecipeLike(createUserRecipeLikeDto: CreateUserRecipeLikeDto) {

@@ -14,15 +14,16 @@ const RecipeWrapper = styled(Card)({
 });
 
 type Props = {
-  img: string;
+  imgUrl: string | null;
   name: string;
   ratingValue: number;
   reviewsNumber: number;
   time: number;
   description: string;
+  status: 'private' | 'public';
 };
 
-export const Recipe = (props: Props) => {
+export const MyRecipe = (props: Props) => {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -39,7 +40,7 @@ export const Recipe = (props: Props) => {
       <CardMedia
         component="img"
         height="200"
-        image={props.img}
+        image={props.imgUrl || ''}
         alt={props.name}
         onClick={() => navigate('/dashboard/recipes/:1')}
       />
@@ -57,9 +58,12 @@ export const Recipe = (props: Props) => {
         onClick={() => navigate('/dashboard/1recipes/:1')}
         sx={{ display: 'grid', gridTemplateColumns: '80% 1fr' }}
       >
-        <Rating value={props.ratingValue} reviewsNumber={props.reviewsNumber} size="medium" readOnly={true} />{' '}
-        <Chip label="Private" color="secondary" />
-        <Chip label="Public" color="primary" />
+        <Rating value={props.ratingValue} reviewsNumber={props.reviewsNumber} size="medium" readOnly={true} />
+        {props.status === 'private' ? (
+          <Chip label="Private" color="secondary" />
+        ) : (
+          <Chip label="Public" color="primary" />
+        )}
       </CardContent>
     </RecipeWrapper>
   );

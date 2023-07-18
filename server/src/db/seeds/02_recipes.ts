@@ -1,6 +1,8 @@
 import { faker } from '@faker-js/faker';
 import { Knex } from 'knex';
 
+import { UsersArray } from './01_users';
+
 const recipeNames = [
   'Spaghetti Bolognese',
   'Chicken Parmesan',
@@ -24,6 +26,8 @@ const recipeNames = [
   'Apple Pie',
 ];
 
+const usersIds = UsersArray.map((user) => user.id);
+
 const generateRecipe = () => {
   return {
     id: faker.string.uuid(),
@@ -34,6 +38,8 @@ const generateRecipe = () => {
     description: faker.lorem.sentence({ min: 10, max: 50 }),
     type: faker.helpers.arrayElement(['vege', 'meat']),
     meal: faker.helpers.arrayElement(['breakfast', 'dinner', 'lunch', 'snack', 'dessert']),
+    creatorId: faker.helpers.arrayElement(usersIds),
+    status: faker.helpers.arrayElement(['public', 'private']),
     time: Math.floor(Math.random() * 23 + 1) * 5, // random number between 5 and 120 incremented by 5
   };
 };

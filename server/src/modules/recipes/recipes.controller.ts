@@ -4,12 +4,22 @@ import { UserJwtPayload } from '@modules/users';
 import { PaginatedResponse, QueryParamsOptions, Recipe } from '@types';
 
 import { JwtAuthGuard } from '../auth';
-import { CreateUserRecipeLikeDto } from './dtos';
+import { CreateUserRecipeLikeDto, GetUserRecipeDto } from './dtos';
 import { RecipesService } from './recipes.service';
 
 @Controller('recipes')
 export class RecipesController {
   constructor(private recipesService: RecipesService) {}
+
+  @Get('users/:userId')
+  @UseGuards(JwtAuthGuard)
+  async findUserRecipes(
+    @Param()
+    getUserRecipeDto: GetUserRecipeDto,
+    @Query() options?: QueryParamsOptions,
+  ): Promise<PaginatedResponse<Recipe[]>> {
+    return this.recipesService.getUserRecipes(getUserRecipeDto.userId, options);
+  }
 
   @Get()
   @UseGuards(JwtAuthGuard)

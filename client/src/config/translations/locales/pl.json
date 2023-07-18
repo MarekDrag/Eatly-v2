@@ -3,7 +3,7 @@
   "Meal planner": "Planer posiłków",
   "Shopping list": "Lista zakupów",
   "Recipes": "Przepisy",
-  "CookBook": "Książka kucharska",
+  "My recipes": "Moje przepisy",
   "Settings": "Ustawienia",
   "Support": "Wsparcie",
   "FAQ": "FAQ",
@@ -113,5 +113,6 @@
   "Your image has been updated": "Twoje zdjęcie zostało zaktualizowane",
   "Incorrect password provided": "Podałeś złe hasło",
   "The new password must be different from the old one": "Nowe hasło musi różnić się od starego",
-  "No recipes matching your search criteria": "Brak przepisów spełniających kryteria wyszukiwania"
+  "No recipes matching your search criteria": "Brak przepisów spełniających kryteria wyszukiwania",
+  "Add Recipe": "Dodaj Przepis"
 }

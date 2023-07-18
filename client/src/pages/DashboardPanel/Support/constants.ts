@@ -3,7 +3,7 @@ export const problemTypes = [
   'MealPlanner',
   'ShoppingList',
   'Recipes',
-  'Cookbook',
+  'MyRecipes',
   'Settings',
   'FAQ',
   'Login panel',

@@ -8,6 +8,7 @@ export class RecipeDto {
   description: string;
   type: 'meat' | 'vege';
   meal: 'breakfast' | 'lunch' | 'dinner' | 'snack' | 'dessert';
+  creatorId: string;
   createdAt: string;
   deletedAt: string;
 }

@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 
-import { Cookbook } from '@pages/DashboardPanel/Cookbook';
 import { Dashboard } from '@pages/DashboardPanel/Dashboard';
 import { FAQ } from '@pages/DashboardPanel/FAQ';
 import { MealPlanner } from '@pages/DashboardPanel/MealPlanner';
+import { MyRecipes } from '@pages/DashboardPanel/MyRecipes';
 import { RecipeBuilder } from '@pages/DashboardPanel/RecipeBuilder';
 import { RecipeDetails } from '@pages/DashboardPanel/RecipeDetails';
 import { Recipes } from '@pages/DashboardPanel/Recipes';
@@ -20,7 +20,7 @@ export const DashboardRoutes = () => (
     <Route path="/dashboard/recipes/:recipeId" element={<RecipeDetails />} />
     <Route path="/dashboard/new-recipe" element={<RecipeBuilder />} />
     <Route path="/dashboard/support" element={<Support />} />
-    <Route path="/dashboard/cookbook" element={<Cookbook />} />
+    <Route path="/dashboard/my-recipes" element={<MyRecipes />} />
     <Route path="/dashboard/faq" element={<FAQ />} />
     <Route path="/dashboard/settings" element={<Settings />} />
     <Route path="*" element={<Dashboard />} />

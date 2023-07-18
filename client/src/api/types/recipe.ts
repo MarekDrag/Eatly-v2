@@ -6,5 +6,6 @@ export type Recipe = {
   reviewsNumber: number;
   time: number;
   description: string;
+  status: 'private' | 'public';
   isLiked: boolean;
 };

@@ -4,7 +4,7 @@ import { Recipe as RecipeType } from '@api/types';
 import { DEFAULT_PAGINATION } from '@config/constants';
 import { useTranslation } from '@hooks/index';
 import { Unstable_Grid2 as Grid } from '@mui/material';
-import { Box, DataFilters, Recipe, Typography } from '@ui/index';
+import { Box, MyRecipe, Recipe, Typography } from '@ui/index';
 import { PaginationType } from '@utils/resolvePaginatedResponse';
 import { useDebounce } from '@utils/useDebounce';
 import { useUrlParams } from '@utils/useUrlParams';
@@ -18,10 +18,11 @@ type Props = {
   pagination?: PaginationType;
   isSuccess: boolean;
   isLoading: boolean;
-  type: 'recipesList' | 'cookbook';
+  type: 'recipesList' | 'myRecipes';
+  header: JSX.Element;
 };
 
-export const RecipesListGrid = ({ data, pagination, isSuccess, isLoading, type }: Props) => {
+export const RecipesListGrid = ({ data, pagination, isSuccess, isLoading, type, header }: Props) => {
   const { t } = useTranslation();
   const [pageNumberFromUrl, setPageToUrl] = useUrlParams('page');
   const initialPage =
@@ -44,7 +45,7 @@ export const RecipesListGrid = ({ data, pagination, isSuccess, isLoading, type }
 
   return (
     <>
-      <DataFilters />
+      {header}
       <Box display="flex" justifyContent="space-between" alignContent="center" marginTop="20px" marginBottom="20px">
         <Typography variant="h5">
           {t('Recipes')} ({pagination?.total ?? 'Loading..'})
@@ -57,7 +58,11 @@ export const RecipesListGrid = ({ data, pagination, isSuccess, isLoading, type }
         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 2 }}>
           {data.map((recipe) => (
             <Grid xs={12} lg={4} xl={3} key={recipe.id}>
-              {type ? <Recipe {...recipe} key={recipe.id} /> : ''}
+              {type === 'recipesList' ? (
+                <Recipe {...recipe} key={recipe.id} />
+              ) : (
+                <MyRecipe {...recipe} key={recipe.id} />
+              )}
             </Grid>
           ))}
         </Grid>

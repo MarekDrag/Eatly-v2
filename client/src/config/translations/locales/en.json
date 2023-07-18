@@ -3,7 +3,7 @@
   "Meal planner": "Meal planner",
   "Shopping list": "Shopping list",
   "Recipes": "Recipes",
-  "Cookbook": "Cookbook",
+  "My recipes": "My recipes",
   "Settings": "Settings",
   "Support": "Support",
   "FAQ": "FAQ",
@@ -113,5 +113,6 @@
   "Your image has been updated": "Your image has been updated",
   "Incorrect password provided": "Incorrect password provided",
   "The new password must be different from the old one": "New password must be different",
-  "No recipes matching your search criteria": "No recipes matching your search criteria"
+  "No recipes matching your search criteria": "No recipes matching your search criteria",
+  "Add Recipe": "Add Recipe"
 }

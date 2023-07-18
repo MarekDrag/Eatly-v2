@@ -1,13 +1,13 @@
 import { useContext } from 'react';
 
-import { useTranslation } from '@hooks/index';
+import { icons } from '@config/icons';
 import { DrawerContext } from '@contexts/DrawerContext';
+import { useTranslation } from '@hooks/index';
+import { Divider, IconButton } from '@ui/index';
 
 import { DrawerButton } from './DrawerButton';
 import { BackIconBox, ContentWrapper, StyledDrawer } from './DrawerNav.styles';
 import { Logo } from './Logo';
-import { Divider, IconButton } from '@ui/index';
-import { icons } from '@config/icons';
 
 const DESKTOP_DRAWER_WIDTH = 250;
 const MOBILE_DRAWER_WIDTH = 80;
@@ -40,8 +40,8 @@ export const DrawerBody = () => {
         <DrawerButton link="/dashboard/recipes" icon={icons.shoppingList}>
           {t('Recipes')}
         </DrawerButton>
-        <DrawerButton link="/dashboard/cookbook" icon={icons.book}>
-          {t('Cookbook')}
+        <DrawerButton link="/dashboard/my-recipes" icon={icons.book}>
+          {t('My recipes')}
         </DrawerButton>
         <Divider sx={{ width: '80%' }} />
         <DrawerButton link="/dashboard/settings" icon={icons.settings}>

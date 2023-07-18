@@ -59,7 +59,7 @@ export const RecipeBuilder = () => {
           {activeStep === steps.length - 1 ? (
             <>
               <Button onClick={() => navigate('/dashboard/recipes/:1')}>Preview</Button>
-              <Button onClick={() => navigate('/dashboard/cookbook')}>Finish</Button>
+              <Button onClick={() => navigate('/dashboard/my-recipes')}>Finish</Button>
             </>
           ) : (
             <Button onClick={handleNext}> Next</Button>

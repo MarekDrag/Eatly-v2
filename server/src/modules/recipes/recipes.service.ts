@@ -16,6 +16,12 @@ export class RecipesService {
     return this.recipesRepo.getRecipes(userId, parsedOptions);
   }
 
+  async getUserRecipes(userId: string, options: QueryParamsOptions): Promise<PaginatedResponse<Recipe[]>> {
+    const filtersKeys = ['type', 'meal'];
+    const parsedOptions = parseQueryParamsOptions(options, filtersKeys);
+    return this.recipesRepo.getUserRecipes(userId, parsedOptions);
+  }
+
   async addRecipeToUserLiked(createdUserRecipeLikeDto: CreateUserRecipeLikeDto) {
     await this.recipesRepo.createUserRecipeLike(createdUserRecipeLikeDto);
   }
