@@ -1,10 +1,22 @@
-import { Body, Controller, Delete, Get, Param, ParseUUIDPipe, Post, Query, Request, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  ParseUUIDPipe,
+  Patch,
+  Post,
+  Query,
+  Request,
+  UseGuards,
+} from '@nestjs/common';
 
 import { UserJwtPayload } from '@modules/users';
 import { PaginatedResponse, QueryParamsOptions, Recipe } from '@types';
 
 import { JwtAuthGuard } from '../auth';
-import { CreateUserRecipeLikeDto, GetUserRecipeDto } from './dtos';
+import { CreateUserRecipeLikeDto, GetUserRecipesDto, UpdateRecipeDto } from './dtos';
 import { RecipesService } from './recipes.service';
 
 @Controller('recipes')
@@ -15,7 +27,7 @@ export class RecipesController {
   @UseGuards(JwtAuthGuard)
   async findUserRecipes(
     @Param()
-    getUserRecipeDto: GetUserRecipeDto,
+    getUserRecipeDto: GetUserRecipesDto,
     @Query() options?: QueryParamsOptions,
   ): Promise<PaginatedResponse<Recipe[]>> {
     return this.recipesService.getUserRecipes(getUserRecipeDto.userId, options);
@@ -29,6 +41,27 @@ export class RecipesController {
     @Query() options?: QueryParamsOptions,
   ): Promise<PaginatedResponse<Recipe[]>> {
     return this.recipesService.getRecipes(req.user.id, options);
+  }
+
+  @Patch('/:recipeId')
+  @UseGuards(JwtAuthGuard)
+  async patchRecipe(
+    @Request() req: UserJwtPayload,
+    @Param('recipeId', ParseUUIDPipe) recipeId,
+    @Body()
+    updateRecipeDto: UpdateRecipeDto,
+  ) {
+    await this.recipesService.patchRecipe(req.user.id, recipeId, updateRecipeDto);
+  }
+
+  @Delete('/:recipeId')
+  @UseGuards(JwtAuthGuard)
+  async deleteUserRecipe(
+    @Request()
+    req: UserJwtPayload,
+    @Param('recipeId', ParseUUIDPipe) recipeId,
+  ) {
+    await this.recipesService.deleteUserRecipe({ userId: req.user.id, recipeId });
   }
 
   @Post('/liked')

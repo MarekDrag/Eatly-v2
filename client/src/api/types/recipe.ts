@@ -8,4 +8,5 @@ export type Recipe = {
   description: string;
   status: 'private' | 'public';
   isLiked: boolean;
+  createdAt: string;
 };

@@ -41,11 +41,12 @@ const generateRecipe = () => {
     creatorId: faker.helpers.arrayElement(usersIds),
     status: faker.helpers.arrayElement(['public', 'private']),
     time: Math.floor(Math.random() * 23 + 1) * 5, // random number between 5 and 120 incremented by 5
+    createdAt: faker.date.between({ from: '2020-01-01T00:00:00.000Z', to: '2023-06-01T00:00:00.000Z' }),
   };
 };
 
 const generateRecipesArray = () => {
-  return Array.from({ length: 120 }, generateRecipe);
+  return Array.from({ length: 300 }, generateRecipe);
 };
 
 export const RecipesArray = generateRecipesArray();

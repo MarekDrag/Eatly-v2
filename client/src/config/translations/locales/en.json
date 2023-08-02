@@ -114,5 +114,17 @@
   "Incorrect password provided": "Incorrect password provided",
   "The new password must be different from the old one": "New password must be different",
   "No recipes matching your search criteria": "No recipes matching your search criteria",
-  "Add Recipe": "Add Recipe"
+  "Add Recipe": "Add Recipe",
+  "Promote": "Public",
+  "Public": "Public",
+  "Private": "Private",
+  "Edit": "Edit",
+  "Delete recipe": "Delete recipe",
+  "Are you sure you want to delete this recipe? This action is irreversible.": "Are you sure you want to delete this recipe? This action is irreversible.",
+  "Creation date": "Creation date",
+  "Public recipe": "Public recipe",
+  "Are you sure you want to public this recipe? This action is irreversible.": "Are you sure you want to public this recipe? This action is irreversible.",
+  "Warning! When you set recipe as public, you will not be able to edit, set it to private or delete!": "Warning! When you set recipe as public, you will not be able to edit, set it to private or delete!",
+  "Recipe updated!": "Recipe updated!",
+  "Recipe deleted": "Recipe deleted"
 }

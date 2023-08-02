@@ -6,7 +6,7 @@ import { resolvePaginatedItems } from '@utils/resolvePaginatedItems';
 import { Knex } from 'knex';
 import { InjectKnex, Knex as KnexModule } from 'nestjs-knex';
 
-import { CreateUserRecipeLikeDto, DeleteLikedRecipeDto } from './dtos';
+import { CreateUserRecipeLikeDto, DeleteLikedRecipeDto, DeleteUserRecipeDto, UpdateRecipeDto } from './dtos';
 
 @Injectable()
 export class RecipesRepository {
@@ -63,9 +63,10 @@ export class RecipesRepository {
     const offset = options.page > 0 ? (options.page - 1) * limit : limit;
 
     const queryAllRecipes = this.recipes()
-      .select(['id', 'name', 'imgUrl', 'ratingValue', 'reviewsNumber', 'time', 'description', 'status'])
+      .select(['id', 'name', 'imgUrl', 'ratingValue', 'reviewsNumber', 'time', 'description', 'status', 'createdAt'])
       .where('deletedAt', null)
-      .andWhere('creatorId', userId);
+      .andWhere('creatorId', userId)
+      .orderBy('createdAt');
     const queryAllRecipesTotal = this.recipes()
       .count('id', { as: 'total' })
       .where('deletedAt', null)
@@ -89,6 +90,21 @@ export class RecipesRepository {
     ]);
 
     return resolvePaginatedItems({ items: foundRecipes, options, totalCount, limit });
+  }
+
+  async getRecipeStatus(userId: string, recipeId: string): Promise<'public' | 'private'> {
+    return this.recipes().select('status').where('creatorId', userId).andWhere('id', recipeId);
+  }
+
+  async patchRecipe(userId: string, recipeId: string, updateRecipeDto: UpdateRecipeDto) {
+    await this.recipes().where('creatorId', userId).andWhere('id', recipeId).update(updateRecipeDto);
+  }
+
+  async deleteUserRecipe({ userId, recipeId }: DeleteUserRecipeDto) {
+    await this.recipes()
+      .where('creatorId', userId)
+      .andWhere('id', recipeId)
+      .update('deletedAt', new Date().toISOString());
   }
 
   async createUserRecipeLike(createUserRecipeLikeDto: CreateUserRecipeLikeDto) {

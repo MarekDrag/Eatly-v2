@@ -4,8 +4,7 @@ import { useMeQuery } from '@api/me';
 import { useUserRecipesQuery } from '@api/recipes/hooks/useUserRecipesQuery';
 import { icons } from '@config/icons';
 import { useTranslation } from '@hooks/index';
-import { Box } from '@mui/material';
-import { DataFilters, RecipesListGrid } from '@ui/index';
+import { DataFilters, RecipesListGrid, Box } from '@ui/index';
 
 import { AddRecipeButton, HeaderActionsBox } from './MyRecipes.styles';
 
@@ -13,6 +12,7 @@ export const MyRecipes = () => {
   const { t } = useTranslation();
   const { search } = useLocation();
   const navigate = useNavigate();
+
   const me = useMeQuery();
   const { data, isLoading, isSuccess } = useUserRecipesQuery({
     params: search,

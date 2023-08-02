@@ -41,7 +41,7 @@ export const Recipe = (props: Props) => {
         <Typography gutterBottom variant="h5">
           {props.name}
         </Typography>
-        <Typography variant="body2" color="text.secondary" height="80px">
+        <Typography variant="body2" height="100px">
           {description}
         </Typography>
         <Rating value={props.ratingValue} reviewsNumber={props.reviewsNumber} size="medium" readOnly={true} />

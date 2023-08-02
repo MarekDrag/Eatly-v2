@@ -4,7 +4,7 @@ import { Recipe as RecipeType } from '@api/types';
 import { DEFAULT_PAGINATION } from '@config/constants';
 import { useTranslation } from '@hooks/index';
 import { Unstable_Grid2 as Grid } from '@mui/material';
-import { Box, MyRecipe, Recipe, Typography } from '@ui/index';
+import { Box, Recipe, Typography } from '@ui/index';
 import { PaginationType } from '@utils/resolvePaginatedResponse';
 import { useDebounce } from '@utils/useDebounce';
 import { useUrlParams } from '@utils/useUrlParams';
@@ -12,6 +12,7 @@ import { useUrlParams } from '@utils/useUrlParams';
 import { NoRecipesFound } from './components/NoRecipesFound';
 import { Pagination } from './components/Pagination';
 import { RecipesSkeleton } from './components/RecipesSkeleton';
+import { MyRecipe } from '@pages/DashboardPanel/MyRecipes/MyRecipe';
 
 type Props = {
   data: RecipeType[];
@@ -57,7 +58,7 @@ export const RecipesListGrid = ({ data, pagination, isSuccess, isLoading, type, 
       {isData && (
         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 2 }}>
           {data.map((recipe) => (
-            <Grid xs={12} lg={4} xl={3} key={recipe.id}>
+            <Grid sm={12} md={6} lg={4} xl={3} key={recipe.id}>
               {type === 'recipesList' ? (
                 <Recipe {...recipe} key={recipe.id} />
               ) : (

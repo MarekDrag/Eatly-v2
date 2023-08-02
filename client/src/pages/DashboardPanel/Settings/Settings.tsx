@@ -18,6 +18,19 @@ export const Settings = () => {
     setValue(selectedValue);
   };
 
+  const renderTab = () => {
+    switch (value) {
+      case 'Account':
+        return <Account />;
+      case 'Password':
+        return <Password />;
+      case 'Preferences':
+        return <Preferences />;
+      default:
+        return <Account />;
+    }
+  };
+
   return (
     <>
       <Box sx={{ marginLeft: '10%', marginRight: '10%' }}>
@@ -43,11 +56,7 @@ export const Settings = () => {
             </ListItemButton>
           </List>
         </Paper>
-        <Paper>
-          {value === 'Account' && <Account />}
-          {value === 'Password' && <Password />}
-          {value === 'Preferences' && <Preferences />}
-        </Paper>
+        <Paper>{renderTab()}</Paper>
       </Wrapper>
     </>
   );

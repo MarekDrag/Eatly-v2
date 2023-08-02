@@ -9,6 +9,7 @@ export class RecipeDto {
   type: 'meat' | 'vege';
   meal: 'breakfast' | 'lunch' | 'dinner' | 'snack' | 'dessert';
   creatorId: string;
+  status: 'private' | 'public';
   createdAt: string;
   deletedAt: string;
 }

@@ -114,5 +114,17 @@
   "Incorrect password provided": "Podałeś złe hasło",
   "The new password must be different from the old one": "Nowe hasło musi różnić się od starego",
   "No recipes matching your search criteria": "Brak przepisów spełniających kryteria wyszukiwania",
-  "Add Recipe": "Dodaj Przepis"
+  "Add Recipe": "Dodaj Przepis",
+  "Promote": "Upublicznij",
+  "Public": "Publiczny",
+  "Private": "Prywatny",
+  "Edit": "Edytuj",
+  "Delete recipe": "Usuń przepis",
+  "Are you sure you want to delete this recipe? This action is irreversible.": "Czy na pewno chcesz usunąć ten przepis? Ta operacja jest nieodwracalna.",
+  "Creation date": "Data utworzenia",
+  "Public recipe": "Upublicznij przepis",
+  "Are you sure you want to public this recipe? This action is irreversible.": "Czy na pewno chcesz uczynić ten przepis publicznym? Ta operacja jest nieodwracalna.",
+  "Warning! When you set recipe as public, you will not be able to edit, set it to private, or delete!": "Ostrzeżenie! Gdy przepis zostanie ustawiony jako publiczny, nie będzie można go edytować, zmienić na prywatny ani usunąć!",
+  "Recipe updated!": "Przepis zaktualizowany!",
+  "Recipe deleted": "Przepis usunięty"
 }

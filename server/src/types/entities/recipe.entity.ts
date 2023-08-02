@@ -8,6 +8,7 @@ export class Recipe {
   description: string;
   type: 'meat' | 'vege';
   meal: 'breakfast' | 'lunch' | 'dinner' | 'snack' | 'dessert';
+  status: 'public' | 'private';
   createdAt: string;
   deletedAt: string;
 }

@@ -7,5 +7,5 @@ const ingredientsOptions = ['Breakfast', 'Lunch', 'Dinner', 'Dessert', 'Snack'];
 export const IngredientSelect = () => {
   const { t } = useTranslation();
 
-  return <Select items={ingredientsOptions} label={t('Ingredient')} id="ingredient-select" />;
+  return <Select items={ingredientsOptions} label={t('Ingredients')} id="ingredient-select" />;
 };
