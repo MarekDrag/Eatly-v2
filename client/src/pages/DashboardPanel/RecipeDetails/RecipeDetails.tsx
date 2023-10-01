@@ -1,14 +1,12 @@
 import { useNavigate, useParams } from 'react-router-dom';
 
+import { useRecipeDetailsQuery } from '@api/recipeDetails';
 import { icons } from '@config/icons';
 import { useTranslation } from '@hooks/index';
+import { Divider } from '@ui/index';
 
 import { Comments, Details, Ingredients, RecipeSteps } from './Components';
-import { RecipeDetailsWrapper, Image, BackButton, StyledPaper } from './RecipeDetails.styles';
-import { data } from './data';
-import { useRecipeDetailsQuery } from '@api/recipeDetails';
-
-const props = data;
+import { RecipeDetailsWrapper, Image, BackButton, StyledBox, StyledPaper } from './RecipeDetails.styles';
 
 export const RecipeDetails = () => {
   const { t } = useTranslation();
@@ -21,33 +19,34 @@ export const RecipeDetails = () => {
   }
 
   return (
-    <>
+    <StyledPaper>
       <BackButton onClick={() => navigate(-1)} startIcon={icons.arrowBack}>
         {t('Back')}
       </BackButton>
       <RecipeDetailsWrapper>
-        <StyledPaper>
+        <StyledBox>
           <Details
-            name=""
-            description=""
+            name={data.name}
+            description={data.description}
             ratingValue={data.ratingValue}
             reviewsNumber={data.reviewsNumber}
-            persons={data.personsNumber}
-            cookingTime={data.time}
+            persons={data.persons}
+            cookingTime={data.cookingTime}
             calories={data.calories}
           />
-        </StyledPaper>
-        <Image src={props.img} alt={props.name} />
-        <StyledPaper>
+        </StyledBox>
+        <Image src={data.imgUrl ?? undefined} alt={data.name} />
+        <StyledBox>
           <Ingredients ingredients={data.ingredients} />
-        </StyledPaper>
-        <StyledPaper>
+        </StyledBox>
+        <StyledBox>
           <RecipeSteps steps={data.steps} />
-        </StyledPaper>
-        {/* <StyledPaper>
-          <Comments />
-        </StyledPaper> */}
+        </StyledBox>
       </RecipeDetailsWrapper>
-    </>
+      <StyledBox marginTop="20px">
+        <Divider style={{ marginBottom: 20 }} role="presentation" />
+        <Comments comments={data.comments} />
+      </StyledBox>
+    </StyledPaper>
   );
 };

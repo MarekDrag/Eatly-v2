@@ -126,5 +126,6 @@
   "Are you sure you want to public this recipe? This action is irreversible.": "Are you sure you want to public this recipe? This action is irreversible.",
   "Warning! When you set recipe as public, you will not be able to edit, set it to private or delete!": "Warning! When you set recipe as public, you will not be able to edit, set it to private or delete!",
   "Recipe updated!": "Recipe updated!",
-  "Recipe deleted": "Recipe deleted"
+  "Recipe deleted": "Recipe deleted",
+  "Preparation step by step": "Preparation step by step"
 }

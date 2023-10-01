@@ -25,19 +25,19 @@ export const Details = ({ name, calories, ratingValue, reviewsNumber, cookingTim
         </Typography>
       </Title>
       <Row>
-        <Rating value={ratingValue} reviewsNumber={reviewsNumber} size="small" />
-        <Typography variant="body1" fontWeight={500} color="text.primary">
+        <Rating value={ratingValue} reviewsNumber={reviewsNumber} size="large" />
+        <Typography variant="h6" fontWeight={500} color="text.primary">
           {t('calories')}: {calories}
         </Typography>
         <IconWithNumber color="text.primary">
           {icons.clock}
-          <Typography variant="body1" fontWeight={500} color="text.primary">
+          <Typography variant="h6" fontWeight={500} color="text.primary">
             {cookingTime}
           </Typography>
         </IconWithNumber>
         <IconWithNumber color="text.primary">
           {icons.person}
-          <Typography variant="body1" fontWeight={500} color="text.primary">
+          <Typography variant="h6" fontWeight={500} color="text.primary">
             {persons}
           </Typography>
         </IconWithNumber>

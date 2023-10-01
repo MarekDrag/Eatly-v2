@@ -4,7 +4,6 @@ import { Box } from '@ui/index';
 
 export const RatingWrapper = styled(Box)({
   display: 'flex',
-  justifyContent: 'space-between',
   alignItems: 'center',
 });
 

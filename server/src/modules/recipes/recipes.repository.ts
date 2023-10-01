@@ -1,21 +1,62 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 
 import { DEFAULT_PAGINATION } from '@config/constants';
-import { LikedRecipe, Options, PaginatedResponse, Recipe } from '@types';
+import { LikedRecipe, Options, PaginatedResponse, Recipe, RecipeComment, RecipeIngredient } from '@types';
 import { resolvePaginatedItems } from '@utils/resolvePaginatedItems';
 import { Knex } from 'knex';
 import { InjectKnex, Knex as KnexModule } from 'nestjs-knex';
 
-import { CreateUserRecipeLikeDto, DeleteLikedRecipeDto, DeleteUserRecipeDto, UpdateRecipeDto } from './dtos';
+import { CreateUserRecipeLikeDto, DeleteLikedRecipeDto, DeleteUserRecipeDto, RecipeDto, UpdateRecipeDto } from './dtos';
 
 @Injectable()
 export class RecipesRepository {
   private recipes: () => Knex.QueryBuilder<Recipe>;
   private likedRecipes: () => Knex.QueryBuilder<LikedRecipe>;
+  private recipesIngredients: () => Knex.QueryBuilder<RecipeIngredient>;
+  private recipesComments: () => Knex.QueryBuilder<RecipeComment>;
 
   constructor(@InjectKnex() knex: KnexModule) {
     this.recipes = () => knex<Recipe>('recipes');
     this.likedRecipes = () => knex<LikedRecipe>('likedRecipes');
+    this.recipesIngredients = () => knex<RecipeIngredient>('recipesIngredients');
+    this.recipesComments = () => knex<RecipeComment>('recipesComments');
+  }
+
+  async getRecipe(recipeId): Promise<RecipeDto> {
+    const recipe = await this.recipes().where('id', recipeId).first();
+
+    if (!recipe) {
+      throw new NotFoundException(`Recipe with ID ${recipeId} not found.`);
+    }
+
+    const ingredients = await this.recipesIngredients()
+      .select('ingredients.id', 'ingredients.measure', 'ingredients.name', 'amount')
+      .where('recipe_id', recipeId)
+      .join('ingredients', 'recipes_ingredients.ingredient_id', 'ingredients.id');
+    const recipeComments = await this.recipesComments()
+      .select(
+        'recipes_comments.likes',
+        'recipes_comments.content',
+        'recipes_comments.createdAt',
+        'users.firstName',
+        'users.lastName',
+        'users.imgUrl',
+      )
+      .join('users', 'recipes_comments.user_id', 'users.id')
+      .where('recipe_id', recipeId);
+    const comments = recipeComments.map(({ firstName, lastName, imgUrl, ...comment }) => ({
+      author: `${firstName} ${lastName}`,
+      authorAvatar: imgUrl,
+      ...comment,
+    }));
+
+    const recipeDTO: RecipeDto = {
+      ...recipe,
+      ingredients,
+      comments,
+    };
+
+    return recipeDTO;
   }
 
   async getRecipes(userId: string, options: Options): Promise<PaginatedResponse<Recipe[]>> {

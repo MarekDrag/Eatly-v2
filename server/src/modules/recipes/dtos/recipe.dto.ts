@@ -1,3 +1,5 @@
+import { Ingredient, RecipeComment } from '@types';
+
 export class RecipeDto {
   id: string;
   imgUrl: string | null;
@@ -8,6 +10,8 @@ export class RecipeDto {
   description: string;
   type: 'meat' | 'vege';
   meal: 'breakfast' | 'lunch' | 'dinner' | 'snack' | 'dessert';
+  ingredients: Ingredient[];
+  comments: RecipeComment[];
   creatorId: string;
   status: 'private' | 'public';
   createdAt: string;

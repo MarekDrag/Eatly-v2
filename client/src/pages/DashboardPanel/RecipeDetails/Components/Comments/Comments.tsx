@@ -1,30 +1,27 @@
+import * as dayjs from 'dayjs';
+
+import { Comment } from '@api/types';
 import { useTranslation } from '@hooks/index';
 import { Avatar, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
 import { Typography } from '@ui/index';
 
 type Props = {
-  comments: {
-    author: string;
-    createdAt: string;
-    imgHref: string;
-    likes: number;
-    content: string;
-  }[];
+  comments: Comment[];
 };
 
-export const Comments = () => {
+export const Comments = ({ comments }: Props) => {
   const { t } = useTranslation();
-  return null;
+
   return (
     <>
       <Typography variant="h5" fontWeight="500" color="text.primary">
-        {comments.length} {t('Comments')}
+        {t('Comments')} ({comments.length})
       </Typography>
       {comments.map((comment) => (
         <>
           <ListItem alignItems="flex-start">
             <ListItemAvatar>
-              <Avatar alt="Remy Sharp" src={comment.imgHref} />
+              <Avatar alt="Remy Sharp" src={comment.authorAvatar} />
             </ListItemAvatar>
             <ListItemText
               primary={
@@ -33,7 +30,7 @@ export const Comments = () => {
                     {comment.author}
                   </Typography>
                   <Typography variant="caption" color="text.primary">
-                    {comment.createdAt}
+                    {dayjs(comment.createdAt).format('DD MMMM YYYY')}
                   </Typography>
                 </>
               }

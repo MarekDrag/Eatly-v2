@@ -1,6 +1,6 @@
 import { icons } from '@config/icons';
 import { useTranslation } from '@hooks/index';
-import { data } from '@pages/DashboardPanel/RecipeDetails/data';
+import { data } from '@pages/DashboardPanel/MealPlanner/Planner/Meals/data';
 
 import { meals } from '../../constants';
 import { MealBox, Text, Image } from './Meals.styles';

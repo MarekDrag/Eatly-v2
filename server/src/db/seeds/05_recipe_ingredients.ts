@@ -15,11 +15,11 @@ const generateRecipeIngredients = (): RecipeIngredient => {
 };
 
 const generateRecipeIngredientsArray = () => {
-  return Array.from({ length: 500 }, generateRecipeIngredients);
+  return Array.from({ length: 3000 }, generateRecipeIngredients);
 };
 
 const RecipeIngredientsArray = generateRecipeIngredientsArray();
 
 export async function seed(knex: Knex): Promise<void> {
-  await knex('recipe_ingredients').insert(RecipeIngredientsArray).onConflict(['id']).merge();
+  await knex('recipes_ingredients').insert(RecipeIngredientsArray).onConflict(['id']).merge();
 }

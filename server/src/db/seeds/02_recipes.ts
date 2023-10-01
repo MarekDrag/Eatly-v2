@@ -48,6 +48,8 @@ const generateRecipe = () => {
     status: faker.helpers.arrayElement(['public', 'private']),
     cookingTime: Math.floor(Math.random() * 23 + 1) * 5, // random number between 5 and 120 incremented by 5
     steps: STEPS,
+    calories: faker.number.int({ min: 1, max: 1000 }),
+    persons: faker.number.int({ min: 1, max: 4 }),
     createdAt: faker.date.between({ from: '2020-01-01T00:00:00.000Z', to: '2023-06-01T00:00:00.000Z' }),
   };
 };

@@ -126,5 +126,6 @@
   "Are you sure you want to public this recipe? This action is irreversible.": "Czy na pewno chcesz uczynić ten przepis publicznym? Ta operacja jest nieodwracalna.",
   "Warning! When you set recipe as public, you will not be able to edit, set it to private, or delete!": "Ostrzeżenie! Gdy przepis zostanie ustawiony jako publiczny, nie będzie można go edytować, zmienić na prywatny ani usunąć!",
   "Recipe updated!": "Przepis zaktualizowany!",
-  "Recipe deleted": "Przepis usunięty"
+  "Recipe deleted": "Przepis usunięty",
+  "Preparation step by step": "Przygotowanie krok po kroku"
 }

@@ -25,7 +25,8 @@ export async function up(knex: Knex): Promise<void> {
     tb.integer('cooking_time').notNullable();
     tb.float('rating_value').notNullable().defaultTo(0);
     tb.integer('reviews_number').notNullable().defaultTo(0);
-    tb.integer('persons').notNullable().defaultTo(0);
+    tb.integer('persons').notNullable().defaultTo(1);
+    tb.integer('calories').notNullable().defaultTo(0);
     tb.text('img_url').defaultTo(null);
     tb.enum('type', ['meat', 'vege']).notNullable();
     tb.uuid('creator_id').notNullable().references('id').inTable('users').onDelete('CASCADE').onUpdate('CASCADE');
@@ -34,6 +35,12 @@ export async function up(knex: Knex): Promise<void> {
     tb.jsonb('steps').notNullable();
     tb.dateTime('created_at', { useTz: false }).notNullable().defaultTo(knex.fn.now());
     tb.dateTime('deleted_at', { useTz: false });
+  });
+
+  await knex.schema.createTable('ingredients', (tb) => {
+    tb.uuid('id', { primaryKey: true }).defaultTo(knex.raw('uuid_generate_v4()'));
+    tb.string('measure').notNullable();
+    tb.string('name').notNullable();
   });
 
   await knex.schema.createTable('liked_recipes', (tb) => {
@@ -51,13 +58,7 @@ export async function up(knex: Knex): Promise<void> {
     tb.dateTime('created_at', { useTz: false }).notNullable().defaultTo(knex.fn.now());
   });
 
-  await knex.schema.createTable('ingredients', (tb) => {
-    tb.uuid('id', { primaryKey: true }).defaultTo(knex.raw('uuid_generate_v4()'));
-    tb.string('measure').notNullable();
-    tb.string('name').notNullable();
-  });
-
-  await knex.schema.createTable('recipe_ingredients', (tb) => {
+  await knex.schema.createTable('recipes_ingredients', (tb) => {
     tb.uuid('id', { primaryKey: true }).defaultTo(knex.raw('uuid_generate_v4()'));
     tb.integer('amount').notNullable();
     tb.uuid('recipe_id').notNullable().references('id').inTable('recipes').onDelete('CASCADE').onUpdate('CASCADE');

@@ -21,7 +21,7 @@ export const RecipeSteps = ({ steps }: Props) => {
   return (
     <>
       <Typography variant="h5" fontWeight="500" color="text.primary">
-        {t('Recipe')}
+        {t('Preparation step by step')}
       </Typography>
       {sortedSteps.map((step) => (
         <>

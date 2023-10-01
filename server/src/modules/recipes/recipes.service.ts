@@ -3,12 +3,16 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { PaginatedResponse, QueryParamsOptions, Recipe } from '@types';
 import { parseQueryParamsOptions } from '@utils/parseQueryParamsOptions';
 
-import { CreateUserRecipeLikeDto, DeleteLikedRecipeDto, DeleteUserRecipeDto, UpdateRecipeDto } from './dtos';
+import { CreateUserRecipeLikeDto, DeleteLikedRecipeDto, DeleteUserRecipeDto, RecipeDto, UpdateRecipeDto } from './dtos';
 import { RecipesRepository } from './recipes.repository';
 
 @Injectable()
 export class RecipesService {
   constructor(private recipesRepo: RecipesRepository) {}
+
+  async getRecipe(recipeId: string): Promise<RecipeDto> {
+    return this.recipesRepo.getRecipe(recipeId);
+  }
 
   async getRecipes(userId: string, options: QueryParamsOptions): Promise<PaginatedResponse<Recipe[]>> {
     const filtersKeys = ['type', 'meal'];

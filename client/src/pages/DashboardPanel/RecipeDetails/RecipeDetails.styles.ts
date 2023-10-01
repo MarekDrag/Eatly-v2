@@ -1,12 +1,21 @@
 import { styled } from '@mui/material';
-import { Button, Paper, Box } from '@ui/index';
+import { Button, Box, Paper } from '@ui/index';
 
-export const RecipeDetailsWrapper = styled(Box)({
+export const StyledPaper = styled(Paper)({
+  display: 'flex',
+  justifyContent: 'start',
+});
+
+export const RecipeDetailsWrapper = styled(Box)(({ theme }) => ({
   display: 'grid',
   gridTemplateColumns: '1fr 1fr',
-  columnGap: 5,
-  rowGap: 5,
-});
+  gap: 20,
+  padding: '0 100px',
+  [theme.breakpoints.down('xl')]: {
+    gridTemplateColumns: '1fr',
+    padding: 0,
+  },
+}));
 
 export const Image = styled('img')(({ theme }) => ({
   width: '100%',
@@ -14,7 +23,7 @@ export const Image = styled('img')(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
 }));
 
-export const StyledPaper = styled(Paper)({
+export const StyledBox = styled(Box)({
   display: 'flex',
   flexWrap: 'wrap',
   alignContent: 'flex-start',
@@ -22,8 +31,11 @@ export const StyledPaper = styled(Paper)({
 });
 
 export const BackButton = styled(Button)(({ theme }) => ({
-  marginBottom: 10,
   textTransform: 'none',
   border: '2px solid',
   borderColor: theme.palette.primary.main,
+  transition: '0.3s ease-out',
+  '&:hover': {
+    backgroundColor: theme.palette.mode === 'light' ? theme.palette.primary.light : '',
+  },
 }));

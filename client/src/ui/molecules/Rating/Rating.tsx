@@ -1,5 +1,5 @@
 import { RatingProps } from '@mui/material';
-import { Box, Typography } from '@ui/index';
+import { Typography } from '@ui/index';
 
 import { RatingWrapper, StyledRating, EmptyIcon } from './Rating.styles';
 
@@ -10,12 +10,10 @@ type Props = {
 export const Rating = ({ reviewsNumber, ...props }: Props) => {
   return (
     <RatingWrapper color="text.secondary">
-      <Box display="flex">
-        <StyledRating precision={0.5} emptyIcon={<EmptyIcon fontSize={'inherit'} />} {...props} />
-        <Typography variant="body1" marginLeft={1}>
-          ({reviewsNumber})
-        </Typography>
-      </Box>
+      <StyledRating precision={0.5} emptyIcon={<EmptyIcon fontSize={'inherit'} />} {...props} />
+      <Typography variant="body1" marginLeft={1}>
+        ({reviewsNumber})
+      </Typography>
     </RatingWrapper>
   );
 };

@@ -9,6 +9,15 @@ export type Ingredient = {
   name: string;
 };
 
+export type Comment = {
+  id: string;
+  author: string;
+  authorAvatar: string;
+  likes: number;
+  content: string;
+  createdAt: Date;
+};
+
 export type Recipe = {
   id: string;
   name: string;
@@ -24,14 +33,7 @@ export type Recipe = {
   calories: number;
   isLiked: boolean;
   createdAt: string;
+  comments: Comment[];
   steps: Step[];
   ingredients: Ingredient[];
-};
-
-export type Comment = {
-  author: string;
-  authorAvatar: string;
-  likes: number;
-  content: string;
-  createdAt: string;
 };
