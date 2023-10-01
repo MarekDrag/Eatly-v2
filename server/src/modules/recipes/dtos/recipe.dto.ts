@@ -4,7 +4,7 @@ export class RecipeDto {
   name: string;
   ratingValue: number;
   reviewsNumber: number;
-  time: number;
+  cookingTime: number;
   description: string;
   type: 'meat' | 'vege';
   meal: 'breakfast' | 'lunch' | 'dinner' | 'snack' | 'dessert';

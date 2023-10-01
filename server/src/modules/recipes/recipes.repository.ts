@@ -23,7 +23,7 @@ export class RecipesRepository {
     const offset = options.page > 0 ? (options.page - 1) * limit : limit;
 
     const queryAllRecipes = this.recipes()
-      .select(['recipes.id', 'name', 'imgUrl', 'ratingValue', 'reviewsNumber', 'time', 'description'])
+      .select(['recipes.id', 'name', 'imgUrl', 'ratingValue', 'reviewsNumber', 'cookingTime', 'description'])
       .count('likedRecipes.id', { as: 'isLiked' })
       .from('recipes')
       .leftJoin('likedRecipes', function () {
@@ -63,7 +63,17 @@ export class RecipesRepository {
     const offset = options.page > 0 ? (options.page - 1) * limit : limit;
 
     const queryAllRecipes = this.recipes()
-      .select(['id', 'name', 'imgUrl', 'ratingValue', 'reviewsNumber', 'time', 'description', 'status', 'createdAt'])
+      .select([
+        'id',
+        'name',
+        'imgUrl',
+        'ratingValue',
+        'reviewsNumber',
+        'cookingTime',
+        'description',
+        'status',
+        'createdAt',
+      ])
       .where('deletedAt', null)
       .andWhere('creatorId', userId)
       .orderBy('createdAt');

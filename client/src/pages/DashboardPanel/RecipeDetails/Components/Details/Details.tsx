@@ -42,7 +42,6 @@ export const Details = ({ name, calories, ratingValue, reviewsNumber, cookingTim
           </Typography>
         </IconWithNumber>
       </Row>
-
       <Typography variant="body1" color="text.primary">
         {description}
       </Typography>

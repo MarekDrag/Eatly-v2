@@ -12,9 +12,9 @@ type Props = {
   }[];
 };
 
-export const Comments = ({ comments }: Props) => {
+export const Comments = () => {
   const { t } = useTranslation();
-
+  return null;
   return (
     <>
       <Typography variant="h5" fontWeight="500" color="text.primary">

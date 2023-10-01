@@ -42,10 +42,10 @@ export const MyRecipe = (props: Props) => {
   const createdAtDate = new Date(props.createdAt);
 
   return (
-    <RecipeWrapper>
+    <RecipeWrapper style={{ height: '100%' }}>
       <CardMedia
         component="img"
-        height="200"
+        height="300"
         image={props.imgUrl || ''}
         alt={props.name}
         onClick={() => navigate('/dashboard/recipes/:1')}
@@ -54,7 +54,7 @@ export const MyRecipe = (props: Props) => {
         action={<IconButton onClick={handleOpenMenu} name="actions" />}
         title={props.name}
         subheader={`${t('Creation date')}: ${createdAtDate.toDateString()}`}
-        style={{ height: 70, display: 'flex', alignItems: 'flex-start' }}
+        style={{ height: 80, display: 'flex', alignItems: 'flex-start' }}
       />
       <Menu anchorEl={anchorEl} open={!!anchorEl} onClose={handleCloseMenu}>
         <MenuItem onClick={() => openModal('public')} disabled={isRecipePublic}>

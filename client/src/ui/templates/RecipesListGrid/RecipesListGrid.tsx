@@ -58,7 +58,7 @@ export const RecipesListGrid = ({ data, pagination, isSuccess, isLoading, type, 
       {isData && (
         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 2 }}>
           {data.map((recipe) => (
-            <Grid sm={12} md={6} lg={4} xl={3} key={recipe.id}>
+            <Grid sm={12} md={6} lg={4} key={recipe.id}>
               {type === 'recipesList' ? (
                 <Recipe {...recipe} key={recipe.id} />
               ) : (

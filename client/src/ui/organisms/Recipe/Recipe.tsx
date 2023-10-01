@@ -26,22 +26,22 @@ type Props = {
 export const Recipe = (props: Props) => {
   const navigate = useNavigate();
 
-  const description = props.description.length > 120 ? `${props.description.slice(0, 120)}...` : props.description;
+  const description = props.description.length > 100 ? `${props.description.slice(0, 100)}...` : props.description;
 
   return (
-    <RecipeWrapper sx={{ width: '100%' }}>
+    <RecipeWrapper sx={{ width: '100%', height: '100%' }}>
       <CardMedia
         component="img"
-        height="200"
+        height="300"
         image={props.imgUrl || ''}
         alt={props.name}
         onClick={() => navigate(`/dashboard/recipes/${props.id}`)}
       />
       <CardContent onClick={() => navigate(`/dashboard/recipes/${props.id}`)}>
-        <Typography gutterBottom variant="h5">
+        <Typography gutterBottom variant="h6">
           {props.name}
         </Typography>
-        <Typography variant="body2" height="100px">
+        <Typography variant="body2" height={70}>
           {description}
         </Typography>
         <Rating value={props.ratingValue} reviewsNumber={props.reviewsNumber} size="medium" readOnly={true} />
